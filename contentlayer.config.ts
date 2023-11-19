@@ -124,6 +124,7 @@ export const Authors = defineDocumentType(() => ({
         linkedin: { type: 'string' },
         github: { type: 'string' },
         layout: { type: 'string' },
+        language: { type: 'string', default: 'en' },
     },
     computedFields,
 }));
