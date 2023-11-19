@@ -3,7 +3,7 @@ const siteMetadata = {
     title: 'Unity Game Dev Blog',
     author: 'HungNB',
     headerTitle: 'Unity Game Dev Blog',
-    description: 'A blog about Unity Game Development. Created with Next.js and Tailwind.css',
+    description: 'A blog about Unity Game Development, powered by Next.js and Tailwind.css.',
     language: 'en-us',
     theme: 'system', // system, dark or light
     siteUrl: 'https://unity-next-blog.vercel.app/',
@@ -40,7 +40,7 @@ const siteMetadata = {
     newsletter: {
         // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
         // Please add your .env file and modify it according to your selection
-        provider: 'buttondown',
+        // provider: 'buttondown',
     },
     comments: {
         // If you want to use an analytics provider you have to add it to the
