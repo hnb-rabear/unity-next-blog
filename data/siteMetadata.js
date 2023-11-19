@@ -8,7 +8,7 @@ const siteMetadata = {
     theme: 'system', // system, dark or light
     siteUrl: 'https://unity-next-blog.vercel.app/',
     siteRepo: 'https://github.com/nbhung100914/unity-next-blog',
-    siteLogo: '/static/images/logo.png',
+    siteLogo: '/static/images/logo.webp',
     socialBanner: '/static/images/twitter-card.png',
     mastodon: 'https://mastodon.social/',
     email: 'nbhung71711@gmail.com',
