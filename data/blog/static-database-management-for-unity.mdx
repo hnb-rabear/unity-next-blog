@@ -1,0 +1,52 @@
+---
+title: Giải pháp xây dựng Static Database toàn diện cho một game mid-hard core
+date: 2023-11-20
+lastmod: 2023-11-20
+tags: ['unity', 'game development', 'architecture']
+draft: false
+summary: Exel2Unity la công cụ linh hoạt và mạnh mẽ, có khẳ năng đáp ứng đầy đủ cho Coder và Designer trong việc thiết kế và quản lý dữ liệu. Nó giải quyết được hầu hết các tình huống liên quan đến thiết kế và quản lý Static Database trong quá trình phát triển game.
+languge: vn
+---
+
+<TOCInline toc={props.toc} exclude="Introduction" />
+
+## 1. Static Database
+
+Static Database trong phát triển game là một giải pháp lưu trữ các dữ liệu tĩnh vd như kỹ năng, vật phẩm, nhân vật mà không thay đổi trong suốt quá trình chơi game. Thay vì đọc dữ liệu từ nguồn động (Dynamic Database) chúng ta sử dụng các phương tiện như ScriptableObject, CSV, hoặc JSON để lưu trữ và quản lý thông tin. Việc này giúp cải thiện hiệu suất, dễ quản lý, và tiện lợi trong quá trình phát triển game.
+
+## 2. Thách thức khi Static Database trở nên quá lớn
+
+Trong quá trình phát triển game, chúng ta thường xuyên đối mặt với những thay đổi, nhiều khi cần mở rộng hoặc thay đổi thiết kế, việc phải điều chỉnh tính năng và cấu trúc cơ sở dữ liệu là không thể tránh khỏi. Sử dụng những phương pháp thông thường như ScriptableObject, CSV hoặc JSON để quản lý Static Database có thể không đủ đáp ứng khi chúng ta đối mặt với hệ thống lớn, như trong các game Mid-core trở lên. Quản lý dữ liệu khổng lồ này mà không có công cụ hỗ trợ là một sự phiền toái.
+
+## 3. Excel to Unity - Giải pháp toàn diện để xây dựng và quản lý Static Database
+
+Đây là công cụ linh hoạt và mạnh mẽ, có khẳ năng đáp ứng đầy đủ cho Coder và Designer trong việc thiết kế và quản lý dữ liệu. Nó giải quyết được hầu hết các tình huống liên quan đến thiết kế và quản lý Static Database trong quá trình phát triển game.
+
+Các chức năng bao gồm:
+
+- Database được quản lý hoàn toàn bằng Excel
+- Database được export thành dạng text files để để tích hợp dễ dàng vào Unity.
+- Biểu diễn JSON data theo dạng bảng linh hoạt và có thể tùy chỉnh đa dạng.
+- Quản lý IDs và Constants một cách hiệu quả, dễ dàng điều chỉnh hàng loạt mà không ảnh hưởng đến Database.
+- Quản lý việc đa ngôn ngữ thông qua hệ thống Localization, Dễ dàng thêm/sửa, linh hoạt tùy biến với sự hỗ trợ mạnh mẽ từ nhiều Component và API cho Unity.
+- Và còn nhiều tính năng khác mang.
+
+## 4. Download
+
+https://github.com/nbhung100914/ExcelToUnity/releases
+
+## 5. Một số ví dụ và cách thức hoạt động
+
+## 6. Hướng dẫn sử dụng
+
+### 6.1. Settings
+
+![Settings](/media/excel-2-unity-tab-3.png)
+
+### 6.2. Convert Single file
+
+![Convert Single File](/media/excel-2-unity-tab-1.png)
+
+### 6.3. Convert Multi Files (All in one)
+
+![Convert Multi Files (All in one)](/media/excel-2-unity-tab-2.png)
