@@ -15,7 +15,7 @@ export default function Home({ posts }) {
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Welcome
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          <p className="text-lg leading-7 text-gray-600 dark:text-gray-300">
             {siteMetadata.description}
           </p>
         </div>
@@ -26,10 +26,10 @@ export default function Home({ posts }) {
             return (
               <li key={slug} className="py-12">
                 <article>
-                  <div className="space-y-2 lg:grid lg:grid-cols-4 lg:items-baseline lg:space-y-0">
+                  <div className="space-y-2 duration-300 hover:-translate-y-1 hover:scale-[101%] lg:grid lg:grid-cols-4 lg:items-baseline lg:space-y-0">
                     <div>
                       <p className="sr-only">Published on</p>
-                      <div className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                      <div className="text-base font-medium leading-6 text-gray-600 dark:text-gray-300">
                         <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                       </div>
 
@@ -39,7 +39,7 @@ export default function Home({ posts }) {
                           alt="Post Image"
                           width={480}
                           height={270}
-                          className="flex h-auto w-full lg:max-h-[480px] lg:max-w-[270px] lg:px-0 lg:pr-4 lg:pt-4 "
+                          className="flex h-auto w-full rounded lg:max-h-[480px] lg:max-w-[270px] lg:px-0 lg:pr-4 lg:pt-4"
                         ></Image>
                       )}
                     </div>
@@ -60,14 +60,14 @@ export default function Home({ posts }) {
                             ))}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                        <div className="prose max-w-none text-gray-600 dark:text-gray-300">
                           {summary}
                         </div>
                       </div>
                       <div className="text-base font-medium leading-6">
                         <Link
                           href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                          className="text-primary-500 hover:font-bold hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read more: "${title}"`}
                         >
                           Read more &rarr;
