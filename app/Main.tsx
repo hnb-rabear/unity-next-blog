@@ -39,7 +39,7 @@ export default function Home({ posts }) {
                           alt="Post Image"
                           width={480}
                           height={270}
-                          className="flex h-auto w-full lg:max-h-[480px] lg:max-w-[270px] lg:px-0 lg:pr-4 lg:pt-4 "
+                          className="flex h-auto w-full rounded lg:max-h-[480px] lg:max-w-[270px] lg:px-0 lg:pr-4 lg:pt-4"
                         ></Image>
                       )}
                     </div>
@@ -67,7 +67,7 @@ export default function Home({ posts }) {
                       <div className="text-base font-medium leading-6">
                         <Link
                           href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                          className="text-primary-500 hover:font-bold hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read more: "${title}"`}
                         >
                           Read more &rarr;
