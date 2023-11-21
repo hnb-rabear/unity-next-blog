@@ -43,6 +43,20 @@ https://github.com/nbhung100914/ExcelToUnity/releases
 
 ![Settings](/media/excel-2-unity-tab-3.png)
 
+- Json Data Output: Thư mục json data được export vào
+- Constants Output: Thư mục IDs, Constants, Localization Component và Localization API được export vào
+- Localization Ouput: Thư mục Localization text data được export vào
+- Namespace: thiết lập namespace cho các file .cs mà được export
+- Separate IDs:
+  - TRUE: export các sheet [\*\_IDs] ra thành các file .cs riêng biệt với tên file theo cấu trúc [Tên file excel + _IDs].cs
+  - FALSE: tổng hợp tất cả các sheet [\*\_IDs] từ tất cả các file excel thành một rồi export thành một file .cs duy nhất tên là IDs.cs
+- Separate Constants:
+  - TRUE: export các sheet [\*\_Constants] ra thành các file .cs riêng biệt với tên file theo cấu trúc [Tên file excel + _Constants].cs
+  - FALSE: tổng hợp tất cả các sheet [\*\_Constants] từ tất cả các file excel thành một rồi export thành một file .cs duy nhất tên là Constants.cs
+- Separate Localization:
+  - TRUE: export các sheet [\*\_Localization\_\*] ra thành các nhóm riêng biệt, một nhóm là gồm các file text data, Unity Component và API
+  - FALSE: tổng hợp tất cả các sheet [\*\_Localization\_\*] từ tất cả các file excel thành một rồi export thành một nhóm duy nhất
+
 ### 6.2. Convert Single file
 
 ![Convert Single File](/media/excel-2-unity-tab-1.png)
