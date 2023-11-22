@@ -9,11 +9,9 @@ summary: Exel2Unity là công cụ linh hoạt và mạnh mẽ, có khẳ năng 
 language: vn
 ---
 
-<TOCInline toc={props.toc} exclude="Introduction" />
-
 ## 1. Static Database
 
-Static Database trong phát triển game là một giải pháp lưu trữ các dữ liệu tĩnh vd như kỹ năng, vật phẩm, nhân vật mà không thay đổi trong suốt quá trình chơi game. Thay vì đọc dữ liệu từ nguồn động (Dynamic Database) chúng ta sử dụng các phương tiện như ScriptableObject, CSV, hoặc JSON để lưu trữ và quản lý thông tin. Việc này giúp cải thiện hiệu suất, dễ quản lý, và tiện lợi trong quá trình phát triển game.
+Static Database trong phát triển game là một giải pháp lưu trữ các dữ liệu tĩnh vd như kỹ năng, vật phẩm, nhân vật mà không thay đổi trong suốt quá trình chơi game. Thay vì đọc dữ liệu từ nguồn động (Dynamic Database) chúng ta sử dụng các phương tiện như ScriptableObject, CSV, hoặc JSON để lưu trữ và quản lý thông tin. Đây là giải pháp nhanh và khá tiện lợi trong quá trình phát triển game.
 
 ## 2. Thách thức khi Static Database trở nên quá lớn
 
@@ -26,17 +24,17 @@ Trong quá trình phát triển game, chúng ta thường xuyên đối mặt v�
 Các chức năng bao gồm:
 
 - Database được quản lý hoàn toàn bằng Excel
-- Database được export thành dạng text files để để tích hợp dễ dàng vào Unity.
-- Biểu diễn JSON data theo dạng bảng linh hoạt và có thể tùy chỉnh đa dạng.
+- Data Table được xuất thành dạng text files để để tích hợp dễ dàng vào Unity.
+- Biểu diễn data theo dạng bảng, có nhiều tùy chỉnh đa dạng, thay đổi linh hoạt tùy theo thiết kế.
 - Quản lý IDs và Constants một cách hiệu quả, dễ dàng điều chỉnh hàng loạt mà không ảnh hưởng đến Database.
-- Quản lý việc đa ngôn ngữ thông qua hệ thống Localization, Dễ dàng thêm/sửa, linh hoạt tùy biến với sự hỗ trợ mạnh mẽ từ nhiều Component và API cho Unity.
-- Và còn nhiều tính năng khác mang.
+- Quản lý đa ngôn ngữ dễ dang thông qua hệ thống Localization, có sự kết hợp mạnh mẽ với Unity.
+- Và còn nhiều tính năng khác nâng cao khác.
 
 ## 4. Download
 
 https://github.com/nbhung100914/ExcelToUnity/releases
 
-## 5. Một số ví dụ và cách thức hoạt động
+## 5. Ví dụ thực tiễn và cách thức hoạt động
 
 ## 6. Hướng dẫn sử dụng
 
@@ -44,19 +42,32 @@ https://github.com/nbhung100914/ExcelToUnity/releases
 
 ![Settings](/media/excel-2-unity-tab-3.png)
 
-- Json Data Output: Địa chỉ thư mục mà json data sẽ được export tới
-- Constants Output: Địa chỉ thư mục mà các file IDs, Constants, Localization Component và Localization API sẽ được export tới
-- Localization Ouput: Địa chỉ thư mục mà các file Localization text data được export vào
-- Namespace: thiết lập namespace cho các file .cs mà được export
-- Separate IDs:
-  - TRUE: export các sheet [\*\_IDs] ra thành các file .cs riêng biệt với tên file theo cấu trúc [Tên file excel + _IDs].cs
-  - FALSE: tổng hợp tất cả các sheet [\*\_IDs] từ tất cả các file excel thành một rồi export thành một file .cs duy nhất tên là IDs.cs
-- Separate Constants:
-  - TRUE: export các sheet [\*\_Constants] ra thành các file .cs riêng biệt với tên file theo cấu trúc [Tên file excel + _Constants].cs
-  - FALSE: tổng hợp tất cả các sheet [\*\_Constants] từ tất cả các file excel thành một rồi export thành một file .cs duy nhất tên là Constants.cs
-- Separate Localization:
-  - TRUE: export các sheet [\*\_Localization\_\*] ra thành các nhóm riêng biệt, một nhóm là gồm các file text data, Unity Component và API
-  - FALSE: tổng hợp tất cả các sheet [\*\_Localization\_\*] từ tất cả các file excel thành một rồi export thành một nhóm duy nhất
+- **Json Data Output:** Data table sẽ được chuyển đổi thành dạng dạng json data và lưu tại địa chỉ này.
+- **Constants Output:** IDs, Constants, Localization Component và Localization API sẽ được lưu tại đại chỉ này.
+- **Localization Ouput:** Data Localization sẽ được lưu tại đại chỉ này. Địa chỉ này nên nằm trong thư mục _Resouces_.
+- **Namespace:** khai báo namespace cho các file C# mà tool xuất ra.
+- **Separate IDs:**
+  - TRUE: xuất các sheet _[*IDs]_ thành các file C# độc lập với tên file theo cấu trúc _[(SheetName) + \_IDs].cs_
+  - FALSE: tổng hợp tất cả các sheet _[*IDs]_ từ tất cả các file excel thành một rồi xuất thành một file C# duy nhất là _IDs.cs_
+- **Separate Constants:**
+  - TRUE: xuất các sheet _[*Constants]_ thành các file C# độc lập với tên file theo cấu trúc _[(SheetName) + \_Constants].cs_
+  - FALSE: tổng hợp tất cả các sheet _[*Constants]_ từ tất cả các file excel thành một rồi export thành một file C# duy nhất là _Constants.cs_
+- **Separate Localization:**
+  - TRUE: xuất các sheet _[*Localization*]_ thành các nhóm độc lập, một nhóm bao gồm Localization Data, Unity Component và API, , tên các file sẽ có cấu trúc sau:
+    - Localization Data:
+    - Component:
+    - API:
+  - FALSE: tổng hợp tất cả các sheet _[*Localization*]_ từ tất cả các file excel thành một rồi xuất thành một nhóm duy nhất, tên các file sẽ có cấu trúc sau:
+    - Localization Data: _[Localization\_+ (language)].cs_
+    - Component: _[LocalizationText].cs_
+    - API: _[Localization].cs_
+- **Encript Json:** mã Json Data trước khi xuất thành text file
+- **Only Enum as ID:** áp dụng cho sheet _[\_IDs]_, các cột có phần mở rộng là _[enum]_. Nếu chọn thì cột IDs đó sẽ được xuất dưới dạng Enum mà bỏ qua dạng Integer Constant.
+- **One Json - One Excel:** tổng hợp Data Table trong một file excel thành một file Json duy nhất, tên file theo cấu trúc _[(ExcelName).txt]_
+- **Encryption Key:** key để mã hóa Json data
+- **Language maps:** ứng dụng cho Localization kết hợp TextMeshPro, dùng để tổng hợp bảng ký tự của một ngôn ngữ. Chủ yếu được áp dụng cho Korean, Japanese và Chinese đây là các ngôn ngữ có hệ thống ký tự cực kỳ lớn.
+- **Excluded Sheets:** nhập tên các Sheet cần bị bỏ qua khi xử lý.
+- **Excluded Sheets:** nhập tên các trường trong Data Table cần bị bỏ qua khi xử lý.
 
 ### 6.2. Convert Single file
 
