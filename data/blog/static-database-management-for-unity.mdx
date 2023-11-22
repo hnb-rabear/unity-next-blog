@@ -1,5 +1,5 @@
 ---
-title: Giải pháp xây dựng Static Database toàn diện cho một game mid-hard core
+title: Excel2Unity - Giải pháp Static Database toàn diện cho mid-hard core game
 date: 2023-11-20
 lastmod: 2023-11-20
 tags: ['unity', 'game development', 'architecture']
@@ -9,43 +9,49 @@ summary: Exel2Unity là công cụ linh hoạt và mạnh mẽ, có khẳ năng 
 language: vn
 ---
 
-## 1. Static Database
+<TOCInline toc={props.toc} />
+
+# 1. Giới thiệu
+
+## Static Database
 
 Static Database trong phát triển game là một giải pháp lưu trữ các dữ liệu tĩnh vd như kỹ năng, vật phẩm, nhân vật mà không thay đổi trong suốt quá trình chơi game. Thay vì đọc dữ liệu từ nguồn động (Dynamic Database) chúng ta sử dụng các phương tiện như ScriptableObject, CSV, hoặc JSON để lưu trữ và quản lý thông tin. Đây là giải pháp nhanh và khá tiện lợi trong quá trình phát triển game.
 
-## 2. Thách thức khi Static Database trở nên quá lớn
+## Thách thức khi Static Database trở nên quá lớn
 
 Trong quá trình phát triển game, chúng ta thường xuyên đối mặt với những thay đổi, nhiều khi cần mở rộng hoặc thay đổi thiết kế, việc phải điều chỉnh tính năng và cấu trúc cơ sở dữ liệu là không thể tránh khỏi. Sử dụng những phương pháp thông thường như ScriptableObject, CSV hoặc JSON để quản lý Static Database có thể không đủ đáp ứng khi chúng ta đối mặt với hệ thống lớn, như trong các game Mid-core trở lên. Quản lý dữ liệu khổng lồ này mà không có công cụ hỗ trợ là một sự phiền toái.
 
-## 3. Excel to Unity - Giải pháp toàn diện để xây dựng và quản lý Static Database
+# 2. Excel to Unity
 
-Đây là công cụ linh hoạt và mạnh mẽ, có khẳ năng đáp ứng đầy đủ cho Coder và Designer trong việc thiết kế và quản lý dữ liệu. Nó giải quyết được hầu hết các tình huống liên quan đến thiết kế và quản lý Static Database trong quá trình phát triển game.
+## Giải pháp toàn diện để xây dựng và quản lý Static Database
+
+Đây là một công cụ linh hoạt và mạnh mẽ, có thể đáp ứng đầy đủ nhu cầu của Coder và Designer trong việc thiết kế và quản lý dữ liệu. Nó có khả năng giải quyết hầu hết các vấn đề liên quan đến thiết kế và quản lý Static Database trong quá trình phát triển game.
 
 Các chức năng bao gồm:
 
-- Database được quản lý hoàn toàn bằng Excel
-- Data Table được xuất thành dạng text files để để tích hợp dễ dàng vào Unity.
-- Biểu diễn data theo dạng bảng, có nhiều tùy chỉnh đa dạng, thay đổi linh hoạt tùy theo thiết kế.
-- Quản lý IDs và Constants một cách hiệu quả, dễ dàng điều chỉnh hàng loạt mà không ảnh hưởng đến Database.
-- Quản lý đa ngôn ngữ dễ dang thông qua hệ thống Localization, có sự kết hợp mạnh mẽ với Unity.
-- Và còn nhiều tính năng khác nâng cao khác.
+- Quản lý Database hoàn toàn bằng Excel.
+- Xuất Data Table thành các file txt để dễ dàng tích hợp vào Unity.
+- Cung cấp nhiều định dạng dữ liệu, có thể thay đổi linh hoạt theo yêu cầu thiết kế Data.
+- Quản lý IDs và Constants một cách hiệu quả, cho phép điều chỉnh hàng loạt mà không ảnh hưởng đến Database.
+- Quản lý đa ngôn ngữ dễ dàng thông qua hệ thống Localization, có khả năng kết hợp mạnh mẽ với Unity.
+- Và nhiều tính năng nâng cao khác.
 
-## 4. Download
+## Download
 
 [Download from GitHub](https://github.com/nbhung100914/ExcelToUnity/releases)<br/>
 **Nếu công cụ hữu ích cho bạn thì hãy gửi tặng một ⭐ nhé.**
 
-## 5. Ví dụ thực tiễn và cách thức hoạt động
+# 3. Công cụ này hoạt động như thế nào
 
-## 6. Hướng dẫn sử dụng
+Mọi Static Database
 
-### 6.1. Quy ước đặt tên
+# 4. Giới thiệu tính năng và cách cài đặt
 
-### 6.2. Settings
+## 4.1. Settings
 
 ![Settings](/media/excel-2-unity-tab-3.png)
 
-- **Json Data Output:** Data table sẽ được chuyển đổi thành dạng dạng json data và lưu tại địa chỉ này.
+- **Json Data Output:** Data table sẽ được chuyển đổi thành dạng dạng Json data và lưu tại địa chỉ này.
 - **Constants Output:** IDs, Constants, Localization Component và Localization API sẽ được lưu tại đại chỉ này.
 - **Localization Ouput:** Data Localization sẽ được lưu tại đại chỉ này. Địa chỉ này nên nằm trong thư mục _Resources_.
 - **Namespace:** khai báo namespace cho các file C# mà tool xuất ra.
@@ -69,14 +75,14 @@ Các chức năng bao gồm:
 - **One Json - One Excel:** tổng hợp Data Table trong một file excel thành một file Json duy nhất, tên file theo cấu trúc _[ExcelName].txt_
 - **Encryption Key:** key để mã hóa Json data
 - **Language maps:** ứng dụng cho Localization kết hợp TextMeshPro, dùng để tổng hợp bảng ký tự của một ngôn ngữ. Chủ yếu được áp dụng cho Korean, Japanese và Chinese đây là các ngôn ngữ có hệ thống ký tự cực kỳ lớn.
-- **Excluded Sheets:** nhập tên các Sheet cần bị bỏ qua khi xử lý.
-- **Excluded Sheets:** nhập tên các trường trong Data Table cần bị bỏ qua khi xử lý.
+- **Excluded Sheets:** nhập tên các Sheet cần bỏ qua khi xử lý Data Table.
+- **Excluded Sheets:** nhập tên các trường cần bị bỏ qua khi xử lý Data Table.
 
-### 6.3. Convert Single file
+## 4.2. Convert single excel
 
 ![Convert Single File](/media/excel-2-unity-tab-1.png)
 
-Đây là chức năng cơ bản nhất để bạn có thể làm quen với công cụ để hiểu cách sử dụng nó. Nếu Static Database không quá lớn, và đủ lưu tất cả vào trong một file Excel thì bạn có thể dùng chức năng này. Ngược lại, nếu Static Database được lưu trữ trong nhiều file Excel khác nhau thì nên sử dụng chức năng **Convert Multi Files**, chức năng này sẽ được giới thiệu trong mục kế tiếp.
+Đây là một chức năng cơ bản nhưng lại rất quan trọng, giúp bạn làm quen với các công cụ. Nếu Static Database của bạn không quá lớn hoặc phức tạp, và chỉ cần một file excel để chứa tất cả dữ liệu, thì chức năng này là đủ cho nhu cầu của bạn. Tuy nhiên, nếu Static Database của bạn phức tạp và cần được lưu trữ trong nhiều file Excel, bạn sẽ cần sử dụng chức năng **Convert Multi Files**. Chức năng này sẽ được giới thiệu trong phần tiếp theo.
 
 Các chức năng quan trọng nằm ở các nút bên phải:
 
@@ -88,19 +94,105 @@ Các chức năng quan trọng nằm ở các nút bên phải:
 
 Thiết lập:
 
-- **Data File:** điền địa chỉ của file excel chứa Static Database.
-- **Separate Constants:** chọn, nếu muốn xuất các sheet _[%IDs]_ và _[%Constants]_ thành các file C# độc lập với tên file theo cấu trúc _[SheetName] + IDs.cs_ và [SheetName] + Constants.cs.
-- **Encrypt Data:** chọn, nếu muốn mã hóa Json Data được xuất từ Data Table.
-- **Merge Jsons:** chọn, nếu muốn xuất toàn bộ Data Table thành một file Json duy nhất. Tên file json sẽ là tên file excel hoặc tên được tùy chỉnh ở TextBox liền kề.
+- **Data File:** nhập địa chỉ của file excel chứa Static Database.
+- **Separate Constants:** chọn lựa chọn này nếu bạn muốn xuất các sheet _[%IDs]_ và _[%Constants]_ thành các file C# riêng biệt, với tên file theo cấu trúc _[SheetName] + IDs.cs_ và _[SheetName] + Constants.cs_.
+- **Encrypt Data:** chọn lựa chọn này nếu bạn muốn mã hóa Json Data được xuất từ Data Table.
+- **Merge Jsons:** chọn lựa chọn này nếu bạn muốn xuất toàn bộ Data Table thành một file Json duy nhất. Tên file json sẽ là tên file excel hoặc tên được tùy chỉnh ở TextBox liền kề.
 
 Thông tin hiển thị:
 
-- Bảng trái hiển thị các sheet trong file excel.
-- Bảng giữa hiển thị danh sách integer id được tổng hợp từ các sheet _[%IDs].cs_.
-- Khung cuộn cuối cùng sẽ hiển thị log
+- Bảng ở bên trái hiển thị danh sách các sheet trong file excel.
+- Bảng ở giữa hiển thị danh sách id được tổng hợp từ các sheet có tên _[%IDs].cs_.
+- Khung cuộn phía dưới sẽ hiển thị log
 
-### 6.4. Convert Multi Files (All in one)
+## 4.3. Convert multi excels (All in one)
 
 ![Convert Multi Files (All in one)](/media/excel-2-unity-tab-2.png)
 
-Đây là chức tổng hợp, tất cả được xử lý chỉ bằng một nút ấn.
+Đây là chức tổng hợp, tất cả sẽ được xử lý chỉ bằng một nút ấn chỉ cần:
+
+1. Chọn tất cả các file excel mà bạn muốn xử lý.
+2. Bạn có thể quyết định xuất IDs, Constants hoặc không bằng cách đánh dấu vào CheckBox tương ứng với mỗi file excel.
+3. Cuối cùng, hãy nhấn nút Export All.
+
+## 4.4. Encrypt & Decrypt Text
+
+![Convert Multi Files (All in one)](/media/excel-2-unity-tab-4.png)
+
+Chức năng này cho phép bạn mã hóa hoặc giải mã một chuỗi ký tự dựa trên Key được cung cấp trong Tab Settings. Bạn có thể sử dụng chức năng này để bảo mật nội dung của một văn bản, hoặc để mở và đọc các file Json data đã được mã hóa sau khi xuất ra.
+
+# 5. Quy tắc thiết kế data trong Excel
+
+[Download example exel from GitHub](https://github.com/nbhung100914/ExcelToUnity/blob/main/ExcelToUnity/Document/DataConverterExample.xlsx)
+
+# 5.1. IDs
+
+Các sheet có tên theo cú pháp _[%IDs]_ được gọi là IDs sheet. Chúng được sử dụng để tổng hợp tất cả id dưới dạng Constants Integer. Mỗi id được khai báo trong một nhóm bao gồm 3 cột liền nhau: cột 1 là tên, cột 2 là giá trị và cột 3 là chú thích. Ví dụ dưới đây minh họa cho 3 nhóm id: Hero Id, Building Id và Pet Id.
+
+| Hero   |     |         | Building      |     |         | Pet      |     |         |
+| ------ | --- | ------- | ------------- | --- | ------- | -------- | --- | ------- |
+| HERO_1 | 1   | comment | BUILDING_NULL | 0   | comment | PET_NULL | -1  | comment |
+| HERO_2 | 2   | comment | BUILDING_1    | 1   |         | PET_1    | 0   |         |
+| HERO_3 | 3   | comment | BUILDING_2    | 2   |         | PET_2    | 1   |         |
+| HERO_4 | 4   | comment | BUILDING_3    | 3   |         | PET_3    | 2   |         |
+| HERO_5 | 5   | comment | BUILDING_4    | 4   |         | PET_4    | 3   |         |
+|        |     |         | BUILDING_5    | 5   |         | PET_5    | 4   |         |
+|        |     |         | BUILDING_6    | 6   |         | PET_6    | 5   |         |
+|        |     |         | BUILDING_7    | 7   |         | PET_7    | 6   |         |
+|        |     |         | BUILDING_8    | 8   |         |          |     |         |
+
+# 5.2. Constants
+
+Các sheet được đặt tên theo cú pháp _[%Constants]_ được gọi là Constants Sheet. Chúng được sử dụng để tổng hợp lại các Constants trong project. Bảng dưới đây sẽ giúp bạn tham khảo được tất cả các kiểu dữ liệu mà có thể dùng trong sheet này.
+
+| Name                  | Type        | Value            | Comment                              |
+| --------------------- | ----------- | ---------------- | ------------------------------------ |
+| EXAMPLE_INT           | int         | 83               | Write your comment for the constants |
+| EXAMPLE_FLOAT         | float       | 1.021            | Write your comment for the constants |
+| EXAMPLE_STRING        | string      | 321fda           | Write your comment for the constants |
+| EXAMPLE_INT_ARRAY_1   | int-array   | 4                | Write your comment for the constants |
+| EXAMPLE_INT_ARRAY_2   | int-array   | 0:3:4:5          | Write your comment for the constants |
+| EXAMPLE_FLOAT_ARRAY_1 | float-array | 5                | Write your comment for the constants |
+| EXAMPLE_FLOAT_ARRAY_2 | float_array | 5:1:1:3          | Write your comment for the constants |
+| EXAMPLE_VECTOR2_1     | vector2     | 1:2              | Write your comment for the constants |
+| EXAMPLE_VECTOR2_2     | vector2     | 1:2:3            | Write your comment for the constants |
+| EXAMPLE_VECTOR3       | vector3     | 3:3:4            | Write your comment for the constants |
+| EXAMPLE_REFERENCE_1   | int         | HERO_1           | Write your comment for the constants |
+| EXAMPLE_REFERENCE_2   | int-array   | HERO_1 : HERO_2  | Write your comment for the constants |
+| EXAMPLE_REFERENCE_3   | int-array   | HERO_1 \| HERO_3 | Write your comment for the constants |
+| EXAMPLE_REFERENCE_4   | int-array   | HERO_1 HERO_4    | Write your comment for the constants |
+| EXAMPLE_FORMULA_1     | int         | 360              | Write your comment for the constants |
+| EXAMPLE_FORMULA_2     | float       | 45               | Write your comment for the constants |
+
+# 5.3. Localization
+
+Các sheet được đặt tên theo cú pháp _[%Localization%]_ được gọi là Localization Sheet.
+
+| idstring     | relativeId | english                   | spanish                        |
+| ------------ | ---------- | ------------------------- | ------------------------------ |
+| message_1    |            | this is english message 1 | este es el mensaje en ingles 1 |
+| message_2    |            | this is english message 2 | este es el mensaje en ingles 2 |
+| message_3    |            | this is english message 3 | este es el mensaje en ingles 3 |
+| message_4    |            | this is english message 4 | este es el mensaje en ingles 4 |
+| message_5    |            | this is english message 5 | este es el mensaje en ingles 5 |
+|              |            |                           |                                |
+| Content      | 1          | this is english message 1 | este es el mensaje en ingles 1 |
+| Content      | 2          | this is english message 2 | este es el mensaje en ingles 2 |
+| Content      | 3          | this is english message 3 | este es el mensaje en ingles 3 |
+| Content      | 4          | this is english message 4 | este es el mensaje en ingles 4 |
+| Content      | 5          | this is english message 5 | este es el mensaje en ingles 5 |
+|              |            |                           |                                |
+| title_1      |            | this is english title 1   | este es el titulo 1 en ingles  |
+| title_2      |            | this is english title 2   | este es el titulo 2 en ingles  |
+| title_3      |            | this is english title 3   | este es el titulo 3 en ingles  |
+| title_4      |            | this is english title 4   | este es el titulo 4 en ingles  |
+| title_5      |            | this is english title 5   | este es el titulo 5 en ingles  |
+| title_6      |            | this is english title 6   | este es el titulo 6 en ingles  |
+|              |            |                           |                                |
+| whatever_msg |            | this is a sample message  | este es un mensaje de muestra  |
+|              |            |                           |                                |
+| hero_name    | HERO_1     | hero name 1               | nombre del héroe 1             |
+| hero_name    | HERO_2     | hero name 2               | nombre del héroe 2             |
+| hero_name    | HERO_3     | hero name 3               | nombre del héroe 3             |
+| hero_name    | HERO_4     | hero name 4               | nombre del héroe 4             |
+| hero_name    | HERO_5     | hero name 5               | nombre del héroe 5             |
