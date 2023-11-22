@@ -32,47 +32,75 @@ Các chức năng bao gồm:
 
 ## 4. Download
 
-https://github.com/nbhung100914/ExcelToUnity/releases
+[Download from GitHub](https://github.com/nbhung100914/ExcelToUnity/releases)<br/>
+**Nếu công cụ hữu ích cho bạn thì hãy gửi tặng một ⭐ nhé.**
 
 ## 5. Ví dụ thực tiễn và cách thức hoạt động
 
 ## 6. Hướng dẫn sử dụng
 
-### 6.1. Settings
+### 6.1. Quy ước đặt tên
+
+### 6.2. Settings
 
 ![Settings](/media/excel-2-unity-tab-3.png)
 
 - **Json Data Output:** Data table sẽ được chuyển đổi thành dạng dạng json data và lưu tại địa chỉ này.
 - **Constants Output:** IDs, Constants, Localization Component và Localization API sẽ được lưu tại đại chỉ này.
-- **Localization Ouput:** Data Localization sẽ được lưu tại đại chỉ này. Địa chỉ này nên nằm trong thư mục _Resouces_.
+- **Localization Ouput:** Data Localization sẽ được lưu tại đại chỉ này. Địa chỉ này nên nằm trong thư mục _Resources_.
 - **Namespace:** khai báo namespace cho các file C# mà tool xuất ra.
 - **Separate IDs:**
-  - TRUE: xuất các sheet _[*IDs]_ thành các file C# độc lập với tên file theo cấu trúc _[(SheetName) + \_IDs].cs_
-  - FALSE: tổng hợp tất cả các sheet _[*IDs]_ từ tất cả các file excel thành một rồi xuất thành một file C# duy nhất là _IDs.cs_
+  - TRUE: xuất các sheet _[%IDs]_ thành các file C# độc lập với tên file theo cấu trúc _[SheetName] + IDs.cs_
+  - FALSE: tổng hợp tất cả các sheet _[%IDs]_ từ tất cả các file excel thành một rồi xuất thành một file C# duy nhất là _IDs.cs_
 - **Separate Constants:**
-  - TRUE: xuất các sheet _[*Constants]_ thành các file C# độc lập với tên file theo cấu trúc _[(SheetName) + \_Constants].cs_
-  - FALSE: tổng hợp tất cả các sheet _[*Constants]_ từ tất cả các file excel thành một rồi export thành một file C# duy nhất là _Constants.cs_
+  - TRUE: xuất các sheet _[%Constants]_ thành các file C# độc lập với tên file theo cấu trúc _[SheetName] + %Constants.cs_
+  - FALSE: tổng hợp tất cả các sheet _[%Constants]_ từ tất cả các file excel thành một rồi export thành một file C# duy nhất là _Constants.cs_
 - **Separate Localization:**
-  - TRUE: xuất các sheet _[*Localization*]_ thành các nhóm độc lập, một nhóm bao gồm Localization Data, Unity Component và API, , tên các file sẽ có cấu trúc sau:
-    - Localization Data:
-    - Component:
-    - API:
-  - FALSE: tổng hợp tất cả các sheet _[*Localization*]_ từ tất cả các file excel thành một rồi xuất thành một nhóm duy nhất, tên các file sẽ có cấu trúc sau:
-    - Localization Data: _[Localization\_+ (language)].cs_
-    - Component: _[LocalizationText].cs_
-    - API: _[Localization].cs_
+  - TRUE: xuất các sheet _[%Localization%]_ thành các nhóm độc lập, một nhóm bao gồm Localization Data, Unity Component và API, , tên các file sẽ có cấu trúc sau:
+    - Localization Data: _[SheetName]\_[language].txt_
+    - Component: _[SheetName] + Text.cs_
+    - API: _[SheetName].cs_
+  - FALSE: tổng hợp tất cả các sheet _[%Localization%]_ từ tất cả các file excel thành một rồi xuất thành một nhóm duy nhất, tên các file sẽ có cấu trúc sau:
+    - Localization Data: _Localization\_ + [language].txt_
+    - Component: _LocalizationText.cs_
+    - API: _Localization.cs_
 - **Encript Json:** mã Json Data trước khi xuất thành text file
-- **Only Enum as ID:** áp dụng cho sheet _[\_IDs]_, các cột có phần mở rộng là _[enum]_. Nếu chọn thì cột IDs đó sẽ được xuất dưới dạng Enum mà bỏ qua dạng Integer Constant.
-- **One Json - One Excel:** tổng hợp Data Table trong một file excel thành một file Json duy nhất, tên file theo cấu trúc _[(ExcelName).txt]_
+- **Only Enum as ID:** áp dụng cho sheet _[%IDs]_, các cột có phần mở rộng là _[enum]_. Nếu chọn thì cột IDs đó sẽ được xuất dưới dạng Enum mà bỏ qua dạng Integer Constant.
+- **One Json - One Excel:** tổng hợp Data Table trong một file excel thành một file Json duy nhất, tên file theo cấu trúc _[ExcelName].txt_
 - **Encryption Key:** key để mã hóa Json data
 - **Language maps:** ứng dụng cho Localization kết hợp TextMeshPro, dùng để tổng hợp bảng ký tự của một ngôn ngữ. Chủ yếu được áp dụng cho Korean, Japanese và Chinese đây là các ngôn ngữ có hệ thống ký tự cực kỳ lớn.
 - **Excluded Sheets:** nhập tên các Sheet cần bị bỏ qua khi xử lý.
 - **Excluded Sheets:** nhập tên các trường trong Data Table cần bị bỏ qua khi xử lý.
 
-### 6.2. Convert Single file
+### 6.3. Convert Single file
 
 ![Convert Single File](/media/excel-2-unity-tab-1.png)
 
-### 6.3. Convert Multi Files (All in one)
+Đây là chức năng cơ bản nhất để bạn có thể làm quen với công cụ để hiểu cách sử dụng nó. Nếu Static Database không quá lớn, và đủ lưu tất cả vào trong một file Excel thì bạn có thể dùng chức năng này. Ngược lại, nếu Static Database được lưu trữ trong nhiều file Excel khác nhau thì nên sử dụng chức năng **Convert Multi Files**, chức năng này sẽ được giới thiệu trong mục kế tiếp.
+
+Các chức năng quan trọng nằm ở các nút bên phải:
+
+- **Export Json:** xuất các sheet dạng Data Table thành JSON data.
+- **Export IDs:** xuất các sheet dạng IDs thành các file C#.
+- **Export Constants:** xuất các sheet dạng Constants thành các file C#.
+- **Export Settings:** chức năng này đã lỗi thời và sẽ bị xóa trong tương lai.
+- **Export Localization:** xuất Localization Data và Localization Component, Localization API tương ứng.
+
+Thiết lập:
+
+- **Data File:** điền địa chỉ của file excel chứa Static Database.
+- **Separate Constants:** chọn, nếu muốn xuất các sheet _[%IDs]_ và _[%Constants]_ thành các file C# độc lập với tên file theo cấu trúc _[SheetName] + IDs.cs_ và [SheetName] + Constants.cs.
+- **Encrypt Data:** chọn, nếu muốn mã hóa Json Data được xuất từ Data Table.
+- **Merge Jsons:** chọn, nếu muốn xuất toàn bộ Data Table thành một file Json duy nhất. Tên file json sẽ là tên file excel hoặc tên được tùy chỉnh ở TextBox liền kề.
+
+Thông tin hiển thị:
+
+- Bảng trái hiển thị các sheet trong file excel.
+- Bảng giữa hiển thị danh sách integer id được tổng hợp từ các sheet _[%IDs].cs_.
+- Khung cuộn cuối cùng sẽ hiển thị log
+
+### 6.4. Convert Multi Files (All in one)
 
 ![Convert Multi Files (All in one)](/media/excel-2-unity-tab-2.png)
+
+Đây là chức tổng hợp, tất cả được xử lý chỉ bằng một nút ấn.
