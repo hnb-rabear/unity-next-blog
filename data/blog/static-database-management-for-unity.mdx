@@ -5,6 +5,7 @@ lastmod: 2023-11-20
 tags: ['unity', 'game development', 'architecture']
 images: ['/media/excel-2-unity-tab-1.png']
 draft: false
+layout: PostSimple
 summary: Exel2Unity là công cụ linh hoạt và mạnh mẽ, có khẳ năng đáp ứng đầy đủ cho Coder và Designer trong việc thiết kế và quản lý dữ liệu. Nó giải quyết được hầu hết các tình huống liên quan đến thiết kế và quản lý Static Database trong quá trình phát triển game.
 language: vn
 ---
@@ -25,9 +26,19 @@ Trong quá trình phát triển game, chúng ta thường xuyên đối mặt v�
 
 ## Giải pháp toàn diện để xây dựng và quản lý Static Database
 
-Đây là một công cụ linh hoạt và mạnh mẽ, có thể đáp ứng đầy đủ nhu cầu của Coder và Designer trong việc thiết kế và quản lý dữ liệu. Nó có khả năng giải quyết hầu hết các vấn đề liên quan đến thiết kế và quản lý Static Database trong quá trình phát triển game.
+Ý tưởng cốt lõi đằng sau công cụ này là tạo ra một công cụ phục vụ cho Indie Game Developer. Đây là một công cụ giúp thiết kế và quản lý database mà cả Dev và Designer đều có thể sử dụng. Designer có thể dễ dàng kiểm tra các chỉ số trong game mà không cần sự hỗ trợ của Dev.
 
-Các chức năng bao gồm:
+Dự án game, không phân biệt quy mô lớn hay nhỏ, đều cần có một Static Database. Tùy thuộc vào quy mô dự án, số lượng Data Table tăng lên, Constants và Id cũng sẽ tăng lên theo. Vấn đề sẽ càng phức tạp nếu không có một giải pháp quản lý hiệu quả.
+Vì vậy, mục tiêu ban đầu của công cụ này là để quản lý IDs, Constants và tìm ra cách để có thể thay đổi IDs và Constants ở một nơi duy nhất mà Data Table cũng được cập nhật theo.
+
+Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều kiểu dữ liệu mới, tận dụng được sức mạnh của Excel để thiết kế và quản lý. Mặc dù công cụ này được phát triển chủ yếu cho game RPG - thể loại game thường có khối lượng Static Database lớn, nhưng nó hoàn toàn có thể được áp dụng cho các thể loại game khác mà cần Static Database lớn.
+
+## Download
+
+[Download from GitHub](https://github.com/nbhung100914/ExcelToUnity/releases)<br/>
+**Nếu công cụ hữu ích cho bạn thì hãy gửi tặng một ⭐ nhé.**
+
+# 3. Các chức năng chính
 
 - Quản lý Database hoàn toàn bằng Excel.
 - Xuất Data Table thành các file txt để dễ dàng tích hợp vào Unity.
@@ -35,15 +46,6 @@ Các chức năng bao gồm:
 - Quản lý IDs và Constants một cách hiệu quả, cho phép điều chỉnh hàng loạt mà không ảnh hưởng đến Database.
 - Quản lý đa ngôn ngữ dễ dàng thông qua hệ thống Localization, có khả năng kết hợp mạnh mẽ với Unity.
 - Và nhiều tính năng nâng cao khác.
-
-## Download
-
-[Download from GitHub](https://github.com/nbhung100914/ExcelToUnity/releases)<br/>
-**Nếu công cụ hữu ích cho bạn thì hãy gửi tặng một ⭐ nhé.**
-
-# 3. Công cụ này hoạt động như thế nào
-
-Mọi Static Database
 
 # 4. Giới thiệu tính năng và cách cài đặt
 
@@ -117,56 +119,59 @@ Thông tin hiển thị:
 
 ## 4.4. Encrypt & Decrypt Text
 
-![Convert Multi Files (All in one)](/media/excel-2-unity-tab-4.png)
+![Encryption](/media/excel-2-unity-tab-4.png)
 
 Chức năng này cho phép bạn mã hóa hoặc giải mã một chuỗi ký tự dựa trên Key được cung cấp trong Tab Settings. Bạn có thể sử dụng chức năng này để bảo mật nội dung của một văn bản, hoặc để mở và đọc các file Json data đã được mã hóa sau khi xuất ra.
 
 # 5. Quy tắc thiết kế data trong Excel
 
-[Download example excel from GitHub](https://github.com/nbhung100914/ExcelToUnity/blob/main/ExcelToUnity/Document/DataConverterExample.xlsx)
+[Download detail example from GitHub](https://github.com/nbhung100914/ExcelToUnity/blob/main/ExcelToUnity/Document/DataConverterExample.xlsx)
 
-# 5.1. IDs
+## 5.1. IDs
 
-Các sheet có tên theo cú pháp _[%IDs]_ được gọi là IDs sheet. Chúng được sử dụng để tổng hợp tất cả id dưới dạng Constants Integer. Mỗi id được khai báo trong một nhóm bao gồm 3 cột liền nhau: cột 1 là tên, cột 2 là giá trị và cột 3 là chú thích. Ví dụ dưới đây minh họa cho 3 nhóm id: Hero Id, Building Id và Pet Id.
+Các sheet có tên theo cú pháp _[%IDs]_ được gọi là IDs sheet. Chúng được sử dụng để tổng hợp tất cả id thành Constants Integer.
 
-| Hero   |     |         | Building      |     |         | Pet      |     |         |
-| ------ | --- | ------- | ------------- | --- | ------- | -------- | --- | ------- |
-| HERO_1 | 1   | comment | BUILDING_NULL | 0   | comment | PET_NULL | -1  | comment |
-| HERO_2 | 2   | comment | BUILDING_1    | 1   |         | PET_1    | 0   |         |
-| HERO_3 | 3   | comment | BUILDING_2    | 2   |         | PET_2    | 1   |         |
-| HERO_4 | 4   | comment | BUILDING_3    | 3   |         | PET_3    | 2   |         |
-| HERO_5 | 5   | comment | BUILDING_4    | 4   |         | PET_4    | 3   |         |
-|        |     |         | BUILDING_5    | 5   |         | PET_5    | 4   |         |
-|        |     |         | BUILDING_6    | 6   |         | PET_6    | 5   |         |
-|        |     |         | BUILDING_7    | 7   |         | PET_7    | 6   |         |
-|        |     |         | BUILDING_8    | 8   |         |          |     |         |
+| Hero   |     |         | Building      |     |         | Pet      |     |         | Gender[enum]      |     |
+| ------ | --- | ------- | ------------- | --- | ------- | -------- | --- | ------- | ----------------- | --- |
+| HERO_1 | 1   | comment | BUILDING_NULL | 0   | comment | PET_NULL | -1  | comment | GENDER_NONE       | 0   |
+| HERO_2 | 2   | comment | BUILDING_1    | 1   |         | PET_1    | 0   |         | GENDER_MALE       | 1   |
+| HERO_3 | 3   | comment | BUILDING_2    | 2   |         | PET_2    | 1   |         | GENDER_FEMALE     | 2   |
+|        |     |         | BUILDING_3    | 3   |         | PET_3    | 2   |         | GENDER_HELICOPTER | 3   |
+|        |     |         | BUILDING_4    | 4   |         | PET_4    | 3   |         |                   |
+|        |     |         | BUILDING_5    | 5   |         | PET_5    | 4   |         |                   |
+|        |     |         | BUILDING_6    | 6   |         | PET_6    | 5   |         |                   |
+|        |     |         | BUILDING_7    | 7   |         | PET_7    | 6   |         |                   |
+|        |     |         | BUILDING_8    | 8   |         |          |     |         |                   |
 
-# 5.2. Constants
+- Mỗi id được khai báo trong một nhóm bao gồm 3 cột liền nhau: cột 1 là Key, cột 2 là Value và cột 3 là Comment. Ví dụ trên đây minh họa cho 3 nhóm id: Hero Id, Building Id và Pet Id.
+- Nêu thêm hậu tố [enum] vào tên của cột, thì giá trị trong cột đó vừa được xuất ra với kiểu Constant Integer vừa được xuất ra với kiểu Enum. Bạn cũng có thể lựa chọn export chỉ kiểu Enum tại Tab Settings.
+
+## 5.2. Constants
 
 Các sheet được đặt tên theo cú pháp _[%Constants]_ được gọi là Constants Sheet. Chúng được sử dụng để tổng hợp lại các Constants trong project. Bảng dưới đây sẽ giúp bạn tham khảo được tất cả các kiểu dữ liệu mà có thể dùng trong sheet này.
 
-| Name                  | Type        | Value                | Comment                              |
-| --------------------- | ----------- | -------------------- | ------------------------------------ |
-| EXAMPLE_INT           | int         | 83                   | Write your comment for the constants |
-| EXAMPLE_FLOAT         | float       | 1.021                | Write your comment for the constants |
-| EXAMPLE_STRING        | string      | 321fda               | Write your comment for the constants |
-| EXAMPLE_INT_ARRAY_1   | int-array   | 4                    | Write your comment for the constants |
-| EXAMPLE_INT_ARRAY_2   | int-array   | 0:3:4:5              | Write your comment for the constants |
-| EXAMPLE_FLOAT_ARRAY_1 | float-array | 5                    | Write your comment for the constants |
-| EXAMPLE_FLOAT_ARRAY_2 | float-array | 5:1:1:3              | Write your comment for the constants |
-| EXAMPLE_VECTOR2_1     | vector2     | 1:2                  | Write your comment for the constants |
-| EXAMPLE_VECTOR2_2     | vector2     | 1:2:3                | Write your comment for the constants |
-| EXAMPLE_VECTOR3       | vector3     | 3:3:4                | Write your comment for the constants |
-| EXAMPLE_REFERENCE_1   | int         | HERO_1               | Write your comment for the constants |
-| EXAMPLE_REFERENCE_2   | int-array   | HERO_1 : HERO_2      | Write your comment for the constants |
-| EXAMPLE_REFERENCE_3   | int-array   | HERO_1 \| HERO_3     | Write your comment for the constants |
-| EXAMPLE_REFERENCE_4   | int-array   | HERO_1 HERO_4        | Write your comment for the constants |
-| EXAMPLE_FORMULA_1     | int         | `=1*10*36`           | Write your comment for the constants |
-| EXAMPLE_FORMULA_2     | float       | `=1+2+3+4+5+6+7+8+9` | Write your comment for the constants |
+| Name                  | Type        | Value              | Comment                              |
+| --------------------- | ----------- | ------------------ | ------------------------------------ |
+| EXAMPLE_INT           | int         | 83                 | Write your comment for the constants |
+| EXAMPLE_FLOAT         | float       | 1.021              | Write your comment for the constants |
+| EXAMPLE_STRING        | string      | 321fda             | Write your comment for the constants |
+| EXAMPLE_INTARRAY_1    | int-array   | 4                  | Write your comment for the constants |
+| EXAMPLE_INT_ARRAY_2   | int-array   | 0:3:4:5            | Write your comment for the constants |
+| EXAMPLE_FLOAT_ARRAY_1 | float-array | 5                  | Write your comment for the constants |
+| EXAMPLE_FLOAT_ARRAY_2 | float-array | 5:1:1:3            | Write your comment for the constants |
+| EXAMPLE_VECTOR2_1     | vector2     | 1:2                | Write your comment for the constants |
+| EXAMPLE_VECTOR2_2     | vector2     | 1:2:3              | Write your comment for the constants |
+| EXAMPLE_VECTOR3       | vector3     | 3:3:4              | Write your comment for the constants |
+| EXAMPLE_REFERENCE_1   | int         | HERO_1             | Write your comment for the constants |
+| EXAMPLE_REFERENCE_2   | int-array   | HERO_1 : HERO_2    | Write your comment for the constants |
+| EXAMPLE_REFERENCE_3   | int-array   | HERO_1 \| HERO_3   | Write your comment for the constants |
+| EXAMPLE_REFERENCE_4   | int-array   | HERO_1 HERO_4      | Write your comment for the constants |
+| EXAMPLE_FORMULA_1     | int         | =1\*10\*36         | Write your comment for the constants |
+| EXAMPLE_FORMULA_2     | float       | =1+2+3+4+5+6+7+8+9 | Write your comment for the constants |
 
 - Với kiểu dữ liệu array (in-array, float-aray, string-array), các phần tử trong mảng được phân tách bởi dấu `:` hoặc `|`
 
-# 5.3. Localization
+## 5.3. Localization
 
 Các sheet được đặt tên theo cú pháp _[%Localization%]_ được gọi là Localization Sheet.
 
@@ -175,42 +180,89 @@ Các sheet được đặt tên theo cú pháp _[%Localization%]_ được gọi
 | message_1    |            | this is english message 1 | este es el mensaje en ingles 1 |
 | message_2    |            | this is english message 2 | este es el mensaje en ingles 2 |
 | message_3    |            | this is english message 3 | este es el mensaje en ingles 3 |
-| message_4    |            | this is english message 4 | este es el mensaje en ingles 4 |
-| message_5    |            | this is english message 5 | este es el mensaje en ingles 5 |
 |              |            |                           |                                |
 | content      | 1          | this is english message 1 | este es el mensaje en ingles 1 |
 | content      | 2          | this is english message 2 | este es el mensaje en ingles 2 |
 | content      | 3          | this is english message 3 | este es el mensaje en ingles 3 |
-| content      | 4          | this is english message 4 | este es el mensaje en ingles 4 |
-| content      | 5          | this is english message 5 | este es el mensaje en ingles 5 |
 |              |            |                           |                                |
 | title_1      |            | this is english title 1   | este es el titulo 1 en ingles  |
 | title_2      |            | this is english title 2   | este es el titulo 2 en ingles  |
 | title_3      |            | this is english title 3   | este es el titulo 3 en ingles  |
-| title_4      |            | this is english title 4   | este es el titulo 4 en ingles  |
-| title_5      |            | this is english title 5   | este es el titulo 5 en ingles  |
-| title_6      |            | this is english title 6   | este es el titulo 6 en ingles  |
 |              |            |                           |                                |
 | whatever_msg |            | this is a sample message  | este es un mensaje de muestra  |
 |              |            |                           |                                |
-| hero_name    | `HERO_1`   | hero name 1               | nombre del héroe 1             |
-| hero_name    | `HERO_2`   | hero name 2               | nombre del héroe 2             |
-| hero_name    | `HERO_3`   | hero name 3               | nombre del héroe 3             |
-| hero_name    | `HERO_4`   | hero name 4               | nombre del héroe 4             |
-| hero_name    | `HERO_5`   | hero name 5               | nombre del héroe 5             |
+| hero_name    | HERO_1     | hero name 1               | nombre del héroe 1             |
+| hero_name    | HERO_2     | hero name 2               | nombre del héroe 2             |
+| hero_name    | HERO_3     | hero name 3               | nombre del héroe 3             |
 
-- idString là kết hợp của 2 cột `idstring` và `relativeId`. vd `content_1`, `content_2`, ...
-- `HERO_1`, `HERO_2`, ... là tham chiếu tới id tương ứng trong sheet IDs. Như vậy idString tương ứng sẽ là `hero_name_1`, `hero_name_2`, ...
+- Key được tạo cho mỗi dòng là kết hợp của 2 cột `idstring` và `relativeId`. vd `content_1`, `content_2`, ...
+- `HERO_1`, `HERO_2`, ... là tham chiếu tới id tương ứng trong sheet IDs. Như vậy Key tương ứng sẽ là `hero_name_1`, `hero_name_2`, ...
 
-| idstring    | relativeId | english                   | spanish                        |
-| ----------- | ---------- | ------------------------- | ------------------------------ |
-| `content`   | 1          | this is english message 1 | este es el mensaje en ingles 1 |
-|             | 2          | this is english message 2 | este es el mensaje en ingles 2 |
-|             | 3          | this is english message 3 | este es el mensaje en ingles 3 |
-| `hero_name` | HERO_1     | hero name 1               | nombre del héroe 1             |
-|             | HERO_2     | hero name 2               | nombre del héroe 2             |
-|             | HERO_3     | hero name 3               | nombre del héroe 3             |
+| idstring  | relativeId | english                   | spanish                        |
+| --------- | ---------- | ------------------------- | ------------------------------ |
+| content   | 1          | this is english message 1 | este es el mensaje en ingles 1 |
+|           | 2          | this is english message 2 | este es el mensaje en ingles 2 |
+|           | 3          | this is english message 3 | este es el mensaje en ingles 3 |
+| hero_name | HERO_1     | hero name 1               | nombre del héroe 1             |
+|           | HERO_2     | hero name 2               | nombre del héroe 2             |
+|           | HERO_3     | hero name 3               | nombre del héroe 3             |
 
 - Các ô có giá trị giống nhau trong một cột thì có thể Merge thành một ô duy nhất
 
-# 5.4. Data table - JSON data
+## 5.4. Data table - JSON data
+
+### Kiểu dữ liệu cấp cơ bản: Boolean, Number, String
+
+| numberExample1 | numberExample2 | numberExample3 | boolExample | stringExample |
+| -------------- | -------------- | -------------- | ----------- | ------------- |
+| 1              | 10             | 1.2            | TRUE        | text          |
+| 2              | 20             | 3.1            | TRUE        | text          |
+| 3              | BUILDING_8     | 5              | FALSE       | text          |
+| 6              | HERO_3         | 10.7           | FALSE       | text          |
+| 9              | PET_2          | 16.4           | FALSE       | text          |
+
+### Kiểu dữ liệu mở rộng: Array, JSON object
+
+| array1[]                | array2[]    | array3[]                       | array4[]              | array5[]   | array6[]    | json\{}                                                                   |
+| ----------------------- | ----------- | ------------------------------ | --------------------- | ---------- | ----------- | ------------------------------------------------------------------------- |
+| text1                   | 1           | 1                              | TRUE                  | 123<br/>66 | aaa<br/>ccc | \{}                                                                       |
+| text2                   | 2 \| 2 \| 3 | 1 \| 2 \| 3                    | TRUE \| FALSE \| TRUE | 123<br/>71 | aaa<br/>ccc | \{"id":1, "name":"John Doe 1"}                                            |
+| text1 \| text2          | 1 \| 2      | 1 \| BUILDING_2                | TRUE \| FALSE         | 123<br/>67 | aaa<br/>ccc | \{"id":2, "name":"John Doe 2"}                                            |
+| text1 \| text2 \| text3 | 1 \| 2 \| 3 | BUILDING_1 \| HERO_2           | TRUE \| FALSE \| TRUE | 123<br/>68 | aaa<br/>ccc | \{"id":HERO_2, "name":"JohnDoe 2"}                                        |
+| text3                   | 4 \| 2      | BUILDING_3 \| HERO_1 \| HERO_2 | TRUE \| FALSE         | 123<br/>76 | aaa<br/>ccc | [\{"id":HERO_1, "name":"John Doe 1"},\{"id":HERO_2, "name":"Mary Sue 2"}] |
+| text1 \| text2 \| text7 | 5           | 1 \| 2 \| 4 \| PET_5           | TRUE                  | 123<br/>78 | aaa<br/>ccc | [\{"id":HERO_1, "name":"John Doe 1"},\{"id":HERO_2, "name":"Mary Sue 2"}] |
+
+- Kiểu array thì tên cột phải có hậu tố []
+- Kiêu JSON object thì tên cột phải có hậu tố \{}
+
+### Kiểu dữ liệu đặc biệt: Atribute
+
+| attribute0 | value0 | unlock0 | increase0 | max0 | attribute1 | value1[] | unlock1[] | increase1[] | max1[]   | ... | attributeN |
+| ---------- | ------ | ------- | --------- | ---- | ---------- | -------- | --------- | ----------- | -------- | --- | ---------- |
+| ATT_1      | 30     | 2       | 1.2       | 8    |            |          |           |             |          | ... |            |
+| ATT_9      | 25     | 3       | 1.5       | 8    |            |          |           |             |          | ... |            |
+| ATT_5      | 30     | 2       | 1         | 5    | ATT_10     | 3 \| 2   | 0 \| 11   | 0.5 \| 1    | 10 \| 20 | ... |            |
+| ATT_2      | 30     | 2       | 1         | 8    | ATT_10     | 10 \| 1  | 1 \| 12   | 1.5 \| 1    | 10 \| 20 | ... |            |
+|            |        |         |           |      | ATT_10     | 10 \| 1  | 1 \| 12   | 1.5 \| 1    | 10 \| 20 | ... |            |
+
+Attribute là một dạng dữ liệu đặc thù, được tạo ra đặc biệt cho các trò chơi thuộc thể loại RPG - nơi mà nhân vật và trang bị có thể sở hữu nhiều thuộc tính và chỉ số khác nhau, không cố định. Dạng dữ liệu này giúp việc tùy chỉnh nhân vật và trang bị trở nên linh hoạt hơn, không bị hạn chế.
+
+![Encryption](/media/attribute.png)
+
+Quy tắc định nghĩa một Attribute:
+
+- Attribute cần phải được định nghĩa trong sheet IDs.
+- Attribute cần phải được đặt sau các kiểu dữ liệu cơ bản và mở rộng
+- Cột 1: Chứa chuỗi phải “attribute”, đây là key của attribute, có thể là Integer hoặc Id từ sheet IDs.
+- Cột 2: Chứa chuỗi “value”, đây là value của attribute, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố.
+- Cột Unlock (tùy chọn): Chứa chuỗi “unlock”, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố. Cột này dùng trong tình huống attribute này có điều kiện cụ thể để được unlock.
+- Cột Max (tùy chọn): Chứa chuỗi “max”, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố. Cột này dùng trong tình huống attribute này có max value.
+- Cột Increase (tùy chọn): Chứa chuỗi “increase”, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố. Cột này dùng trong tình huống attribute này có thể lên level.
+- Lưu ý 1: Một attribute là bắt buộc phải có Key và Value. Unlock, Max, Increase có thể có hoặc không.
+- Lưu ý 2: Bạn nên đánh số thứ tự cho attribute bắt đầu từ 0. Điều này sẽ giúp việc lập trình trở nên dễ dàng hơn vì các attribute sẽ được tổng hợp thành một list.
+
+## 5.5. Mẹo
+
+Trong sheet Data table và Localization, nếu có nhiều hàng trong một cột có giá trị giống nhau, bạn có thể gộp chúng lại thành một.
+
+# Bài viết này đến đây thôi, trong bài viết kế tiếp chúng ta sẽ học cách sử dụng thông qua một dự án thực tế
