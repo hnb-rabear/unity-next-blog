@@ -14,26 +14,17 @@ language: vn
 
 # 1. Giới thiệu
 
-## Static Database
+Trong phát triển game, **Static Database** là một giải pháp lưu trữ các dữ liệu tĩnh như Skills, Items, NPC mà không thay đổi trong suốt quá trình chơi game. Thay vì đọc dữ liệu từ nguồn động (Dynamic Database), chúng ta sử dụng các phương tiện như _ScriptableObject_, _CSV_, hoặc _JSON_ để lưu trữ và quản lý thông tin. Đây là giải pháp nhanh và khá tiện lợi trong quá trình phát triển game.
 
-Static Database trong phát triển game là một giải pháp lưu trữ các dữ liệu tĩnh vd như kỹ năng, vật phẩm, nhân vật mà không thay đổi trong suốt quá trình chơi game. Thay vì đọc dữ liệu từ nguồn động (Dynamic Database) chúng ta sử dụng các phương tiện như ScriptableObject, CSV, hoặc JSON để lưu trữ và quản lý thông tin. Đây là giải pháp nhanh và khá tiện lợi trong quá trình phát triển game.
-
-## Thách thức khi Static Database trở nên quá lớn
-
-Trong quá trình phát triển game, chúng ta thường xuyên đối mặt với những thay đổi, nhiều khi cần mở rộng hoặc thay đổi thiết kế, việc phải điều chỉnh tính năng và cấu trúc cơ sở dữ liệu là không thể tránh khỏi. Sử dụng những phương pháp thông thường như ScriptableObject, CSV hoặc JSON để quản lý Static Database có thể không đủ đáp ứng khi chúng ta đối mặt với hệ thống lớn, như trong các game Mid-core trở lên. Quản lý dữ liệu khổng lồ này mà không có công cụ hỗ trợ là một sự phiền toái.
+Tuy nhiên, trong quá trình phát triển game, chúng ta thường xuyên đối mặt với những thay đổi, nhiều khi cần mở rộng hoặc thay đổi thiết kế, việc phải điều chỉnh tính năng và cấu trúc cơ sở dữ liệu là không thể tránh khỏi. Sử dụng những phương pháp thông thường như ScriptableObject, CSV hoặc JSON để quản lý Static Database có thể không đủ đáp ứng khi chúng ta đối mặt với hệ thống lớn, như trong các game Mid-core trở lên. Quản lý dữ liệu khổng lồ này mà không có công cụ hỗ trợ là một sự phiền toái. Đây là thách thức khi Static Database trở nên quá lớn.
 
 # 2. Excel to Unity
 
-## Giải pháp toàn diện để xây dựng và quản lý Static Database
-
 Ý tưởng cốt lõi đằng sau công cụ này là tạo ra một công cụ phục vụ cho Indie Game Developer. Đây là một công cụ giúp thiết kế và quản lý database mà cả Dev và Designer đều có thể sử dụng. Designer có thể dễ dàng kiểm tra các chỉ số trong game mà không cần sự hỗ trợ của Dev.
 
-Dự án game, không phân biệt quy mô lớn hay nhỏ, đều cần có một Static Database. Tùy thuộc vào quy mô dự án, số lượng Data Table tăng lên, Constants và Id cũng sẽ tăng lên theo. Vấn đề sẽ càng phức tạp nếu không có một giải pháp quản lý hiệu quả.
-Vì vậy, mục tiêu ban đầu của công cụ này là để quản lý IDs, Constants và tìm ra cách để có thể thay đổi IDs và Constants ở một nơi duy nhất mà Data Table cũng được cập nhật theo.
+Dự án game, không phân biệt quy mô lớn hay nhỏ, đều cần có một Static Database. Tùy thuộc vào quy mô dự án, số lượng Data Table tăng lên, Constants và Id cũng sẽ tăng lên theo. Vấn đề sẽ càng phức tạp nếu không có một giải pháp quản lý hiệu quả. Vì vậy, mục tiêu ban đầu của công cụ này là để quản lý IDs, Constants và tìm ra cách để có thể dễ dàng tìm kiếm, thay đổi IDs và Constants ở một nơi duy nhất mà Data Table cũng được cập nhật theo.
 
 Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều kiểu dữ liệu mới, tận dụng được sức mạnh của Excel để thiết kế và quản lý. Mặc dù công cụ này được phát triển chủ yếu cho game RPG - thể loại game thường có khối lượng Static Database lớn, nhưng nó hoàn toàn có thể được áp dụng cho các thể loại game khác mà cần Static Database lớn.
-
-## Download
 
 [Download from GitHub](https://github.com/nbhung100914/ExcelToUnity/releases)<br/>
 **Nếu công cụ hữu ích cho bạn thì hãy gửi tặng một ⭐ nhé.**
@@ -265,4 +256,4 @@ Quy tắc định nghĩa một Attribute:
 
 Trong sheet Data table và Localization, nếu có nhiều hàng trong một cột có giá trị giống nhau, bạn có thể gộp chúng lại thành một.
 
-# Bài viết này đến đây thôi, trong bài viết kế tiếp chúng ta sẽ học cách sử dụng thông qua một dự án thực tế
+## Bài viết này đến đây thôi, trong bài viết kế tiếp chúng ta sẽ học cách sử dụng trong một dự án thực tế
