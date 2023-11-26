@@ -1,12 +1,12 @@
 ---
-title: Excel2Unity trong thực tiễn
+title: Excel2Unity - Ứng dụng trong thực tiễn
 date: 2023-11-24
 lastmod: 2023-11-24
 tags: ['unity', 'game development', 'architecture', 'tools']
 images: ['/media/excel-2-unity-tab-1.png']
-draft: true
+draft: false
 layout: PostSimple
-summary: Exel2Unity là công cụ linh hoạt và mạnh mẽ, có khẳ năng đáp ứng đầy đủ cho Coder và Designer trong việc thiết kế và quản lý dữ liệu. Nó giải quyết được hầu hết các tình huống liên quan đến thiết kế và quản lý Static Database trong quá trình phát triển game.
+summary: Tìm hiểu cách ứng dụng công cụ Excel2Unity này vào dự án thực tế.
 language: vn
 ---
 
@@ -28,8 +28,10 @@ Có hai mục chúng ta sẽ tìm hiểu trong Repo này:
 
 ### Sheet Constants:
 
+```
 | Name | Type | Value | Comment |
 | ---- | ---- | ----- | ------- |
+```
 
 - Tên sheet cần có `Constants` làm tiền tố hoặc hậu tố.
 - Có bốn cột: Name, Type, Value, và Comment.
@@ -39,8 +41,10 @@ Có hai mục chúng ta sẽ tìm hiểu trong Repo này:
 
 ### Sheet IDs:
 
+```
 | Group | Key | Comment |
 | ----- | --- | ------- |
+```
 
 - Tên sheet cần có `IDs` ở tiền tố hoặc hậu tố.
 - Trong Sheet này, chỉ sử dụng kiểu dữ liệu Integer.
@@ -53,8 +57,10 @@ Có hai mục chúng ta sẽ tìm hiểu trong Repo này:
 
 ### Sheet Localization:
 
+```
 | idString | relativeId | english | spanish | japan | .... |
 | -------- | ---------- | ------- | ------- | ----- | ---- |
+```
 
 - Tên sheet cần có `Localization` làm tiền tố hoặc hậu tố.
 - Sheet này có cấu trúc gồm 2 cột key, một là key chính `idString` và một là key bổ sung `relativeId` cho key chính.
@@ -123,10 +129,132 @@ Nhập đường dẫn tới các thư mục đã được tạo ở trên, và 
 
 Các files được xuất ra sẽ như sau
 
-![Example Excel](/media/excel-to-unity-basic-exported-scripts.png)
+<figure>
+  <Image
+    src="/media/excel-to-unity-basic-exported-scripts.png"
+    alt="Exported scripts"
+    width="500"
+    height="500"
+  />
+  <figcaption>Exported scripts</figcaption>
+</figure>
 
-![Example Excel](/media/excel-to-unity-basic-exported-data.png)
+<figure>
+  <Image
+    src="/media/excel-to-unity-basic-exported-data.png"
+    alt="Exported localization"
+    width="500"
+    height="500"
+  />
+  <figcaption>Exported json data</figcaption>
+</figure>
 
-![Example Excel](/media/excel-to-unity-basic-exported-localization.png)
+<figure>
+  <Image
+    src="/media/excel-to-unity-basic-exported-localization.png"
+    alt="Exported localization"
+    width="500"
+    height="500"
+  />
+  <figcaption>Exported localization</figcaption>
+</figure>
 
 ## 1.3. Scripting
+
+### Tạo một ScriptableObject
+
+- Tạo các Serializable Object tương tứng với các trường dữ liệu trong các Data Table
+
+```cs
+[Serializable]
+public class DataBasic1
+{
+    public int numberExample1;
+    public int numberExample2;
+    public int numberExample3;
+    public bool boolExample;
+    public string stringExample;
+}
+```
+
+```cs
+[Serializable]
+public class DataBasic2
+{
+    [Serializable]
+    public class Example
+    {
+        public int id;
+        public string name;
+    }
+
+    public string[] array1;
+    public int[] array2;
+    public int[] array3;
+    public bool[] array4;
+    public int[] array5;
+    public string[] array6;
+    public Example json1;
+}
+```
+
+```cs
+//NOTE: Để có thể sử dụng được tính năng Attributes, đối tượng cần kế thừa AttributesCollection
+[Serializable]
+public class DataAdvanced : AttributesCollection<AttributeParse>
+{
+    public int id;
+    public string name;
+}
+```
+
+- Tạo một ScriptableObject, có nhiệm vụ load và save Json Data vào các Serializable Object trên
+
+```cs
+[CreateAssetMenu(fileName = "DataCollectionBasic", menuName = "Excel2Unity/DataCollectionBasic")]
+public class DataCollectionBasic : ScriptableObject
+{
+    public List<DataBasic1> dataBasic1;
+    public List<DataBasic2> dataBasic2;
+    public List<DataAdvanced> dataAdvanced;
+}
+```
+
+- Load Json Data
+
+```cs
+// NOTE: hàm này để Load data trên Unity Editor, nên nó phải nằm trong thư mục Editor hoặc phải nằm trong #if UNITY_EDITOR
+private void LoadData()
+{
+    var txt =  AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Basic/Data/ExampleDataBasic1.txt");
+    m_target.dataBasic1 = JsonHelper.ToList<DataBasic1>(txt.text);
+    txt =  AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Basic/Data/ExampleDataBasic2.txt");
+    m_target.dataBasic2 = JsonHelper.ToList<DataBasic2>(txt.text);
+    txt = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Basic/Data/ExampleDataAdvanced.txt");
+    m_target. dataAdvanced = JsonHelper.ToList<DataAdvanced>(txt.text);
+}
+```
+
+- Cuối cùng, chúng ta sẽ có một Static Database. Mỗi khi có thay đổi, bạn chỉ cần chỉnh sửa trên excel và xuất data mới. Sau đó, trong Unity, bạn chỉ cần Reload Static Database.
+
+<figure>
+  <Image
+    src="/media/excel-to-unity-basic-scriptable-object.png"
+    alt="excel-to-unity-basic-scriptable-object"
+    width="500"
+    height="500"
+  />
+  <figcaption>ScriptableObject</figcaption>
+</figure>
+
+<figure>
+  <Image
+    src="/media/excel-to-unity-basic-load-data.png"
+    alt="excel-to-unity-basic-load-data"
+    width="500"
+    height="500"
+  />
+  <figcaption>Load Data</figcaption>
+</figure>
+
+### Localization
