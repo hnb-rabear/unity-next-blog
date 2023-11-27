@@ -16,12 +16,10 @@ Trong bài viết [Excel2Unity - Giải pháp Static Database toàn diện cho m
 
 Có hai mục chúng ta sẽ tìm hiểu trong Repo này:
 
-- Cơ bản: trong mục này bạn sẽ học sử dụng các chức năng ở mức cơ bản
-- Năng cao: trong phần này bạn sẽ xem cách một game RPG mid-core thực tế ứng dụng công cụ này.
+- Cơ bản: phần này sẽ giúp bạn hiểu rõ hơn cách thiết kế và quản lý Static Database.
+- Năng cao: ở phần này ta sẽ xem cách một game RPG mid-core thực tế ứng dụng công cụ này.
 
-# 1. Cơ bản
-
-## 1.1. Cấu trúc của file Excel
+## 1. Cấu trúc của file Excel
 
 Đầu tiên, hãy mở file excel tại địa chỉ `/Assets/Basic/Data/Example.xlsx`. Đây là file Excel mẫu. Trong file này, có 5 sheet chứa data mẫu giúp bạn hiểu cách thiết kế các loại data như IDs, Constants, và Data Table.
 ![Example Excel](/media/excel-to-unity-basic-excel-file.png)
@@ -100,7 +98,7 @@ VD idString:"hero_name" và relativeId:1 thì key sẽ là hero_name_1
     Example 2: attribute1, value1[], increase1[], value1[], max1[].
     ```
 
-## 1.2. Exporting
+## 2. Exporting
 
 ### Unity
 
@@ -159,9 +157,9 @@ Các files được xuất ra sẽ như sau
   <figcaption>Exported localization</figcaption>
 </figure>
 
-## 1.3. Scripting
+## 3. Scripting
 
-### Tạo một ScriptableObject
+### Tạo một ScriptableObject làm Static Database
 
 - Tạo các Serializable Object tương tứng với các trường dữ liệu trong các Data Table
 
@@ -208,7 +206,7 @@ public class DataAdvanced : AttributesCollection<AttributeParse>
 }
 ```
 
-- Tạo một ScriptableObject, có nhiệm vụ load và save Json Data vào các Serializable Object trên
+- Tạo một ScriptableObject chứa các Serializable Objects trên
 
 ```cs
 [CreateAssetMenu(fileName = "DataCollectionBasic", menuName = "Excel2Unity/DataCollectionBasic")]
@@ -220,10 +218,11 @@ public class DataCollectionBasic : ScriptableObject
 }
 ```
 
-- Load Json Data
+- Load Json Data vào các Serializable Objects
 
 ```cs
-// NOTE: hàm này để Load data trên Unity Editor, nên nó phải nằm trong thư mục Editor hoặc phải nằm trong #if UNITY_EDITOR
+// NOTE: hàm này sử dụng thư viện UnityEditor, nên nó phải nằm trong thư mục Editor hoặc phải nằm trong #if UNITY_EDITOR
+// Nếu bạn không muốn sử dụng Editor code, bạn có thể chọn lưu trữ các file Json Data trong thư mục Resources hoặc Asset Bundles rồi load bằng phương thức tương ứng
 private void LoadData()
 {
     var txt =  AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Basic/Data/ExampleDataBasic1.txt");
@@ -258,3 +257,43 @@ private void LoadData()
 </figure>
 
 ### Localization
+
+- Scripting
+
+```cs
+Localization.onLanguageChanged += OnLanguageChanged;
+```
+
+```cs
+// Thiết lập ngôn ngữ là tiếng Tây Ban Nha
+Localization.currentLanguage = "spanish";
+// Thiết lập ngôn ngữ là tiếng Nhật
+Localization.currentLanguage = "japanese";
+// Thiết lập ngôn ngữ là tiếng Hàn
+Localization.currentLanguage = "korean";
+```
+
+```cs
+Debug.Log(Localization.currentLanguage);
+```
+
+```cs
+// Lấy ra text nội địa hóa theo integer key
+m_txtExample1.text = Localization.Get(Localization.hero_name_1).ToString();
+// Lấy ra text nội địa hóa theo string key
+m_txtExample1.text = Localization.Get("hero_name_" + IDs.HERO_1).ToString();
+// Tuy nhiên text sẽ được ko tự động cập nhật hiển thị khi currentLanguage thay đổi
+```
+
+```cs
+// Muốn text tự cập nhật hiển thị khi currentLanguage thay đổi thì ta có thể khai báo như sau
+// Liên kết gameObject với một integer key
+Localization.RegisterDynamicText(m_goExample2, Localization.hero_name_5);
+// Liên kết gameObject với một string key
+Localization.RegisterDynamicText(m_txtExample2, "hero_name_" + IDs.HERO_5);
+// gameObject phải chứa Component Text hoặc TextMeshProUGUI
+```
+
+- TextMeshProUGUI custom font.
+
+Công cụ đã tổng hợp tất cả ký tự xuất hiện trong các sheet Localization, và lưu lại trong các file characters_map tương ứng với ngôn ngữ. Chúng ta sẽ dùng 3 file characters_map_japan, characters_map_korean và characters_map_chinese để tạo 3 TextMeshPro font cho 3 ngôn ngữ này.
