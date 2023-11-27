@@ -10,14 +10,18 @@ summary: Tìm hiểu cách ứng dụng công cụ Excel2Unity này vào dự á
 language: vn
 ---
 
+<TOCInline toc={props.toc} />
+
 Trong bài viết [Excel2Unity - Giải pháp Static Database toàn diện cho mid-hard core game](/blog/static-database-solution-for-indie-game-developer), bạn được làm quen với công cụ Exel2Unity. Trong bài viết này, chúng ta sẽ cùng tìm hiểu cách áp dụng công cụ này vào thực tế.
 
 Đầu tiên hãy clone repository này [excel-to-unity-example](https://github.com/nbhung100914/excel-to-unity-example)
 
-Có hai mục chúng ta sẽ tìm hiểu trong Repo này:
+Trong Repository này bao gồm hai phần chính:
 
-- Cơ bản: phần này sẽ giúp bạn hiểu rõ hơn cách thiết kế và quản lý Static Database.
-- Năng cao: ở phần này ta sẽ xem cách một game RPG mid-core thực tế ứng dụng công cụ này.
+- Phần cơ bản: phần này giúp bạn nắm bắt rõ hơn về việc thiết kế data với Excel2Unity.
+- Phần nâng cao: trong phần này, chúng ta sẽ tìm hiểu cách một Game RPG mid-core thực tế sử dụng công cụ này.
+
+Tuy nhiên, trong bài viết này, tôi chỉ đề cập đến phần cơ bản, để tránh làm cho bài viết trở nên quá dài nếu đề cập đến cả hai phần.
 
 ## 1. Cấu trúc của file Excel
 
@@ -61,7 +65,7 @@ Có hai mục chúng ta sẽ tìm hiểu trong Repo này:
 ```
 
 - Tên sheet cần có `Localization` làm tiền tố hoặc hậu tố.
-- Sheet này có cấu trúc gồm 2 cột key, một là key chính `idString` và một là key bổ sung `relativeId` cho key chính.
+- Sheet này có cấu trúc gồm 2 cột key, một là key chính `idString` và một là key bổ sung `relativeId`.
 - Các cột tiếp theo sẽ chứa các nội dung đã được nội địa hóa.
 - Key của một dòng là sự kết hợp của `idString` và `relativeId`.
 
@@ -258,42 +262,66 @@ private void LoadData()
 
 ### Localization
 
-- Scripting
+Thay đổi ngôn ngữ.
+
+```cs
+// Chọn ngôn ngữ tiếng Tây Ban Nha
+Localization.currentLanguage = "spanish";
+// Chọn ngôn ngữ tiếng Nhật
+Localization.currentLanguage = "japanese";
+// Chọn ngôn ngữ tiếng Hàn
+Localization.currentLanguage = "korean";
+```
+
+Đăng ký một event handler cho sự kiện thay đổi ngôn ngữ.
 
 ```cs
 Localization.onLanguageChanged += OnLanguageChanged;
 ```
 
-```cs
-// Thiết lập ngôn ngữ là tiếng Tây Ban Nha
-Localization.currentLanguage = "spanish";
-// Thiết lập ngôn ngữ là tiếng Nhật
-Localization.currentLanguage = "japanese";
-// Thiết lập ngôn ngữ là tiếng Hàn
-Localization.currentLanguage = "korean";
-```
+Truy xuất nội dung đã được nội địa hóa bằng Key, tuy nhiên với cách này Text sẽ được ko tự động cập nhật hiển thị khi ngôn ngữ thay đổi.
 
 ```cs
-Debug.Log(Localization.currentLanguage);
+// Truy xuất text đã được nội địa theo integer key
+m_txtExample1.text = Localization.Get(Localization.DAY_X, 1).ToString();
+// Truy xuất text đã được nội địa theo string key
+m_txtExample1.text = Localization.Get("DAY_X", 1).ToString();
 ```
 
-```cs
-// Lấy ra text nội địa hóa theo integer key
-m_txtExample1.text = Localization.Get(Localization.hero_name_1).ToString();
-// Lấy ra text nội địa hóa theo string key
-m_txtExample1.text = Localization.Get("hero_name_" + IDs.HERO_1).ToString();
-// Tuy nhiên text sẽ được ko tự động cập nhật hiển thị khi currentLanguage thay đổi
-```
+Bạn có thể liên kết gameObject với một Key để Text tự động cập nhật khi ngôn ngữ thay đổi, gameObject phải chứa Component Text hoặc TextMeshProUGUI.
 
 ```cs
-// Muốn text tự cập nhật hiển thị khi currentLanguage thay đổi thì ta có thể khai báo như sau
-// Liên kết gameObject với một integer key
+// Khai báo một Dynamic Text liên kết với một integer key
 Localization.RegisterDynamicText(m_goExample2, Localization.hero_name_5);
-// Liên kết gameObject với một string key
+// Hoặc liên kết gameObject với một string key
 Localization.RegisterDynamicText(m_txtExample2, "hero_name_" + IDs.HERO_5);
-// gameObject phải chứa Component Text hoặc TextMeshProUGUI
+// Hủy liên kết gameObject
+Localization.UnregisterDynamicText(m_goExample2);
 ```
 
-- TextMeshProUGUI custom font.
+Sử dụng Localization Component.
 
-Công cụ đã tổng hợp tất cả ký tự xuất hiện trong các sheet Localization, và lưu lại trong các file characters_map tương ứng với ngôn ngữ. Chúng ta sẽ dùng 3 file characters_map_japan, characters_map_korean và characters_map_chinese để tạo 3 TextMeshPro font cho 3 ngôn ngữ này.
+![font japanese](/media/excel-to-unity-basic-localization-component.png)
+
+TextMeshProUGUI custom font.
+
+Chúng ta sẽ sử dụng 3 file `characters_map_japan`, `characters_map_korean` và `characters_map_chinese` để tạo ra 3 font TextMeshPro cho 3 ngôn ngữ này. 3 file characters_map này chứa toàn bộ các ký tự xuất hiện trong sheet Localization của mỗi ngôn ngữ.
+
+Trong ví dụ này, tôi sử dụng 3 font khác nhau để tạo ra 3 font TextMeshPro
+
+- Nhật: NotoSerif-Bold
+- Hàn: NotoSerifJP-Bold
+- Trung: NotoSerifTC-Bold
+
+Đối với mỗi font trên, hãy tạo một font TextMeshPro. Trong cửa sổ `Font Asset Creator`, tại mục `Character Set`, hãy chọn `Character From File`. Sau đó, chọn file `characters_map` tương ứng tại mục `Character File`.
+
+<div className="-mx-2 flex flex-wrap overflow-hidden xl:-mx-2">
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![font japanese](/media/excel-to-unity-basic-font-jp.png)
+  </div>
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![font korean](/media/excel-to-unity-basic-font-kr.png)
+  </div>
+</div>
+
+Vậy là kết thúc phần này, với các tính năng đã trình bày, bạn hoàn toàn có khả năng thiết kế và quản lý cơ sở dữ liệu tĩnh cho một trò chơi Casual, thậm chí là trò chơi Mid-core. Trong bài viết sắp tới, tôi sẽ giới thiệu các phương pháp nâng cao để khai thác tối đa sức mạnh của công cụ này.
