@@ -54,8 +54,8 @@ Tuy nhiên, trong bài viết này, tôi chỉ đề cập đến phần cơ b�
 - Dòng đầu tiên chứa tên nhóm để thuận tiện cho việc tra cứu.
 - Cột đầu tiên chứa Key Name, còn cột kế tiếp chứa Key Value.
 - Key Value phải là số nguyên.
-- Mặc định, tất cả id của một cột sẽ được xuất ra dưới dạng Integer Constants, nhưng bạn cũng có thể xuất chúng dưới dạng Enum bằng cách thêm hậu tố [enum] vào tên nhóm.
-- Bạn có thể chọn chỉ xuất Enum và bỏ qua Integer Constant bằng cách chọn `Only Enum as IDs` trong phần Settings.
+- Mặc định, tất cả id của một cột sẽ được xuất ra dưới dạng Integer Constants, nhưng bạn cũng có thể xuất chúng dưới dạng enum bằng cách thêm hậu tố [enum] vào tên nhóm.
+- Bạn có thể chọn chỉ xuất enum và bỏ qua Integer Constant bằng cách chọn `Only enum as IDs` trong phần Settings.
 
 ### Sheet Localization:
 
@@ -78,24 +78,25 @@ VD idString:"hero_name" và relativeId:1 thì key sẽ là hero_name_1
 ### Sheet Data Table
 
 - Tên của sheet data table không được chứa chuỗi `IDs`, `Constants` và `Localization`
-- Sheet này có thể sử dụng các kiểu dữ liệu sau: `number`, `string`, `boolean`, `list/array`, `json object` và `attribute object`.
+- Sheet này có thể sử dụng các kiểu dữ liệu sau: `number`, `string`, `boolean`, `list/array`, `JSON object` và `attribute object`.
 - Dòng đầu tiên dùng để đặt tên cho các trường dữ liệu, cột không có tên sẽ bị bỏ qua khi xuất Json data.
 - Thêm hậu tố `[]` vào tên cột, để định nghĩa kiểu dữ liệu `list/array`.
-- Thêm hậu tố `{}` vào tên cột, để định nghĩa kiểu dữ liệu `json object`.
+- Thêm hậu tố `{}` vào tên cột, để định nghĩa kiểu dữ liệu `JSON object`.
 - Các ô có giá trị rỗng, bằng 0 hoặc bằng FALSE sẽ bị bỏ qua khi xuất Json Data.
-- Các cột chỉ có tên mà không có giá trị, giá trị rỗng, bằng 0 hoặc bằng FALSE sẽ bị bỏ qua khi xuất json data. Điều này giúp tránh dư thừa dữ liệu, tối ưu kích thước của json data.
+- Các cột chỉ có tên mà không có giá trị, giá trị rỗng, bằng 0 hoặc bằng FALSE sẽ bị bỏ qua khi xuất JSON data. Điều này giúp tránh dư thừa dữ liệu, tối ưu kích thước của JSON data.
 - Để giữ lại các cột tránh bị bỏ qua, thì cần thêm tên của cột đó vào ô `Unminimized Fields`
 - Thêm hậu tố `[x]` vào tên cột, để loại bỏ cột đó, không xuất ra Json data.
 - Để định nghĩa kiểu attribute object. thì cần tuân theo các quy tắc sau:
 
   - Cột attribute phải được đặt ở cuối bảng dữ liệu.
+  - Attribute id là constant integer, nên được định nghĩa trong sheet IDs.
   - Một attribute có cấu trúc như sau:
 
-    1.  **`attribute`**: Tên cột tuân theo mẫu _`attribute + (index)`_, trong đó index có thể là một số bất kỳ, nhưng nên bắt đầu từ 0 và tăng dần. Giá trị của cột này là id của attribute, có kiểu Integer, giá trị này nên được thiết lập tại sheet IDs.
-    2.  **`value`**: Tên cột tuân theo mẫu _`value + (index)`_ hoặc _`value + (index)[]`_, giá trị của cột có thể là number hoặc number array.
-    3.  **`increase`**: Tên cột tuân theo mẫu _`increase + (index)`_ hoặc _`increase + (index)[]`_. Đây là giá trị bổ sung, có thể có hoặc không, thường dùng cho tình huống level-up, quy định chỉ số tăng thêm khi nhân vật hoặc item level-up.
-    4.  **`unlock`**: Tên cột tuân theo mẫu _`unlock + (index)`_ hoặc _`unlock + (index)[]`_. Đây là giá trị bổ sung, có thể có hoặc không, thường dùng cho tình huống attribute cần điều kiện để mở khóa, ví dụ như level tối thiểu hoặc rank tối thiểu.
-    5.  **`max`**: Tên cột tuân theo mẫu _`max + (index)`_ hoặc _`max + (index)[]`_. Đây là giá trị bổ sung, có thể có hoặc không, thường dùng cho tình huống attribute có giá trị tối đa.
+    1. **`attribute`**: Tên cột tuân theo mẫu _`attribute + (index)`_, trong đó index có thể là một số bất kỳ, nhưng nên bắt đầu từ 0 và tăng dần. Giá trị của cột này là id của attribute, có kiểu Integer, giá trị này nên được thiết lập tại sheet IDs.
+    2. **`value`**: Tên cột tuân theo mẫu _`value + (index)`_ hoặc _`value + (index) + []`_, giá trị của cột có thể là number hoặc number array.
+    3. **`increase`**: Tên cột tuân theo mẫu _`increase + (index)`_ hoặc _`increase + (index) + []`_. Đây là giá trị bổ sung, có thể có hoặc không, thường dùng cho tình huống level-up, quy định chỉ số tăng thêm khi nhân vật hoặc item level-up.
+    4. **`unlock`**: Tên cột tuân theo mẫu _`unlock + (index)`_ hoặc _`unlock + (index) + []`_. Đây là giá trị bổ sung, có thể có hoặc không, thường dùng cho tình huống attribute cần điều kiện để mở khóa, ví dụ như level tối thiểu hoặc rank tối thiểu.
+    5. **`max`**: Tên cột tuân theo mẫu _`max + (index)`_ hoặc _`max + (index) + []`_. Đây là giá trị bổ sung, có thể có hoặc không, thường dùng cho tình huống attribute có giá trị tối đa.
 
     ```
     Example 1: attribute0, value0, increase0, value0, max0.
@@ -148,7 +149,7 @@ Các files được xuất ra sẽ như sau
     width="500"
     height="500"
   />
-  <figcaption>Exported json data</figcaption>
+  <figcaption>Exported JSON data</figcaption>
 </figure>
 
 <figure>

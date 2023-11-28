@@ -44,7 +44,7 @@ Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều k
 
 ![Settings](/media/excel-2-unity-tab-3.png)
 
-- **Json Data Output:** Data table sẽ được chuyển đổi thành dạng dạng Json data và lưu tại địa chỉ này.
+- **JSON Data Output:** Data table sẽ được chuyển đổi thành dạng dạng JSON data và lưu tại địa chỉ này.
 - **Constants Output:** IDs, Constants, Localization Component và Localization API sẽ được lưu tại đại chỉ này.
 - **Localization Ouput:** Data Localization sẽ được lưu tại đại chỉ này. Địa chỉ này nên nằm trong thư mục _Resources_.
 - **Namespace:** khai báo namespace cho các file C# mà tool xuất ra.
@@ -55,7 +55,7 @@ Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều k
   - TRUE: xuất các sheet _[%Constants]_ thành các file C# độc lập với tên file theo cấu trúc _[SheetName] + %Constants.cs_
   - FALSE: tổng hợp tất cả các sheet _[%Constants]_ từ tất cả các file excel thành một rồi export thành một file C# duy nhất là _Constants.cs_
 - **Separate Localization:**
-  - TRUE: xuất các sheet _[%Localization%]_ thành các nhóm độc lập, một nhóm bao gồm Localization Data, Unity Component và API, , tên các file sẽ có cấu trúc sau:
+  - TRUE: xuất các sheet _[%Localization%]_ thành các nhóm độc lập, một nhóm bao gồm Localization Data, Component và API, tên các file sẽ có cấu trúc sau:
     - Localization Data: _[SheetName]\_[language].txt_
     - Component: _[SheetName] + Text.cs_
     - API: _[SheetName].cs_
@@ -63,10 +63,10 @@ Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều k
     - Localization Data: _Localization\_ + [language].txt_
     - Component: _LocalizationText.cs_
     - API: _Localization.cs_
-- **Encript Json:** mã Json Data trước khi xuất thành text file
-- **Only Enum as ID:** áp dụng cho sheet _[%IDs]_, các cột có phần mở rộng là _[enum]_. Nếu chọn thì cột IDs đó sẽ được xuất dưới dạng Enum mà bỏ qua dạng Integer Constant.
-- **One Json - One Excel:** tổng hợp Data Table trong một file excel thành một file Json duy nhất, tên file theo cấu trúc _[ExcelName].txt_
-- **Encryption Key:** key để mã hóa Json data
+- **Encript JSON:** mã JSON Data trước khi xuất thành text file
+- **Only enum as ID:** áp dụng cho sheet _[%IDs]_, các cột có phần mở rộng là _[enum]_. Nếu chọn thì cột IDs đó sẽ được xuất dưới dạng enum mà bỏ qua dạng Integer Constant.
+- **One JSON - One Excel:** tổng hợp Data Table trong một file excel thành một file JSON duy nhất, tên file theo cấu trúc _[ExcelName].txt_
+- **Encryption Key:** key để mã hóa JSON data
 - **Language maps:** ứng dụng cho Localization kết hợp TextMeshPro, dùng để tổng hợp bảng ký tự của một ngôn ngữ. Chủ yếu được áp dụng cho Korean, Japanese và Chinese đây là các ngôn ngữ có hệ thống ký tự cực kỳ lớn.
 - **Excluded Sheets:** nhập tên các Sheet cần bỏ qua khi xử lý Data Table.
 - **Excluded Sheets:** nhập tên các trường cần bị bỏ qua khi xử lý Data Table.
@@ -79,18 +79,17 @@ Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều k
 
 Các chức năng quan trọng nằm ở các nút bên phải:
 
-- **Export Json:** xuất các sheet dạng Data Table thành JSON data.
 - **Export IDs:** xuất các sheet dạng IDs thành các file C#.
 - **Export Constants:** xuất các sheet dạng Constants thành các file C#.
-- **Export Settings:** chức năng này đã lỗi thời và sẽ bị xóa trong tương lai.
 - **Export Localization:** xuất Localization Data và Localization Component, Localization API tương ứng.
+- **Export JSON:** xuất các sheet dạng Data Table thành JSON data.
 
 Thiết lập:
 
 - **Data File:** nhập địa chỉ của file excel chứa Static Database.
 - **Separate Constants:** chọn lựa chọn này nếu bạn muốn xuất các sheet _[%IDs]_ và _[%Constants]_ thành các file C# riêng biệt, với tên file theo cấu trúc _[SheetName] + IDs.cs_ và _[SheetName] + Constants.cs_.
-- **Encrypt Data:** chọn lựa chọn này nếu bạn muốn mã hóa Json Data được xuất từ Data Table.
-- **Merge Jsons:** chọn lựa chọn này nếu bạn muốn xuất toàn bộ Data Table thành một file Json duy nhất. Tên file json sẽ là tên file excel hoặc tên được tùy chỉnh ở TextBox liền kề.
+- **Encrypt Data:** chọn lựa chọn này nếu bạn muốn mã hóa JSON Data được xuất từ Data Table.
+- **Merge JSONs:** chọn lựa chọn này nếu bạn muốn xuất toàn bộ Data Table thành một file JSON duy nhất. Tên file JSON sẽ là tên file excel hoặc tên được tùy chỉnh ở TextBox liền kề.
 
 Thông tin hiển thị:
 
@@ -112,7 +111,7 @@ Thông tin hiển thị:
 
 ![Encryption](/media/excel-2-unity-tab-4.png)
 
-Chức năng này cho phép bạn mã hóa hoặc giải mã một chuỗi ký tự dựa trên Key được cung cấp trong Tab Settings. Bạn có thể sử dụng chức năng này để bảo mật nội dung của một văn bản, hoặc để mở và đọc các file Json data đã được mã hóa sau khi xuất ra.
+Chức năng này cho phép bạn mã hóa hoặc giải mã một chuỗi ký tự dựa trên Key được cung cấp trong Tab Settings. Bạn có thể sử dụng chức năng này để bảo mật nội dung của một văn bản, hoặc để mở và đọc các file JSON data đã được mã hóa sau khi xuất ra.
 
 # 5. Quy tắc thiết kế data trong Excel
 
@@ -124,41 +123,41 @@ Các sheet có tên theo cú pháp _[%IDs]_ được gọi là IDs sheet. Chúng
 
 | Hero   |     |         | Building      |     |         | Pet      |     |         | Gender[enum]      |     |
 | ------ | --- | ------- | ------------- | --- | ------- | -------- | --- | ------- | ----------------- | --- |
-| HERO_1 | 1   | comment | BUILDING_NULL | 0   | comment | PET_NULL | -1  | comment | GENDER_NONE       | 0   |
-| HERO_2 | 2   | comment | BUILDING_1    | 1   |         | PET_1    | 0   |         | GENDER_MALE       | 1   |
-| HERO_3 | 3   | comment | BUILDING_2    | 2   |         | PET_2    | 1   |         | GENDER_FEMALE     | 2   |
-|        |     |         | BUILDING_3    | 3   |         | PET_3    | 2   |         | GENDER_HELICOPTER | 3   |
-|        |     |         | BUILDING_4    | 4   |         | PET_4    | 3   |         |                   |
-|        |     |         | BUILDING_5    | 5   |         | PET_5    | 4   |         |                   |
-|        |     |         | BUILDING_6    | 6   |         | PET_6    | 5   |         |                   |
-|        |     |         | BUILDING_7    | 7   |         | PET_7    | 6   |         |                   |
-|        |     |         | BUILDING_8    | 8   |         |          |     |         |                   |
+| HERO_1 | 1   | comment | BUILDING_NULL | 0   | comment | PET_NULL | 0   | comment | GENDER_NONE       | 0   |
+| HERO_2 | 2   | comment | BUILDING_1    | 1   |         | PET_1    | 1   |         | GENDER_MALE       | 1   |
+| HERO_3 | 3   | comment | BUILDING_2    | 2   |         | PET_2    | 2   |         | GENDER_FEMALE     | 2   |
+|        |     |         | BUILDING_3    | 3   |         | PET_3    | 3   |         | GENDER_HELICOPTER | 3   |
+|        |     |         | BUILDING_4    | 4   |         | PET_4    | 4   |         |                   |     |
+|        |     |         | BUILDING_5    | 5   |         | PET_5    | 5   |         |                   |     |
+|        |     |         | BUILDING_6    | 6   |         | PET_6    | 6   |         |                   |     |
+|        |     |         | BUILDING_7    | 7   |         | PET_7    | 7   |         |                   |     |
+|        |     |         | BUILDING_8    | 8   |         |          |     |         |                   |     |
 
 - Mỗi id được khai báo trong một nhóm bao gồm 3 cột liền nhau: cột 1 là Key, cột 2 là Value và cột 3 là Comment. Ví dụ trên đây minh họa cho 3 nhóm id: Hero Id, Building Id và Pet Id.
-- Nêu thêm hậu tố [enum] vào tên của cột, thì giá trị trong cột đó vừa được xuất ra với kiểu Constant Integer vừa được xuất ra với kiểu Enum. Bạn cũng có thể lựa chọn export chỉ kiểu Enum tại Tab Settings.
+- Nêu thêm hậu tố [enum] vào tên của cột, thì giá trị trong cột đó vừa được xuất ra với kiểu Constant Integer vừa được xuất ra với kiểu enum. Bạn cũng có thể lựa chọn export chỉ kiểu enum tại Tab Settings.
 
 ## 5.2. Constants
 
 Các sheet được đặt tên theo cú pháp _[%Constants]_ được gọi là Constants Sheet. Chúng được sử dụng để tổng hợp lại các Constants trong project. Bảng dưới đây sẽ giúp bạn tham khảo được tất cả các kiểu dữ liệu mà có thể dùng trong sheet này.
 
-| Name                  | Type        | Value              | Comment                              |
-| --------------------- | ----------- | ------------------ | ------------------------------------ |
-| EXAMPLE_INT           | int         | 83                 | Write your comment for the constants |
-| EXAMPLE_FLOAT         | float       | 1.021              | Write your comment for the constants |
-| EXAMPLE_STRING        | string      | 321fda             | Write your comment for the constants |
-| EXAMPLE_INTARRAY_1    | int-array   | 4                  | Write your comment for the constants |
-| EXAMPLE_INT_ARRAY_2   | int-array   | 0:3:4:5            | Write your comment for the constants |
-| EXAMPLE_FLOAT_ARRAY_1 | float-array | 5                  | Write your comment for the constants |
-| EXAMPLE_FLOAT_ARRAY_2 | float-array | 5:1:1:3            | Write your comment for the constants |
-| EXAMPLE_VECTOR2_1     | vector2     | 1:2                | Write your comment for the constants |
-| EXAMPLE_VECTOR2_2     | vector2     | 1:2:3              | Write your comment for the constants |
-| EXAMPLE_VECTOR3       | vector3     | 3:3:4              | Write your comment for the constants |
-| EXAMPLE_REFERENCE_1   | int         | HERO_1             | Write your comment for the constants |
-| EXAMPLE_REFERENCE_2   | int-array   | HERO_1 : HERO_2    | Write your comment for the constants |
-| EXAMPLE_REFERENCE_3   | int-array   | HERO_1 \| HERO_3   | Write your comment for the constants |
-| EXAMPLE_REFERENCE_4   | int-array   | HERO_1 HERO_4      | Write your comment for the constants |
-| EXAMPLE_FORMULA_1     | int         | =1\*10\*36         | Write your comment for the constants |
-| EXAMPLE_FORMULA_2     | float       | =1+2+3+4+5+6+7+8+9 | Write your comment for the constants |
+| Name                  | Type        | Value              | Comment               |
+| --------------------- | ----------- | ------------------ | --------------------- |
+| EXAMPLE_INT           | int         | 83                 | Integer Example       |
+| EXAMPLE_FLOAT         | float       | 1.021              | Float example         |
+| EXAMPLE_STRING        | string      | 321fda             | String example        |
+| EXAMPLE_INTARRAY_1    | int-array   | 4                  | Integer array example |
+| EXAMPLE_INT_ARRAY_2   | int-array   | 0:3:4:5            | Integer array example |
+| EXAMPLE_FLOAT_ARRAY_1 | float-array | 5                  | FLoat array example   |
+| EXAMPLE_FLOAT_ARRAY_2 | float-array | 5:1:1:3            | FLoat array example   |
+| EXAMPLE_VECTOR2_1     | vector2     | 1:2                | Vector2 example       |
+| EXAMPLE_VECTOR2_2     | vector2     | 1:2:3              | Vector2 example       |
+| EXAMPLE_VECTOR3       | vector3     | 3:3:4              | Vector3 example       |
+| EXAMPLE_REFERENCE_1   | int         | HERO_1             | Integer example       |
+| EXAMPLE_REFERENCE_2   | int-array   | HERO_1 : HERO_2    | Integer array example |
+| EXAMPLE_REFERENCE_3   | int-array   | HERO_1 \| HERO_3   | Integer array example |
+| EXAMPLE_REFERENCE_4   | int-array   | HERO_1 HERO_4      | Integer array example |
+| EXAMPLE_FORMULA_1     | int         | =1\*10\*36         | Excel formula example |
+| EXAMPLE_FORMULA_2     | float       | =1+2+3+4+5+6+7+8+9 | Excel formula example |
 
 - Với kiểu dữ liệu array (in-array, float-aray, string-array), các phần tử trong mảng được phân tách bởi dấu `:` hoặc `|`
 
@@ -214,7 +213,7 @@ Các sheet được đặt tên theo cú pháp _[%Localization%]_ được gọi
 
 ### Kiểu dữ liệu mở rộng: Array, JSON object
 
-| array1[]                | array2[]    | array3[]                       | array4[]              | array5[]   | array6[]    | json\{}                                                                   |
+| array1[]                | array2[]    | array3[]                       | array4[]              | array5[]   | array6[]    | JSON\{}                                                                   |
 | ----------------------- | ----------- | ------------------------------ | --------------------- | ---------- | ----------- | ------------------------------------------------------------------------- |
 | text1                   | 1           | 1                              | TRUE                  | 123<br/>66 | aaa<br/>ccc | \{}                                                                       |
 | text2                   | 2 \| 2 \| 3 | 1 \| 2 \| 3                    | TRUE \| FALSE \| TRUE | 123<br/>71 | aaa<br/>ccc | \{"id":1, "name":"John Doe 1"}                                            |
@@ -230,13 +229,13 @@ Các sheet được đặt tên theo cú pháp _[%Localization%]_ được gọi
 
 | attribute0 | value0 | unlock0 | increase0 | max0 | attribute1 | value1[] | unlock1[] | increase1[] | max1[]   | ... | attributeN |
 | ---------- | ------ | ------- | --------- | ---- | ---------- | -------- | --------- | ----------- | -------- | --- | ---------- |
-| ATT_1      | 30     | 2       | 1.2       | 8    |            |          |           |             |          | ... |            |
-| ATT_9      | 25     | 3       | 1.5       | 8    |            |          |           |             |          | ... |            |
-| ATT_5      | 30     | 2       | 1         | 5    | ATT_10     | 3 \| 2   | 0 \| 11   | 0.5 \| 1    | 10 \| 20 | ... |            |
-| ATT_2      | 30     | 2       | 1         | 8    | ATT_10     | 10 \| 1  | 1 \| 12   | 1.5 \| 1    | 10 \| 20 | ... |            |
-|            |        |         |           |      | ATT_10     | 10 \| 1  | 1 \| 12   | 1.5 \| 1    | 10 \| 20 | ... |            |
+| ATT_HP     | 30     | 2       | 1.2       | 8    |            |          |           |             |          | ... |            |
+| ATT_AGI    | 25     | 3       | 1.5       | 8    |            |          |           |             |          | ... |            |
+| ATT_INT    | 30     | 2       | 1         | 5    | ATT_CRIT   | 3 \| 2   | 0 \| 11   | 0.5 \| 1    | 10 \| 20 | ... |            |
+| ATT_ATK    | 30     | 2       | 1         | 8    | ATT_CRIT   | 10 \| 1  | 1 \| 12   | 1.5 \| 1    | 10 \| 20 | ... |            |
+|            |        |         |           |      | ATT_CRIT   | 10 \| 1  | 1 \| 12   | 1.5 \| 1    | 10 \| 20 | ... |            |
 
-Attribute là một dạng dữ liệu đặc thù, được tạo ra đặc biệt cho các trò chơi thuộc thể loại RPG - nơi mà nhân vật và trang bị có thể sở hữu nhiều thuộc tính và chỉ số khác nhau, không cố định. Dạng dữ liệu này giúp việc tùy chỉnh nhân vật và trang bị trở nên linh hoạt hơn, không bị hạn chế.
+Attribute là một dạng dữ liệu đặc thù, được tạo ra đặc biệt cho các Game thuộc thể loại RPG - nơi mà nhân vật và trang bị có thể sở hữu nhiều thuộc tính và chỉ số khác nhau, không cố định. Dạng dữ liệu này giúp việc tùy chỉnh nhân vật và trang bị trở nên linh hoạt hơn, không bị hạn chế.
 
 ![Attribute example](/media/attribute.png)
 
