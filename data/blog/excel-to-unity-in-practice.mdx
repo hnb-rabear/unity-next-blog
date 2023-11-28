@@ -26,6 +26,7 @@ Tuy nhiên, trong bài viết này, tôi chỉ đề cập đến phần cơ b�
 ## 1. Cấu trúc của file Excel
 
 Đầu tiên, hãy mở file excel tại địa chỉ `/Assets/Basic/Data/Example.xlsx`. Đây là file Excel mẫu. Trong file này, có 5 sheet chứa data mẫu giúp bạn hiểu cách thiết kế các loại data như IDs, Constants, và Data Table.
+
 ![Example Excel](/media/excel-to-unity-basic-excel-file.png)
 
 ### Sheet Constants:
@@ -83,7 +84,7 @@ VD idString:"hero_name" và relativeId:1 thì key sẽ là hero_name_1
 - Thêm hậu tố `[]` vào tên cột, để định nghĩa kiểu dữ liệu `list/array`.
 - Thêm hậu tố `{}` vào tên cột, để định nghĩa kiểu dữ liệu `JSON object`.
 - Các ô có giá trị rỗng, bằng 0 hoặc bằng FALSE sẽ bị bỏ qua khi xuất Json Data.
-- Các cột chỉ có tên mà không có giá trị, giá trị rỗng, bằng 0 hoặc bằng FALSE sẽ bị bỏ qua khi xuất JSON data. Điều này giúp tránh dư thừa dữ liệu, tối ưu kích thước của JSON data.
+- Các cột chỉ có tên mà không có giá trị, giá trị rỗng, bằng 0 hoặc bằng FALSE sẽ bị bỏ qua khi xuất JSON Data. Điều này giúp tránh dư thừa dữ liệu, tối ưu kích thước của JSON Data.
 - Để giữ lại các cột tránh bị bỏ qua, thì cần thêm tên của cột đó vào ô `Unminimized Fields`
 - Thêm hậu tố `[x]` vào tên cột, để loại bỏ cột đó, không xuất ra Json data.
 - Để định nghĩa kiểu attribute object. thì cần tuân theo các quy tắc sau:
@@ -149,7 +150,7 @@ Các files được xuất ra sẽ như sau
     width="500"
     height="500"
   />
-  <figcaption>Exported JSON data</figcaption>
+  <figcaption>Exported JSON Data</figcaption>
 </figure>
 
 <figure>

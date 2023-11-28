@@ -31,20 +31,55 @@ Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều k
 
 # 3. Các chức năng chính
 
-- Quản lý Database hoàn toàn bằng Excel.
-- Xuất Data Table thành các file txt để dễ dàng tích hợp vào Unity.
-- Cung cấp nhiều định dạng dữ liệu, có thể thay đổi linh hoạt theo yêu cầu thiết kế Data.
+- Hỗ trợ quản lý Database hoàn toàn bằng Excel.
 - Quản lý IDs và Constants một cách hiệu quả, cho phép điều chỉnh hàng loạt mà không ảnh hưởng đến Database.
-- Quản lý đa ngôn ngữ dễ dàng thông qua hệ thống Localization, có khả năng kết hợp mạnh mẽ với Unity.
-- Và nhiều tính năng nâng cao khác.
+- Quản lý đa ngôn ngữ dễ dàng thông qua hệ thống Localization, dễ dàng tích hợp với Unity.
+- Cung cấp nhiều định dạng dữ liệu, có thể thay đổi linh hoạt theo yêu cầu thiết kế Data.
+- Xuất Data Table thành các file json để.
 
 # 4. Giới thiệu tính năng và cách cài đặt
 
-## 4.1. Settings
+## 4.1. Export single excel
+
+![Export Single Excel](/media/excel-2-unity-tab-1.png)
+
+Đây là một chức năng cơ bản nhưng lại rất quan trọng, giúp bạn làm quen với các công cụ. Nếu Static Database của bạn không quá lớn hoặc phức tạp, và chỉ cần một file excel để chứa tất cả dữ liệu, thì chức năng này là đủ cho nhu cầu của bạn. Tuy nhiên, nếu Static Database của bạn phức tạp và cần được lưu trữ trong nhiều file Excel, bạn sẽ cần sử dụng chức năng **Export Multi Excels**. Chức năng này sẽ được giới thiệu trong phần tiếp theo.
+
+Các chức năng quan trọng nằm ở các nút bên phải:
+
+- **Export IDs:** xuất các sheet dạng IDs thành các file C#.
+- **Export Constants:** xuất các sheet dạng Constants thành các file C#.
+- **Export Localization:** xuất Localization Data và Localization Component, Localization API tương ứng.
+- **Export Json:** xuất các sheet dạng Data Table thành JSON data.
+
+Thiết lập:
+
+- **Data File:** nhập địa chỉ của file excel chứa Static Database.
+- **Separate Constants:** chọn lựa chọn này nếu bạn muốn xuất các sheet _[%IDs]_ và _[%Constants]_ thành các file C# riêng biệt, với tên file theo cấu trúc _[SheetName] + IDs.cs_ và _[SheetName] + Constants.cs_.
+- **Encrypt Data:** chọn lựa chọn này nếu bạn muốn mã hóa JSON Data được xuất từ Data Table.
+- **Merge JSONs:** chọn lựa chọn này nếu bạn muốn xuất toàn bộ Data Table thành một file json duy nhất. Tên file json sẽ là tên file excel hoặc tên được tùy chỉnh ở TextBox liền kề.
+
+Thông tin hiển thị:
+
+- Bảng ở bên trái hiển thị danh sách các sheet trong file excel.
+- Bảng ở giữa hiển thị danh sách id được tổng hợp từ các sheet có tên _[%IDs].cs_.
+- Khung cuộn phía dưới sẽ hiển thị log
+
+## 4.2. Export multi excels (All in one)
+
+![Export Multi Excels (All in one)](/media/excel-2-unity-tab-2.png)
+
+Đây là chức tổng hợp, tất cả sẽ được xử lý chỉ bằng một nút ấn chỉ cần:
+
+1. Chọn tất cả các file excel mà bạn muốn xử lý.
+2. Bạn có thể quyết định xuất IDs, Constants hoặc không bằng cách đánh dấu vào CheckBox tương ứng với mỗi file excel.
+3. Cuối cùng, hãy nhấn nút Export All.
+
+## 4.3. Settings
 
 ![Settings](/media/excel-2-unity-tab-3.png)
 
-- **JSON Data Output:** Data table sẽ được chuyển đổi thành dạng dạng JSON data và lưu tại địa chỉ này.
+- **Json Data Output:** Data table sẽ được chuyển đổi thành dạng dạng JSON Data và lưu tại địa chỉ này.
 - **Constants Output:** IDs, Constants, Localization Component và Localization API sẽ được lưu tại đại chỉ này.
 - **Localization Ouput:** Data Localization sẽ được lưu tại đại chỉ này. Địa chỉ này nên nằm trong thư mục _Resources_.
 - **Namespace:** khai báo namespace cho các file C# mà tool xuất ra.
@@ -63,49 +98,13 @@ Sau quá trình mở rộng lâu dài, công cụ đã bổ sung thêm nhiều k
     - Localization Data: _Localization\_ + [language].txt_
     - Component: _LocalizationText.cs_
     - API: _Localization.cs_
-- **Encript JSON:** mã JSON Data trước khi xuất thành text file
+- **Encript Json:** mã hóa JSON Data trước khi xuất thành text file
 - **Only enum as ID:** áp dụng cho sheet _[%IDs]_, các cột có phần mở rộng là _[enum]_. Nếu chọn thì cột IDs đó sẽ được xuất dưới dạng enum mà bỏ qua dạng Integer Constant.
-- **One JSON - One Excel:** tổng hợp Data Table trong một file excel thành một file JSON duy nhất, tên file theo cấu trúc _[ExcelName].txt_
+- **One Json - One Excel:** tổng hợp Data Table trong một file excel thành một file json duy nhất, tên file theo cấu trúc _[ExcelName].txt_
 - **Encryption Key:** key để mã hóa JSON data
 - **Language maps:** ứng dụng cho Localization kết hợp TextMeshPro, dùng để tổng hợp bảng ký tự của một ngôn ngữ. Chủ yếu được áp dụng cho Korean, Japanese và Chinese đây là các ngôn ngữ có hệ thống ký tự cực kỳ lớn.
 - **Excluded Sheets:** nhập tên các Sheet cần bỏ qua khi xử lý Data Table.
 - **Excluded Sheets:** nhập tên các trường cần bị bỏ qua khi xử lý Data Table.
-
-## 4.2. Export single excel
-
-![Export Single Excel](/media/excel-2-unity-tab-1.png)
-
-Đây là một chức năng cơ bản nhưng lại rất quan trọng, giúp bạn làm quen với các công cụ. Nếu Static Database của bạn không quá lớn hoặc phức tạp, và chỉ cần một file excel để chứa tất cả dữ liệu, thì chức năng này là đủ cho nhu cầu của bạn. Tuy nhiên, nếu Static Database của bạn phức tạp và cần được lưu trữ trong nhiều file Excel, bạn sẽ cần sử dụng chức năng **Export Multi Excels**. Chức năng này sẽ được giới thiệu trong phần tiếp theo.
-
-Các chức năng quan trọng nằm ở các nút bên phải:
-
-- **Export IDs:** xuất các sheet dạng IDs thành các file C#.
-- **Export Constants:** xuất các sheet dạng Constants thành các file C#.
-- **Export Localization:** xuất Localization Data và Localization Component, Localization API tương ứng.
-- **Export JSON:** xuất các sheet dạng Data Table thành JSON data.
-
-Thiết lập:
-
-- **Data File:** nhập địa chỉ của file excel chứa Static Database.
-- **Separate Constants:** chọn lựa chọn này nếu bạn muốn xuất các sheet _[%IDs]_ và _[%Constants]_ thành các file C# riêng biệt, với tên file theo cấu trúc _[SheetName] + IDs.cs_ và _[SheetName] + Constants.cs_.
-- **Encrypt Data:** chọn lựa chọn này nếu bạn muốn mã hóa JSON Data được xuất từ Data Table.
-- **Merge JSONs:** chọn lựa chọn này nếu bạn muốn xuất toàn bộ Data Table thành một file JSON duy nhất. Tên file JSON sẽ là tên file excel hoặc tên được tùy chỉnh ở TextBox liền kề.
-
-Thông tin hiển thị:
-
-- Bảng ở bên trái hiển thị danh sách các sheet trong file excel.
-- Bảng ở giữa hiển thị danh sách id được tổng hợp từ các sheet có tên _[%IDs].cs_.
-- Khung cuộn phía dưới sẽ hiển thị log
-
-## 4.3. Export multi excels (All in one)
-
-![Export Multi Excels (All in one)](/media/excel-2-unity-tab-2.png)
-
-Đây là chức tổng hợp, tất cả sẽ được xử lý chỉ bằng một nút ấn chỉ cần:
-
-1. Chọn tất cả các file excel mà bạn muốn xử lý.
-2. Bạn có thể quyết định xuất IDs, Constants hoặc không bằng cách đánh dấu vào CheckBox tương ứng với mỗi file excel.
-3. Cuối cùng, hãy nhấn nút Export All.
 
 ## 4.4. Encrypt & Decrypt Text
 
@@ -213,7 +212,7 @@ Các sheet được đặt tên theo cú pháp _[%Localization%]_ được gọi
 
 ### Kiểu dữ liệu mở rộng: Array, JSON object
 
-| array1[]                | array2[]    | array3[]                       | array4[]              | array5[]   | array6[]    | JSON\{}                                                                   |
+| array1[]                | array2[]    | array3[]                       | array4[]              | array5[]   | array6[]    | json\{}                                                                   |
 | ----------------------- | ----------- | ------------------------------ | --------------------- | ---------- | ----------- | ------------------------------------------------------------------------- |
 | text1                   | 1           | 1                              | TRUE                  | 123<br/>66 | aaa<br/>ccc | \{}                                                                       |
 | text2                   | 2 \| 2 \| 3 | 1 \| 2 \| 3                    | TRUE \| FALSE \| TRUE | 123<br/>71 | aaa<br/>ccc | \{"id":1, "name":"John Doe 1"}                                            |
@@ -239,17 +238,7 @@ Attribute là một dạng dữ liệu đặc thù, được tạo ra đặc bi�
 
 ![Attribute example](/media/attribute.png)
 
-Quy tắc định nghĩa một Attribute:
-
-- Attribute cần phải được định nghĩa trong sheet IDs.
-- Attribute cần phải được đặt sau các kiểu dữ liệu cơ bản và mở rộng
-- Cột 1: Chứa chuỗi phải “attribute”, đây là key của attribute, có thể là Integer hoặc Id từ sheet IDs.
-- Cột 2: Chứa chuỗi “value”, đây là value của attribute, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố.
-- Cột Unlock (tùy chọn): Chứa chuỗi “unlock”, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố. Cột này dùng trong tình huống attribute này có điều kiện cụ thể để được unlock.
-- Cột Max (tùy chọn): Chứa chuỗi “max”, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố. Cột này dùng trong tình huống attribute này có max value.
-- Cột Increase (tùy chọn): Chứa chuỗi “increase”, có thể là float hoặc float array/list. Nếu là array/list thì phải có [] ở hậu tố. Cột này dùng trong tình huống attribute này có thể lên level.
-- Lưu ý 1: Một attribute là bắt buộc phải có Key và Value. Unlock, Max, Increase có thể có hoặc không.
-- Lưu ý 2: Bạn nên đánh số thứ tự cho attribute bắt đầu từ 0. Điều này sẽ giúp việc lập trình trở nên dễ dàng hơn vì các attribute sẽ được tổng hợp thành một list.
+Quy tắc định nghĩa một Attribute sẽ được giới thiệu chi tiết trong bài viết sau.
 
 ## 5.5. Mẹo
 
