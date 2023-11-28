@@ -27,7 +27,9 @@ Tuy nhiên, trong bài viết này, tôi chỉ đề cập đến phần cơ b�
 
 Đầu tiên, hãy mở file excel tại địa chỉ `/Assets/Basic/Data/Example.xlsx`. Đây là file Excel mẫu. Trong file này, có 5 sheet chứa data mẫu giúp bạn hiểu cách thiết kế các loại data như IDs, Constants, và Data Table.
 
-![Example Excel](/media/excel-to-unity-basic-excel-file.png)
+<div className="flex flex-wrap items-center justify-center">
+  ![Example Excel](/media/excel-to-unity-basic-excel-file.png)
+</div>
 
 ### Sheet Constants:
 
@@ -118,7 +120,9 @@ Tạo 3 thư mục để lưu các file sẽ được xuất ra
 
 Nhập đường dẫn tới các thư mục đã được tạo ở trên, và các thiết lập cần thiết khác.
 
-![Example Excel](/media/excel-to-unity-basic-settings.png)
+<div className="flex flex-wrap items-center justify-center">
+  ![Example Excel](/media/excel-to-unity-basic-settings.png)
+</div>
 
 - Json Data Output: `[your project path]\Assets\Basic\Data`.
 - Constant Ouput: `[Your project path]\Assets\Basic\Scripts\Generated`, IDs, Constants, Localization API và LocalizationText Component sẽ được lưu tại đây.
@@ -126,42 +130,26 @@ Nhập đường dẫn tới các thư mục đã được tạo ở trên, và 
 - Namespace: `Excel2Unity.Basic`.
 - Languages maps: `korean, japanese, chinese`, chúng ta sẽ tạo bảng ký tự riêng cho 3 ngôn ngữ này
 
-![Example Excel](/media/excel-to-unity-basic-exporting.png)
+<div className="flex flex-wrap items-center justify-center">
+  ![Example Excel](/media/excel-to-unity-basic-exporting.png)
+</div>
 
 - Điền đường dẫn tới file excel hoặc chọn file bằng nút `Select File`
 - Cuối cùng, ấn `Export Json`, `Export IDs`, `Export Constants` và `Export Localization` để xuất data và các script
 
 Các files được xuất ra sẽ như sau
 
-<figure>
-  <Image
-    src="/media/excel-to-unity-basic-exported-scripts.png"
-    alt="Exported scripts"
-    width="500"
-    height="500"
-  />
-  <figcaption>Exported scripts</figcaption>
-</figure>
-
-<figure>
-  <Image
-    src="/media/excel-to-unity-basic-exported-data.png"
-    alt="Exported localization"
-    width="500"
-    height="500"
-  />
-  <figcaption>Exported JSON Data</figcaption>
-</figure>
-
-<figure>
-  <Image
-    src="/media/excel-to-unity-basic-exported-localization.png"
-    alt="Exported localization"
-    width="500"
-    height="500"
-  />
-  <figcaption>Exported localization</figcaption>
-</figure>
+<div className="flex flex-wrap items-center justify-center">
+  <div className="px-1 py-0">
+    ![Exported scripts](/media/excel-to-unity-basic-exported-scripts.png)
+  </div>
+  <div className="px-1 py-0">
+    ![Exported JSON Data](/media/excel-to-unity-basic-exported-data.png)
+  </div>
+  <div className="px-1 py-0">
+    ![Exported localization](/media/excel-to-unity-basic-exported-localization.png)
+  </div>
+</div>
 
 ## 3. Scripting
 
@@ -242,25 +230,10 @@ private void LoadData()
 
 - Cuối cùng, chúng ta sẽ có một Static Database. Mỗi khi có thay đổi, bạn chỉ cần chỉnh sửa trên excel và xuất data mới. Sau đó, trong Unity, bạn chỉ cần Reload Static Database.
 
-<figure>
-  <Image
-    src="/media/excel-to-unity-basic-scriptable-object.png"
-    alt="excel-to-unity-basic-scriptable-object"
-    width="500"
-    height="500"
-  />
-  <figcaption>ScriptableObject</figcaption>
-</figure>
-
-<figure>
-  <Image
-    src="/media/excel-to-unity-basic-load-data.png"
-    alt="excel-to-unity-basic-load-data"
-    width="500"
-    height="500"
-  />
-  <figcaption>Load Data</figcaption>
-</figure>
+<div className="flex flex-wrap justify-center">
+  <div className="px-1">![ScriptableObject](/media/excel-to-unity-basic-scriptable-object.png)</div>
+  <div className="px-1">![Load Data](/media/excel-to-unity-basic-load-data.png)</div>
+</div>
 
 ### Localization
 
@@ -303,7 +276,9 @@ Localization.UnregisterDynamicText(m_goExample2);
 
 Sử dụng Localization Component.
 
-![font japanese](/media/excel-to-unity-basic-localization-component.png)
+<div className="flex flex-wrap items-center justify-center p-0">
+  ![font japanese](/media/excel-to-unity-basic-localization-component.png)
+</div>
 
 TextMeshProUGUI custom font.
 
@@ -317,13 +292,9 @@ Trong ví dụ này, tôi sử dụng 3 font khác nhau để tạo ra 3 font Te
 
 Đối với mỗi font trên, hãy tạo một font TextMeshPro. Trong cửa sổ `Font Asset Creator`, tại mục `Character Set`, hãy chọn `Character From File`. Sau đó, chọn file `characters_map` tương ứng tại mục `Character File`.
 
-<div className="-mx-2 flex flex-wrap overflow-hidden xl:-mx-2">
-  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
-    ![font japanese](/media/excel-to-unity-basic-font-jp.png)
-  </div>
-  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
-    ![font korean](/media/excel-to-unity-basic-font-kr.png)
-  </div>
+<div className="flex flex-wrap items-center justify-center">
+  <div className="m-0 p-0">![font japanese](/media/excel-to-unity-basic-font-jp.png)</div>
+  <div className="m-0 p-0">![font korean](/media/excel-to-unity-basic-font-kr.png)</div>
 </div>
 
-Vậy là kết thúc phần này, với các tính năng đã trình bày, bạn hoàn toàn có khả năng thiết kế và quản lý cơ sở dữ liệu tĩnh cho một trò chơi Casual, thậm chí là trò chơi Mid-core. Trong bài viết sắp tới, tôi sẽ giới thiệu các phương pháp nâng cao để khai thác tối đa sức mạnh của công cụ này.
+Vậy là kết thúc phần này, với các tính năng đã trình bày, bạn đã có đủ công cụ để xây dựng một Static Database với Excel, đáp ứng đủ cho bất cứ game Casual và Mid-core nào. Trong bài viết sắp tới, tôi sẽ giới thiệu các phương pháp nâng cao để khai thác tối đa sức mạnh của công cụ này.
