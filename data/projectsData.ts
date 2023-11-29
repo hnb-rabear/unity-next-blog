@@ -17,6 +17,12 @@ const projectsData = [
         imgSrc: '/static/images/semi-heroes.webp',
         href: 'https://play.google.com/store/apps/details?id=com.redantz.game.semiheroes',
     },
+    {
+        title: 'Excel to Unity',
+        description: `This tool aids independent game developers in designing and managing databases, enabling easy modification of game statistics. It simplifies the management of data tables, constants, and IDs, providing a single location for their search, modification, and update. Ideal for all game projects, regardless of size.`,
+        imgSrc: '/media/excel-to-unity-basic-exporting.png',
+        href: 'https://github.com/nbhung100914/excel-to-unity',
+    },
 ];
 
 export default projectsData;
