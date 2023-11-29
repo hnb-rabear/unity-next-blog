@@ -280,7 +280,50 @@ Sử dụng Localization Component.
   ![font japanese](/media/excel-to-unity-basic-localization-component.png)
 </div>
 
-TextMeshProUGUI custom font.
+Trong trướng hợp bạn chọn Separate Localization trong bảng Settings. Localization data và Localization scripts xuất ra sẽ trông như sau.
+
+<div className="flex flex-wrap items-center justify-center p-0">
+  ![multi localization](/media/excel-to-unity-basic-exported-multi-localization.png)
+</div>
+
+Localization Code sẽ thay đổi như sau.
+
+```cs
+LocalizationsManager.currentLanguage = "spanish";
+```
+
+```cs
+private IEnumerator Start()
+{
+    yield return LocalizationsManager.InitAsync(null);
+}
+```
+
+```cs
+LocalizationsManager.onLanguageChanged += OnLanguageChanged;
+```
+
+```cs
+// Truy xuất text đã được nội địa theo integer key
+m_txtExample1.text = ExampleLocalization.Get(ExampleLocalization.DAY_X, 1).ToString();
+// Truy xuất text đã được nội địa theo string key
+m_txtExample1.text = ExampleLocalization.Get("DAY_X", 1).ToString();
+```
+
+```cs
+// Khai báo một Dynamic Text liên kết với một integer key
+ExampleLocalization.RegisterDynamicText(m_goExample2, ExampleLocalization.hero_name_5);
+// Hoặc liên kết gameObject với một string key
+ExampleLocalization.RegisterDynamicText(m_txtExample2, "hero_name_" + IDs.HERO_5);
+// Hủy liên kết gameObject
+ExampleLocalization.UnregisterDynamicText(m_goExample2);
+```
+
+<div className="flex flex-wrap items-center justify-center p-0">
+  ![font japanese](/media/excel-to-unity-basic-localization-component-2.png)
+</div>
+
+### TextMeshProUGUI custom font.
 
 Chúng ta sẽ sử dụng 3 file `characters_map_japan`, `characters_map_korean` và `characters_map_chinese` để tạo ra 3 font TextMeshPro cho 3 ngôn ngữ này. 3 file characters_map này chứa toàn bộ các ký tự xuất hiện trong sheet Localization của mỗi ngôn ngữ.
 
