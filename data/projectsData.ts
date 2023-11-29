@@ -8,7 +8,7 @@ const projectsData = [
     {
         title: 'Ascent Hero',
         description: `Ascent Hero is a captivating mobile game that combines elements of casual shooting, bullet hell, and rogue-like action. In this game, you assume the role of a robot in a galaxy, embarking on a mission to combat evil robot invaders`,
-        imgSrc: '/static/images/time-machine.jpg',
+        imgSrc: '/static/images/ascent-hero.png',
         href: 'https://play.google.com/store/apps/details?id=com.zenstone.ascenthero',
     },
     {
