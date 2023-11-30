@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
     title: 'Unity Game Dev Blog',
-    author: 'HungNB',
+    author: 'Hung Nguyen Ba',
     headerTitle: 'Unity Game Dev Blog',
     description: 'A blog about Unity Game Development, powered by Next.js and Tailwind.css.',
     language: 'en-us',
