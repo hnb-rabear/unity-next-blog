@@ -240,38 +240,41 @@ private void LoadData()
 Thay đổi ngôn ngữ.
 
 ```cs
-// Chọn ngôn ngữ tiếng Tây Ban Nha
-Localization.currentLanguage = "spanish";
-// Chọn ngôn ngữ tiếng Nhật
+// Set the language japanese
 Localization.currentLanguage = "japanese";
-// Chọn ngôn ngữ tiếng Hàn
-Localization.currentLanguage = "korean";
 ```
 
 Đăng ký một event handler cho sự kiện thay đổi ngôn ngữ.
 
 ```cs
+// Register an action when language changed
 Localization.onLanguageChanged += OnLanguageChanged;
+```
+
+```csharp
+// Display current language
+m_txtCurrentLanguage.text = Localization.currentLanguage;
 ```
 
 Truy xuất nội dung đã được nội địa hóa bằng Key, tuy nhiên với cách này Text sẽ được ko tự động cập nhật hiển thị khi ngôn ngữ thay đổi.
 
 ```cs
-// Truy xuất text đã được nội địa theo integer key
-m_txtExample1.text = Localization.Get(Localization.DAY_X, 1).ToString();
-// Truy xuất text đã được nội địa theo string key
-m_txtExample1.text = Localization.Get("DAY_X", 1).ToString();
+// Get the localized text using integer key
+m_txtExample1.text = Localization.Get(Localization.hero_name_1).ToString();
+// Get the localized text using string key
+m_txtExample2.text = Localization.Get("DAY_X", 100).ToString();
 ```
 
 Bạn có thể liên kết gameObject với một Key để Text tự động cập nhật khi ngôn ngữ thay đổi, gameObject phải chứa Component Text hoặc TextMeshProUGUI.
 
 ```cs
-// Khai báo một Dynamic Text liên kết với một integer key
-Localization.RegisterDynamicText(m_goExample2, Localization.hero_name_5);
-// Hoặc liên kết gameObject với một string key
-Localization.RegisterDynamicText(m_txtExample2, "hero_name_" + IDs.HERO_5);
-// Hủy liên kết gameObject
-Localization.UnregisterDynamicText(m_goExample2);
+// Register Dynamic localized Text
+Localization.RegisterDynamicText(m_textGameObject1, Localization.hero_name_5);
+// Register Dynamic localized Text
+Localization.RegisterDynamicText(m_textGameObject2, "TAP_TO_COLLECT");
+// Unregister the gameObject
+Localization.UnregisterDynamicText(m_textGameObject1);
+Localization.UnregisterDynamicText(m_textGameObject2);
 ```
 
 Sử dụng Localization Component.
@@ -302,23 +305,30 @@ private IEnumerator Start()
 ```
 
 ```cs
+// Register an action when language changed
 LocalizationsManager.onLanguageChanged += OnLanguageChanged;
 ```
 
 ```cs
-// Truy xuất text đã được nội địa theo integer key
-m_txtExample1.text = ExampleLocalization.Get(ExampleLocalization.DAY_X, 1).ToString();
-// Truy xuất text đã được nội địa theo string key
-m_txtExample1.text = ExampleLocalization.Get("DAY_X", 1).ToString();
+// Display current language
+m_txtCurrentLanguage.text = LocalizationsManager.currentLanguage;
 ```
 
 ```cs
-// Khai báo một Dynamic Text liên kết với một integer key
-ExampleLocalization.RegisterDynamicText(m_goExample2, ExampleLocalization.hero_name_5);
-// Hoặc liên kết gameObject với một string key
-ExampleLocalization.RegisterDynamicText(m_txtExample2, "hero_name_" + IDs.HERO_5);
-// Hủy liên kết gameObject
-ExampleLocalization.UnregisterDynamicText(m_goExample2);
+// Get localized string from sheet ExampleLocalization
+m_txtExample1.text = ExampleLocalization.Get(ExampleLocalization.hero_name_1).ToString();
+// Get localized string from sheet ExampleLocalization2
+m_txtExample2.text = ExampleLocalization2.Get(ExampleLocalization2.DAY_X, 100).ToString();
+```
+
+```cs
+// Register Dynamic localized Text in sheet ExampleLocalization
+ExampleLocalization.RegisterDynamicText(m_textGameObject1, ExampleLocalization.hero_name_5);
+// Register Dynamic localized Text in sheet ExampleLocalization2
+ExampleLocalization2.RegisterDynamicText(m_textGameObject2, "TAP_TO_COLLECT");
+// Unregister gameObject
+ExampleLocalization.UnregisterDynamicText(m_textGameObject1);
+ExampleLocalization2.UnregisterDynamicText(m_textGameObject2);
 ```
 
 <div className="flex flex-wrap items-center justify-center p-0">
