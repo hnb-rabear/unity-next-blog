@@ -1,0 +1,73 @@
+---
+title: UnityHeapExplorer - A Memory Profiler, Debugger, and Analyzer for Unity
+date: 2023-12-12
+lastmod: 2023-12-12
+tags: ['unity', 'game development', 'tools']
+images:
+draft: true
+layout: PostSimple
+summary: UnityHeapExplorer is a tool for Unity developers to profile, debug, and analyze memory usage in their games. It helps identify and fix memory leaks, fragmentation, and optimization opportunities by allowing you to take, explore, and compare memory snapshots using various methods, views, filters, metrics, and features. This guide will help you understand how to use UnityHeapExplorer to enhance your game's memory management.
+language: vn
+---
+
+# How to Use UnityHeapExplorer: A Memory Profiler, Debugger, and Analyzer for Unity
+
+UnityHeapExplorer is a tool for Unity developers to profile, debug, and analyze memory usage in their games. It helps identify and fix memory leaks, fragmentation, and optimization opportunities by allowing you to take, explore, and compare memory snapshots using various methods, views, filters, metrics, and features. This guide will help you understand how to use UnityHeapExplorer to enhance your game's memory management.
+
+## Why choose UnityHeapExplorer over Unity Profiler
+
+UnityHeapExplorer, a dedicated memory profiler, focuses on game memory aspects with a user-friendly interface and extensive features. In contrast, Unity Profiler is a comprehensive performance profiler, covering CPU, rendering, and audio, with a more complex interface. Choose UnityHeapExplorer for detailed memory analysis and Unity Profiler for a holistic performance overview.
+
+## How to Install UnityHeapExplorer
+
+To install UnityHeapExplorer for Unity 2019.3 or newer, follow these steps:
+
+1. Open your Unity project and navigate to Window > Package Manager.
+2. Click the + button at the top left corner and select 'Add package from git URL'.
+3. Enter `https://github.com/pschraut/UnityHeapExplorer.git` and click 'Add'.
+4. Wait for the package to download and import into your project.
+
+## How to Use UnityHeapExplorer
+
+To use UnityHeapExplorer, go to Window > Analysis > Heap Explorer. The interface includes:
+
+- Toolbar: For taking, loading, saving, and comparing memory snapshots, and accessing settings and help.
+- Snapshot list: Displays the memory snapshots you've taken or loaded, with details and statistics.
+- View list: Shows the views for exploring memory snapshots, such as summary, type, reference, and memory map views.
+- View area: Displays the content of the selected view, like tables, charts, and graphs.
+
+## How to Take a Memory Snapshot
+
+To capture a memory snapshot in UnityHeapExplorer, run your game in the editor or standalone player and click 'Take Snapshot'. This pauses the game and captures the snapshot, which is then displayed in the snapshot list. You can also use a keyboard shortcut, a script, or a command-line argument to take a snapshot.
+
+## How to Explore a Memory Snapshot
+
+To analyze a memory snapshot in UnityHeapExplorer, select it from the snapshot list and choose a view from the view list. The four views are:
+
+- Summary view: Displays a breakdown of the total memory size, number of objects, types, and references. It also shows the top 10 types and objects consuming the most memory.
+- Type view: Lists the types in the snapshot, such as classes, structs, enums, and arrays, along with their name, size, count, and percentage. It also shows the objects belonging to each type.
+- Reference view: Shows the references in the snapshot, including source, target, and type of each reference, and the reference graph and chain.
+- Memory map view: Provides a graphical representation of the memory layout and allocation, with details on memory segments, blocks, and pages.
+
+## How to Compare Memory Snapshots
+
+To compare memory snapshots in UnityHeapExplorer, select two snapshots from the list and click 'Compare'. The comparison interface includes:
+
+- Comparison toolbar: Switch between comparison modes (delta, intersection, union) and view comparison statistics.
+- Comparison view list: Choose from views like summary, type, reference, and memory map to compare snapshots.
+- Comparison view area: Displays the content of the selected view.
+
+The comparison modes are:
+
+- Delta mode: Shows the difference between snapshots, including added, removed, and changed objects, types, and references.
+- Intersection mode: Shows common elements between snapshots.
+- Union mode: Shows the combination of snapshots.
+
+## Conclusion
+
+UnityHeapExplorer is a tool for profiling, debugging, and analyzing memory snapshots of Unity games. It enables you to capture, explore, and compare memory snapshots using various methods, views, filters, and metrics. This guide aims to help you understand how to use UnityHeapExplorer to enhance your game's memory management. We welcome any questions or feedback. Happy coding! 😊
+
+## References
+
+(1) [Document](http://console-dev.de/post/heap-explorer-source-code-released/)<br/>
+(2) [GitHub](https://github.com/pschraut/UnityHeapExplorer.git)

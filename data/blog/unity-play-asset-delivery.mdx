@@ -1,0 +1,157 @@
+---
+title: How to Use Play Asset Delivery in Unity
+date: 2023-12-01
+lastmod: 2023-12-01
+tags: ['unity', 'game development', 'architecture']
+images: ['/media/c3da94df408ea096e1f76e7096477aff.jpeg']
+draft: true
+layout: PostSimple
+summary: Play Asset Delivery (PAD) is a feature of Google Play that allows you to deliver large amounts of game assets by extending the Android App Bundle format. PAD offers flexible delivery methods, high performance, and texture compression format targeting. In this article, you will learn how to use PAD in your Unity games, using the sample project provided by the Addressables team.
+language: vn
+---
+
+# How to Use Play Asset Delivery in Unity
+
+Play Asset Delivery (PAD) is a Google Play feature that delivers large game assets via the Android App Bundle format. It provides flexible delivery, high performance, and texture compression targeting. This guide will show you how to implement PAD in Unity games using a sample project from the Addressables team.
+
+## What is Play Asset Delivery?
+
+Play Asset Delivery (PAD) is a feature of the Android App Bundle (AAB) that allows apps to exceed Google Play's 150MB size limit. It stores extra assets like textures and sounds in asset packs on Google Play, eliminating the need for a separate content delivery network. With Texture Compression Format Targeting, PAD can include multiple versions of texture assets and only download the format suitable for a specific device, optimizing install size.
+
+## How to Set Up Play Asset Delivery in Unity
+
+### Install the Addressables package and the Play Asset Delivery Unity Plugin
+
+To set up the Addressables package and the Play Asset Delivery Unity Plugin, follow these steps:
+
+1. Open Unity's Package Manager and install the Addressables package.
+2. Download the latest release of the Play Asset Delivery Unity Plugin from GitHub. Remember, by using this, you agree to the Play Core SDK Terms of Service.
+3. Import the downloaded plugin into your Unity project:
+   - Go to Assets > Import Package > Custom Package.
+   - Select the plugin file and click Open.
+   - Ensure all items are selected in the Import Unity Package window and click Import.
+
+### Create asset packs for your Addressable groups
+
+To create asset packs for your Addressable groups in Unity using Play Asset Delivery (PAD), follow these steps:
+
+1. Open the Asset Pack Browser window (Window > Google > Play Asset Delivery > Asset Pack Browser).
+2. Click 'Create' to make a new asset pack. Name it and choose a delivery mode (install-time, fast-follow, or on-demand).
+3. Drag and drop Addressable groups from the Addressables Groups window to the Asset Pack Browser, or right-click an Addressable group and select Google > Play Asset Delivery > Add to asset pack.
+4. To remove groups, select them in the Asset Pack Browser and press Delete, or right-click and select Google > Play Asset Delivery > Remove from asset pack.
+
+This window also allows you to view, edit, and build asset packs.
+
+### Configure the custom scripts for loading and accessing asset packs
+
+To use the Play Asset Delivery Unity Plugin's custom scripts for loading and accessing asset packs at runtime, follow these steps:
+
+1. Add library.
+
+```csharp
+using Google.Play.AssetDelivery;
+```
+
+2. Request an asset pack.
+
+```csharp
+Task<AssetPack> requestTask = PlayAssetDelivery.RequestAssetPackAsync("level1");
+```
+
+3. Check the request status.
+
+```csharp
+try
+{
+    AssetPack assetPack = await requestTask;
+    Debug.Log("Asset pack " + assetPack.Name + " status: " + assetPack.Status);
+}
+catch (Exception e)
+{
+    Debug.LogError("Asset pack request failed: " + e.Message);
+}
+```
+
+4. Download the asset pack.
+
+```csharp
+Task<AssetPack> downloadTask = PlayAssetDelivery.DownloadAssetPackAsync("level1");
+```
+
+5. Check the download progress.
+
+```csharp
+try
+{
+    AssetPack assetPack = await downloadTask;
+    Debug.Log("Asset pack " + assetPack.Name + " progress: " + downloadTask.Progress);
+    Debug.Log("Asset pack " + assetPack.Name + " status: " + assetPack.Status);
+}
+catch (Exception e)
+{
+    Debug.LogError("Asset pack download failed: " + e.Message);
+}
+```
+
+6. Access the assets and AssetBundles from the asset pack.
+
+```csharp
+AssetLocation assetLocation = assetPack.GetAssetLocation("level1");
+AssetBundle assetBundle = assetPack.GetAssetBundle(assetLocation);
+```
+
+7. Load assets from the AssetBundle.
+
+```csharp
+GameObject player = assetBundle.LoadAsset<GameObject>("Player");
+```
+
+8. Unload the AssetBundle to free up memory.
+
+```csharp
+assetBundle.Unload(true);
+```
+
+Remember to handle exceptions and errors appropriately.
+
+## How to Test Play Asset Delivery in Unity
+
+To test PAD in Unity, you need to build your project as an AAB and install it on your device. You can also upload your AAB to Google Play and test it as an internal test track.
+
+### Build and install your project as an AAB
+
+To build and install your project as an Android App Bundle (AAB), follow these steps:
+
+1. Build the AAB:
+
+   - Select Android as the platform in File > Build Settings.
+   - In Player Settings, check 'Build App Bundle (Google Play)' and uncheck 'Split Application Binary'.
+   - Click 'Build' and choose a location for the AAB file.
+
+2. Install the AAB using the bundletool command-line tool:
+   - Connect your device to your computer and enable USB debugging.
+   - Navigate to the folder where you downloaded bundletool.
+   - Generate an APK set archive with the command:
+
+```bash
+java -jar bundletool.jar build-apks --bundle=path/to/your/aab/file --output=path/to/your/apks/file
+```
+
+- Install the APK set archive on your device with the command:
+
+```bash
+java -jar bundletool.jar install-apks --apks=path/to/your/apks/file
+```
+
+3. Run your app on your device and check the logcat output for any PAD-related errors or warnings.
+
+## Conclusion
+
+Play Asset Delivery (PAD) is a robust feature for delivering large game assets efficiently. With the Addressables package and the PAD Unity Plugin, you can seamlessly integrate PAD into your Unity games. You can test your PAD-enabled games locally or on Google Play to monitor their performance. We hope this guide has been helpful, and we welcome any questions or feedback. Happy coding! 😊
+
+## References
+
+1. [Unity-Technologies / Addressables-Sample](https://github.com/Unity-Technologies/Addressables-Sample)
+2. [Unity Manual / Play Asset Delivery](https://docs.unity3d.com/Manual/play-asset-delivery.html)
+3. [Addressables Document](https://docs.unity3d.com/Packages/com.unity.addressables@1.18/manual/index.html)
+4. [google/play-unity-plugins](https://github.com/google/play-unity-plugins)
