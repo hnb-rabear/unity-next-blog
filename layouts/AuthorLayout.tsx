@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
-import IconView from '@/components/icons'
+import SocialIcon from '@/components/icons'
 import Image from '@/components/Image'
 
 interface Props {
@@ -34,10 +34,10 @@ export default function AuthorLayout({ children, content }: Props) {
             <div className="text-gray-500 dark:text-gray-300">{occupation}</div>
             <div className="text-gray-500 dark:text-gray-300">{company}</div>
             <div className="flex space-x-3 pt-6">
-              {email && <IconView kind="mail" href={`mailto:${email}`} />}
-              {github && <IconView kind="github" href={github} />}
-              {linkedin && <IconView kind="linkedin" href={linkedin} />}
-              {twitter && <IconView kind="twitter" href={twitter} />}
+              {email && <SocialIcon kind="mail" href={`mailto:${email}`} />}
+              {github && <SocialIcon kind="github" href={github} />}
+              {linkedin && <SocialIcon kind="linkedin" href={linkedin} />}
+              {twitter && <SocialIcon kind="twitter" href={twitter} />}
             </div>
           </div>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
