@@ -1,25 +1,4 @@
-import { Mail, Github, Facebook, Youtube, Linkedin, Twitter, Mastodon } from './icons'
-import {
-  Python,
-  React,
-  Postgres,
-  TypeScript,
-  MongoDB,
-  FastAPI,
-  Docker,
-  PyTorch,
-  TensorFlow,
-  NextJs,
-  MySQL,
-  Java,
-  JavaScript,
-  Git,
-  Svelte,
-  Firebase,
-  Prisma,
-  Drizzle,
-} from './techIcons'
-
+import { Mail, Github, Facebook, Youtube, Linkedin, Twitter, Mastodon } from './socialIcons'
 const components = {
   mail: Mail,
   github: Github,
@@ -28,24 +7,6 @@ const components = {
   linkedin: Linkedin,
   twitter: Twitter,
   mastodon: Mastodon,
-  Python: Python,
-  React: React,
-  Postgres: Postgres,
-  TypeScript: TypeScript,
-  MongoDB: MongoDB,
-  FastAPI: FastAPI,
-  Docker: Docker,
-  PyTorch: PyTorch,
-  TensorFlow: TensorFlow,
-  NextJs: NextJs,
-  MySQL: MySQL,
-  Java: Java,
-  JavaScript: JavaScript,
-  Git: Git,
-  Svelte: Svelte,
-  Firebase: Firebase,
-  Prisma: Prisma,
-  Drizzle: Drizzle,
 }
 
 type SocialIconProps = {
@@ -54,7 +15,7 @@ type SocialIconProps = {
   size?: number
 }
 
-const IconView = ({ kind, href, size = 8 }: SocialIconProps) => {
+const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
     return null
 
@@ -75,4 +36,4 @@ const IconView = ({ kind, href, size = 8 }: SocialIconProps) => {
   )
 }
 
-export default IconView
+export default SocialIcon
