@@ -1,18 +1,18 @@
 ---
-title: UnityHeapExplorer - A Memory Profiler, Debugger, and Analyzer for Unity
+title: UnityHeapExplorer - công cụ phân tích bộ nhớ phải có cho Unity
 date: 2023-12-12
 lastmod: 2023-12-12
 tags: ['unity', 'game development', 'tools']
-images:
+images: ['/media/unity-heap-explorer-overview.png']
 draft: false
 layout: PostSimple
-summary: UnityHeapExplorer is a tool for Unity developers to profile, debug, and analyze memory usage in their games. It helps identify and fix memory leaks, fragmentation, and optimization opportunities by allowing you to take, explore, and compare memory snapshots using various methods, views, filters, metrics, and features. This guide will help you understand how to use UnityHeapExplorer to enhance your game's memory management.
+summary: UnityHeapExplorer là một công cụ không thể thiếu để phân tích sự tiêu thụ bộ nhớ khi phát triển Game với Unity. Nó giúp xác định và khắc phục các rò rỉ bộ nhớ, phân mảnh và cho phép bạn chụp lại, phân tích và so sánh các Memory Snapshot bằng nhiều phương pháp, chế độ xem, bộ lọc, số liệu và tính năng khác nhau.
 language: vn
 ---
 
 # UnityHeapExplorer: công cụ phân tích bộ nhớ Free cho Unity
 
-UnityHeapExplorer là một công cụ dành cho các nhà phát triển Unity để phân tích sự tiêu thụ bộ nhớ trong Game. Nó giúp xác định và khắc phục các rò rỉ bộ nhớ, phân mảnh và cho phép bạn chụp lại, phân tích và so sánh các Memory Snapshot bằng nhiều phương pháp, chế độ xem, bộ lọc, số liệu và tính năng khác nhau. Bài viết này sẽ giúp bạn hiểu cách sử dụng UnityHeapExplorer để cải thiện quản lý bộ nhớ trong của Game của bạn.
+UnityHeapExplorer là một công cụ không thể thiếu để phân tích sự tiêu thụ bộ nhớ khi phát triển Game với Unity. Nó giúp xác định và khắc phục các rò rỉ bộ nhớ, phân mảnh và cho phép bạn chụp lại, phân tích và so sánh các Memory Snapshot bằng nhiều phương pháp, chế độ xem, bộ lọc, số liệu và tính năng khác nhau. Bài viết này sẽ giúp bạn hiểu cách sử dụng UnityHeapExplorer để cải thiện quản lý bộ nhớ trong của Game của bạn.
 
 ## Tại sao dùng UnityHeapExplorer thay vì Unity Profiler
 
@@ -20,29 +20,34 @@ UnityHeapExplorer, một công cụ phân tích bộ nhớ chuyên dụng, tập
 
 ## Cài đặt UnityHeapExplorer
 
-1. Mở dự án Unity của bạn và điều hướng đến Window > Package Manager.
+![unity-heap-explorer]('/media/unity-heap-explorer-setup.png')
+
+1. Mở dự án Unity của bạn và điều hướng đến `Window > Package Manager`.
 2. Nhấp vào nút + ở góc trên bên trái và chọn 'Add package from git URL'.
 3. Nhập `https://github.com/pschraut/UnityHeapExplorer.git` và nhấp vào 'Add'.
 
 ## Cách sử dụng UnityHeapExplorer
 
-Để sử dụng UnityHeapExplorer, hãy vào Window > Analysis > Heap Explorer. Giao diện bao gồm:
+Để sử dụng UnityHeapExplorer, hãy vào `Window > Analysis > Heap Explorer`. Giao diện bao gồm:
 
-- Toolbar: Dùng để chụp, tải, lưu và so sánh các Memory Snapshot, và truy cập cài đặt và trợ giúp.
-- Snapshot list: Hiển thị các số liệu thống kê về bộ nhớ, như kích thước, số lượng, tỷ lệ phần trăm, và sự thay đổi của các đối tượng, loại và tham chiếu.
-- View list: Hiển thị các chế độ xem để phân tích các Memory Snapshot, như chế độ xem tóm tắt, loại, tham chiếu và bản đồ bộ nhớ.
-- View area: Hiển thị nội dung của chế độ xem được chọn, như bảng, biểu đồ và đồ thị.
+![unity-heap-explorer]('/media/unity-heap-explorer-start.png')
 
 ## Cách chụp một Memory Snapshot
 
-Để chụp một Memory Snapshot trong UnityHeapExplorer, hãy chạy Game của bạn trên Unity Editor hoặc trình chơi độc lập và nhấp vào 'Take Snapshot'. Game sẽ tạm dừng một lúc để chụp Snapshot, sau đó hiển thị trong danh sách Snapshot. Bạn cũng có thể sử dụng phím tắt hoặc một đoạn mã để chụp một Snapshot.
+Để chụp một Memory Snapshot trong UnityHeapExplorer, hãy chạy Game của bạn trên Unity Editor, trên thanh menu hãy nhấp vào `Capture > Capture and Save`, nhập tên Snapshot rồi lưu lại. Game sẽ tạm dừng một lúc để chụp Snapshot, kết quả sau đó sẽ hiển thị trong Recent List. Bạn cũng có thể chọn `Capture > Capture and Analyze` để tiến hành bước phân tích ngay mà ko cần lưu, như vậy sẽ tiết kiệm được một chút thời gian.
 
 ## Cách phân tích một Memory Snapshot
 
-Để phân tích một Memory Snapshot trong UnityHeapExplorer, hãy chọn nó từ danh sách Snapshot và chọn một chế độ xem từ danh sách chế độ xem. Có bốn chế độ xem là:
+Để phân tích một Memory Snapshot, hãy chọn nó từ danh sách Recent. Có bốn chế độ để ta có thể phân tích một Snapshot:
 
 - Chế độ xem tổng quan: Hiển thị một bảng phân tích của kích thước bộ nhớ tổng, số lượng objects, types và references. Nó cũng hiển thị 20 types và objects tiêu thụ nhiều bộ nhớ nhất.
+
+![unity-heap-explorer]('/media/unity-heap-explorer-overview.png')
+
 - Chế độ xem theo loại: Liệt kê các loại trong Snapshot, như classes, structs, enums và arrays, cùng với tên, kích thước, số lượng và tỷ lệ phần trăm của chúng. Nó cũng hiển thị các đối tượng thuộc từng loại.
+
+![unity-heap-explorer]('/media/unity-heap-explorer-types.png')
+
 - Chế độ xem tham chiếu: Hiển thị các tham chiếu trong Snapshot, bao gồm nguồn, đích và loại của mỗi tham chiếu, và đồ thị và chuỗi tham chiếu.
 - Chế độ xem bản đồ bộ nhớ: Cung cấp một biểu đồ về bố cục và phân bổ bộ nhớ, thông tin chi tiết về memory segments, memory blocks, và memory pages.
 
