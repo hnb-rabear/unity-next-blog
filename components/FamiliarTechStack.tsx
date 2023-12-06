@@ -9,7 +9,7 @@ export function FamiliarTechStack({ techStack }) {
         return (
           <div
             key={t}
-            className=":border-white flex items-center justify-center gap-2 rounded-md border bg-black p-1 px-2 text-sm font-bold text-white md:text-base"
+            className="flex items-center justify-center gap-2 rounded-sm bg-gray-700 p-1 px-2 text-sm font-bold text-gray-100 dark:bg-white dark:text-gray-700 md:text-base"
           >
             {t}
             {Icon ? <Icon /> : null}
