@@ -1,0 +1,71 @@
+---
+title: UnityHeapExplorer - công cụ phân tích bộ nhớ phải có cho Unity
+date: 2023-12-12
+lastmod: 2023-12-12
+tags: ['unity', 'game development', 'tools']
+images: ['/media/unity-heap-explorer-overview.png']
+draft: false
+layout: PostSimple
+summary: UnityHeapExplorer là một công cụ không thể thiếu để phân tích sự tiêu thụ bộ nhớ khi phát triển Game với Unity. Nó giúp xác định và khắc phục các rò rỉ bộ nhớ, phân mảnh và cho phép bạn chụp lại, phân tích và so sánh các Memory Snapshot bằng nhiều phương pháp, chế độ xem, bộ lọc, số liệu và tính năng khác nhau.
+language: vn
+---
+
+# UnityHeapExplorer: công cụ phân tích bộ nhớ Free cho Unity
+
+UnityHeapExplorer là một công cụ không thể thiếu để phân tích sự tiêu thụ bộ nhớ khi phát triển Game với Unity. Nó giúp xác định và khắc phục các rò rỉ bộ nhớ, phân mảnh và cho phép bạn chụp lại, phân tích và so sánh các Memory Snapshot bằng nhiều phương pháp, chế độ xem, bộ lọc, số liệu và tính năng khác nhau. Bài viết này sẽ giúp bạn hiểu cách sử dụng UnityHeapExplorer để cải thiện quản lý bộ nhớ trong của Game của bạn.
+
+## Tại sao dùng UnityHeapExplorer thay vì Unity Profiler
+
+UnityHeapExplorer, một công cụ phân tích bộ nhớ chuyên dụng, tập trung vào các khía cạnh bộ nhớ của Game với giao diện thân thiện với người dùng và nhiều tính năng mở rộng. Ngược lại, Unity Profiler là một công cụ phân tích hiệu năng toàn diện, bao gồm CPU, hiển thị và âm thanh, với giao diện phức tạp hơn. Như vậy, chọn UnityHeapExplorer khi cần phân tích bộ nhớ chi tiết và chọn Unity Profiler khi cần có cái nhìn tổng quan về hiệu năng.
+
+## Cài đặt UnityHeapExplorer
+
+![unity-heap-explorer]('/media/unity-heap-explorer-setup.png')
+
+1. Mở dự án Unity của bạn và điều hướng đến `Window > Package Manager`.
+2. Nhấp vào nút + ở góc trên bên trái và chọn 'Add package from git URL'.
+3. Nhập `https://github.com/pschraut/UnityHeapExplorer.git` và nhấp vào 'Add'.
+
+## Cách sử dụng UnityHeapExplorer
+
+Để sử dụng UnityHeapExplorer, hãy vào `Window > Analysis > Heap Explorer`. Giao diện bao gồm:
+
+![unity-heap-explorer]('/media/unity-heap-explorer-start.png')
+
+## Cách chụp một Memory Snapshot
+
+Để chụp một Memory Snapshot trong UnityHeapExplorer, hãy chạy Game của bạn trên Unity Editor, trên thanh menu hãy nhấp vào `Capture > Capture and Save`, nhập tên Snapshot rồi lưu lại. Game sẽ tạm dừng một lúc để chụp Snapshot, kết quả sau đó sẽ hiển thị trong Recent List. Bạn cũng có thể chọn `Capture > Capture and Analyze` để tiến hành bước phân tích ngay mà ko cần lưu, như vậy sẽ tiết kiệm được một chút thời gian.
+
+## Cách phân tích một Memory Snapshot
+
+Để phân tích một Memory Snapshot, hãy chọn nó từ danh sách Recent. Có bốn chế độ để ta có thể phân tích một Snapshot:
+
+- Chế độ xem tổng quan: Hiển thị một bảng phân tích của kích thước bộ nhớ tổng, số lượng objects, types và references. Nó cũng hiển thị 20 types và objects tiêu thụ nhiều bộ nhớ nhất.
+
+![unity-heap-explorer]('/media/unity-heap-explorer-overview.png')
+
+- Chế độ xem theo loại: Liệt kê các loại trong Snapshot, như classes, structs, enums và arrays, cùng với tên, kích thước, số lượng và tỷ lệ phần trăm của chúng. Nó cũng hiển thị các đối tượng thuộc từng loại.
+
+![unity-heap-explorer]('/media/unity-heap-explorer-types.png')
+
+- Chế độ xem tham chiếu: Hiển thị các tham chiếu trong Snapshot, bao gồm nguồn, đích và loại của mỗi tham chiếu, và đồ thị và chuỗi tham chiếu.
+- Chế độ xem bản đồ bộ nhớ: Cung cấp một biểu đồ về bố cục và phân bổ bộ nhớ, thông tin chi tiết về memory segments, memory blocks, và memory pages.
+
+## Cách so sánh các Memory Snapshot
+
+Để so sánh các Memory Snapshot trong UnityHeapExplorer, hãy chọn hai Snapshot từ danh sách và nhấp vào 'Compare'. Giao diện so sánh bao gồm:
+
+- Thanh công cụ so sánh: Chuyển đổi giữa các chế độ so sánh (delta, intersection, union) và xem số liệu thống kê so sánh.
+- Danh sách chế độ xem so sánh: Chọn từ các chế độ xem như tóm tắt, loại, tham chiếu và bản đồ bộ nhớ để so sánh các Snapshot.
+- Khu vực chế độ xem so sánh: Hiển thị nội dung của chế độ xem được chọn.
+
+Các chế độ so sánh là:
+
+- Chế độ delta: Hiển thị sự khác biệt giữa các Snapshot, bao gồm các đối tượng, loại và tham chiếu được thêm, bớt hoặc thay đổi.
+- Chế độ intersection (giao): Hiển thị các phần tử chung giữa các Snapshot.
+- Chế độ union (hợp): Hiển thị sự kết hợp của các Snapshot.
+
+## Nguồn
+
+(1) [Document](http://console-dev.de/post/heap-explorer-source-code-released/)<br/>
+(2) [GitHub](https://github.com/pschraut/UnityHeapExplorer.git)
