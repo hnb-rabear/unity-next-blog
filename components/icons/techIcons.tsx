@@ -10,8 +10,8 @@ export function Python() {
         y2="1151.089"
         gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"
       >
-        <stop offset="0" stop-color="#5A9FD4"></stop>
-        <stop offset="1" stop-color="#306998"></stop>
+        <stop offset="0" stopColor="#5A9FD4"></stop>
+        <stop offset="1" stopColor="#306998"></stop>
       </linearGradient>
       <linearGradient
         id="python-original-b"
@@ -22,8 +22,8 @@ export function Python() {
         y2="1149.537"
         gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"
       >
-        <stop offset="0" stop-color="#FFD43B"></stop>
-        <stop offset="1" stop-color="#FFE873"></stop>
+        <stop offset="0" stopColor="#FFD43B"></stop>
+        <stop offset="1" stopColor="#FFE873"></stop>
       </linearGradient>
       <path
         fill="url(#python-original-a)"
@@ -43,8 +43,8 @@ export function Python() {
         gradientTransform="matrix(0 -.24 -1.055 0 532.979 557.576)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#B8B8B8" stop-opacity=".498"></stop>
-        <stop offset="1" stop-color="#7F7F7F" stop-opacity="0"></stop>
+        <stop offset="0" stopColor="#B8B8B8" stop-opacity=".498"></stop>
+        <stop offset="1" stopColor="#7F7F7F" stop-opacity="0"></stop>
       </radialGradient>
       <path
         opacity=".444"
@@ -482,8 +482,8 @@ export const Prisma = () => {
         width={24}
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M2.39749 123.367C0.476293 126.5 0.506027 130.455 2.47414 133.559L38.0964 189.752C40.4083 193.399 44.8647 195.062 49.0006 193.821L151.798 162.982C157.408 161.299 160.23 155.041 157.778 149.722L91.6953 6.37265C88.4726 -0.618156 78.7573 -1.19199 74.734 5.37082L2.39749 123.367ZM89.9395 39.1438C88.535 35.8938 83.7788 36.3944 83.0817 39.8656L57.64 166.544C57.1035 169.215 59.6044 171.496 62.215 170.717L133.24 149.515C135.313 148.897 136.381 146.607 135.522 144.621L89.9395 39.1438Z"
           fill="white"
         />
@@ -542,14 +542,14 @@ export const Unity = () => {
       <polygon
         fill="none"
         stroke="#000"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         points="20.126,12.934 32.738,9.771 25.483,22.002 10.975,22.002"
         opacity=".07"
       />
       <polygon
         fill="none"
         stroke="#1d1d1b"
-        stroke-width="2"
+        strokeWidth="2"
         points="20.126,12.934 32.738,9.771 25.483,22.002 10.975,22.002"
         opacity=".05"
       />
@@ -562,21 +562,21 @@ export const Unity = () => {
       <polygon
         fill="none"
         stroke="#000"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         points="36.272,36.185 29.029,24.001 36.272,11.78 39.774,24.001"
         opacity=".07"
       />
       <polygon
         fill="none"
         stroke="#000"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         points="20.126,34.994 11.012,26.003 25.52,26.003 32.775,38.156"
         opacity=".07"
       />
       <polygon
         fill="none"
         stroke="#1d1d1b"
-        stroke-width="2"
+        strokeWidth="2"
         points="36.272,36.185 29.029,24.001 36.272,11.78 39.774,24.001"
         opacity=".05"
       />
@@ -590,7 +590,7 @@ export const Unity = () => {
         <polygon
           fill="none"
           stroke="#1d1d1b"
-          stroke-width="2"
+          strokeWidth="2"
           points="20.126,34.994 11.012,26.003 25.52,26.003 32.775,38.156"
           opacity=".05"
         />
@@ -609,8 +609,8 @@ export const Unity = () => {
         y2="45.892"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#636363" />
-        <stop offset="1" stop-color="#444" />
+        <stop offset="0" stopColor="#636363" />
+        <stop offset="1" stopColor="#444" />
       </linearGradient>
       <path
         fill="url(#_SHrDBwHedFQ~y1bkV39Ka)"
@@ -626,7 +626,7 @@ export const CSharp = () => {
       viewBox="0 0 48 48"
       width="28px"
       height="28px"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     >
       <linearGradient
         id="I7Vs8jY1D20h9XOqJ6Dbaa"
@@ -636,14 +636,14 @@ export const CSharp = () => {
         y2="30.068"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#889097" />
-        <stop offset="1" stop-color="#4c5963" />
+        <stop offset="0" stopColor="#889097" />
+        <stop offset="1" stopColor="#4c5963" />
       </linearGradient>
       <path
         fill="url(#I7Vs8jY1D20h9XOqJ6Dbaa)"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M22.903,3.286c0.679-0.381,1.515-0.381,2.193,0	c3.355,1.883,13.451,7.551,16.807,9.434C42.582,13.1,43,13.804,43,14.566c0,3.766,0,15.101,0,18.867	c0,0.762-0.418,1.466-1.097,1.847c-3.355,1.883-13.451,7.551-16.807,9.434c-0.679,0.381-1.515,0.381-2.193,0	c-3.355-1.883-13.451-7.551-16.807-9.434C5.418,34.899,5,34.196,5,33.434c0-3.766,0-15.101,0-18.867	c0-0.762,0.418-1.466,1.097-1.847C9.451,10.837,19.549,5.169,22.903,3.286z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
       <linearGradient
         id="I7Vs8jY1D20h9XOqJ6Dbab"
@@ -653,20 +653,20 @@ export const CSharp = () => {
         y2="59.147"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#889097" />
-        <stop offset="1" stop-color="#4c5963" />
+        <stop offset="0" stopColor="#889097" />
+        <stop offset="1" stopColor="#4c5963" />
       </linearGradient>
       <path
         fill="url(#I7Vs8jY1D20h9XOqJ6Dbab)"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M5.304,34.404C5.038,34.048,5,33.71,5,33.255c0-3.744,0-15.014,0-18.759c0-0.758,0.417-1.458,1.094-1.836	c3.343-1.872,13.405-7.507,16.748-9.38c0.677-0.379,1.594-0.371,2.271,0.008c3.343,1.872,13.371,7.459,16.714,9.331	c0.27,0.152,0.476,0.335,0.66,0.576L5.304,34.404z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
       <path
         fill="#fff"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M24,10c7.727,0,14,6.273,14,14s-6.273,14-14,14s-14-6.273-14-14	S16.273,10,24,10z M24,17c3.863,0,7,3.136,7,7c0,3.863-3.137,7-7,7s-7-3.137-7-7C17,20.136,20.136,17,24,17z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
       <linearGradient
         id="I7Vs8jY1D20h9XOqJ6Dbac"
@@ -676,14 +676,14 @@ export const CSharp = () => {
         y2="44.566"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#889097" />
-        <stop offset="1" stop-color="#4c5963" />
+        <stop offset="0" stopColor="#889097" />
+        <stop offset="1" stopColor="#4c5963" />
       </linearGradient>
       <path
         fill="url(#I7Vs8jY1D20h9XOqJ6Dbac)"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M42.485,13.205c0.516,0.483,0.506,1.211,0.506,1.784c0,3.795-0.032,14.589,0.009,18.384c0.004,0.396-0.127,0.813-0.323,1.127	L23.593,24L42.485,13.205z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
       <path
         d="M38,20v2h2v1h-2v2h2v1h-2v2h-1v-2h-2v2h-1v-2h-2v-1h2v-2h-2v-1h2v-2h1v2h2v-2H38 M35,25h2v-2h-2V25 M39,19h-1h-1h-1h-1h-1 h-1v1v1h-1h-1v1v1v1v1v1v1h1h1v1v1h1h1h1v-1v-1v1v1h1h1h1v-1v-1h1h1v-1v-1v-1h-1h-1h1h1v-1v-1v-1h-1h-1v-1V19L39,19z"
@@ -745,7 +745,7 @@ export const PHP = () => {
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMinYMin meet"
     >
-      <g fill-rule="evenodd">
+      <g fillRule="evenodd">
         <ellipse fill="#8993BE" cx="128" cy="66.63" rx="128" ry="66.63" />
 
         <path
@@ -877,8 +877,8 @@ export const Tailwind = () => {
         y2="36.552"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#00c1e0" />
-        <stop offset="1" stop-color="#009bb8" />
+        <stop offset="0" stopColor="#00c1e0" />
+        <stop offset="1" stopColor="#009bb8" />
       </linearGradient>
       <path
         fill="url(#iOmQfjoCC4Hw6zVwRjSDha)"
