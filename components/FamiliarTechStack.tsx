@@ -10,6 +10,9 @@ export function FamiliarTechStack({ techStack }) {
             className=":border-white flex items-center justify-center gap-2 rounded-md border bg-black p-1 px-2 text-sm font-bold text-white md:text-base"
           >
             {t}
+            <div>
+              <IconView kind="mail" href="#" size={2} />
+            </div>
           </div>
         )
       })}
