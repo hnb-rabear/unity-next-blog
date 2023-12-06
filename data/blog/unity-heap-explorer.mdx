@@ -1,73 +1,68 @@
 ---
-title: UnityHeapExplorer - A Memory Profiler, Debugger, and Analyzer for Unity
+title: UnityHeapExplorer - The Ultimate Memory Profiling Tool for Unity Developers
 date: 2023-12-12
 lastmod: 2023-12-12
 tags: ['unity', 'game development', 'tools']
-images:
+images: ['/media/unity-heap-explorer-overview.png']
 draft: true
 layout: PostSimple
-summary: UnityHeapExplorer is a tool for Unity developers to profile, debug, and analyze memory usage in their games. It helps identify and fix memory leaks, fragmentation, and optimization opportunities by allowing you to take, explore, and compare memory snapshots using various methods, views, filters, metrics, and features. This guide will help you understand how to use UnityHeapExplorer to enhance your game's memory management.
-language: vn
+summary: Unity Heap Explorer is a great tool for Unity developers who want to improve their memory management skills and optimize their projects. It can help you identify and fix memory leaks, reduce memory fragmentation, and find memory optimization opportunities. It can also help you learn more about how Unity works under the hood and how it handles memory allocation and garbage collection.
+language: en
 ---
 
-# How to Use UnityHeapExplorer: A Memory Profiler, Debugger, and Analyzer for Unity
+# What is Unity Heap Explorer and How to Use It for Memory Profiling
 
-UnityHeapExplorer is a tool for Unity developers to profile, debug, and analyze memory usage in their games. It helps identify and fix memory leaks, fragmentation, and optimization opportunities by allowing you to take, explore, and compare memory snapshots using various methods, views, filters, metrics, and features. This guide will help you understand how to use UnityHeapExplorer to enhance your game's memory management.
+Memory management is one of the most important aspects of developing games and applications with Unity. Memory leaks, memory fragmentation, and memory optimization are some of the common challenges that Unity developers face. To address these challenges, Unity provides a built-in Memory Profiler that allows you to inspect the memory usage of your project and find potential issues. However, the Memory Profiler has some limitations and drawbacks, such as:
 
-## Why choose UnityHeapExplorer over Unity Profiler
+- It only shows the memory usage of the current scene, not the entire project.
+- It does not provide a clear and intuitive user interface to navigate and analyze the memory data.
+- It does not support comparing memory snapshots or finding duplicate objects.
+- It does not provide any debugging or analysis features for C# objects and delegates.
 
-UnityHeapExplorer, a dedicated memory profiler, focuses on game memory aspects with a user-friendly interface and extensive features. In contrast, Unity Profiler is a comprehensive performance profiler, covering CPU, rendering, and audio, with a more complex interface. Choose UnityHeapExplorer for detailed memory analysis and Unity Profiler for a holistic performance overview.
+If you are looking for a more powerful and user-friendly tool to profile, debug, and analyze memory snapshots of your Unity games and applications, you might want to check out Unity Heap Explorer. Unity Heap Explorer is a free and open-source tool developed by Peter Schraut, a veteran game developer and former Unity employee. Unity Heap Explorer is a Memory Profiler, Debugger, and Analyzer for Unity 2019.3 and newer versions. It has the following features and benefits:
 
-## How to Install UnityHeapExplorer
+- It can capture memory snapshots of the entire project, not just the current scene.
+- It provides a simple and elegant user interface to explore and visualize the memory data.
+- It supports comparing memory snapshots and finding duplicate objects, both native and managed.
+- It provides a comprehensive and detailed view of C# objects, including their references, paths to root, delegates, delegate targets, static fields, memory sections, and empty shell objects.
+- It allows you to search for objects by name, type, size, or address, and filter them by various criteria.
+- It integrates with Unity's Test Framework and allows you to enable Heap Explorer tests.
 
-To install UnityHeapExplorer for Unity 2019.3 or newer, follow these steps:
+Unity Heap Explorer is a great tool for Unity developers who want to improve their memory management skills and optimize their projects. It can help you identify and fix memory leaks, reduce memory fragmentation, and find memory optimization opportunities. It can also help you learn more about how Unity works under the hood and how it handles memory allocation and garbage collection.
+
+## Installation
 
 1. Open your Unity project and navigate to Window > Package Manager.
 2. Click the + button at the top left corner and select 'Add package from git URL'.
 3. Enter `https://github.com/pschraut/UnityHeapExplorer.git` and click 'Add'.
 4. Wait for the package to download and import into your project.
 
-## How to Use UnityHeapExplorer
+## Using UnityHeapExplorer for Memory Profiling
 
-To use UnityHeapExplorer, go to Window > Analysis > Heap Explorer. The interface includes:
+**Capturing a Memory Snapshot**
 
-- Toolbar: For taking, loading, saving, and comparing memory snapshots, and accessing settings and help.
-- Snapshot list: Displays the memory snapshots you've taken or loaded, with details and statistics.
-- View list: Shows the views for exploring memory snapshots, such as summary, type, reference, and memory map views.
-- View area: Displays the content of the selected view, like tables, charts, and graphs.
+- With UnityHeapExplorer installed, you can capture a memory snapshot by opening the tool from "Window > Analysis > Heap Explorer".
+- Inside the Heap Explorer window, you'll find the "Capture Snapshot" button. Clicking this will pause your game and take a snapshot of the memory at that moment.
 
-## How to Take a Memory Snapshot
+**Analyzing Memory Data**
 
-To capture a memory snapshot in UnityHeapExplorer, run your game in the editor or standalone player and click 'Take Snapshot'. This pauses the game and captures the snapshot, which is then displayed in the snapshot list. You can also use a keyboard shortcut, a script, or a command-line argument to take a snapshot.
+- The Heap Explorer window provides a variety of tabs and panels, each offering different ways to view and analyze the captured memory data.
+- You can explore C# objects, their references, and paths to root, among other things. The tool also allows you to compare memory snapshots, search for specific objects, and filter results based on various criteria.
 
-## How to Explore a Memory Snapshot
+**Snapshot Comparison**
 
-To analyze a memory snapshot in UnityHeapExplorer, select it from the snapshot list and choose a view from the view list. The four views are:
+- To track changes in memory usage over time, you can capture multiple snapshots and use the comparison feature within UnityHeapExplorer.
+- This feature helps you identify new objects, released objects, and any changes in memory allocation between two snapshots.
 
-- Summary view: Displays a breakdown of the total memory size, number of objects, types, and references. It also shows the top 10 types and objects consuming the most memory.
-- Type view: Lists the types in the snapshot, such as classes, structs, enums, and arrays, along with their name, size, count, and percentage. It also shows the objects belonging to each type.
-- Reference view: Shows the references in the snapshot, including source, target, and type of each reference, and the reference graph and chain.
-- Memory map view: Provides a graphical representation of the memory layout and allocation, with details on memory segments, blocks, and pages.
+**Integration with Unity's Test Framework**
 
-## How to Compare Memory Snapshots
-
-To compare memory snapshots in UnityHeapExplorer, select two snapshots from the list and click 'Compare'. The comparison interface includes:
-
-- Comparison toolbar: Switch between comparison modes (delta, intersection, union) and view comparison statistics.
-- Comparison view list: Choose from views like summary, type, reference, and memory map to compare snapshots.
-- Comparison view area: Displays the content of the selected view.
-
-The comparison modes are:
-
-- Delta mode: Shows the difference between snapshots, including added, removed, and changed objects, types, and references.
-- Intersection mode: Shows common elements between snapshots.
-- Union mode: Shows the combination of snapshots.
+- UnityHeapExplorer can be integrated with Unity's Test Framework, enabling automated testing related to memory usage.
+- To enable Heap Explorer tests, you need to have the Test Framework package installed and set the `HEAPEXPLORER_ENABLE_TESTS` define in your project settings or a `csc.rsp` file.
 
 ## Conclusion
 
-UnityHeapExplorer is a tool for profiling, debugging, and analyzing memory snapshots of Unity games. It enables you to capture, explore, and compare memory snapshots using various methods, views, filters, and metrics. This guide aims to help you understand how to use UnityHeapExplorer to enhance your game's memory management. We welcome any questions or feedback. Happy coding! 😊
+UnityHeapExplorer is an essential tool for any Unity developer looking to improve memory management and optimize performance. With its advanced features and user-friendly interface, it provides a level of insight that goes beyond what Unity's built-in Memory Profiler offers. By making UnityHeapExplorer available as an open-source project, Peter Schraut has contributed a valuable resource to the Unity development community. To start using UnityHeapExplorer in your projects, visit the GitHub repository and follow the installation instructions provided¹.
 
-## References
+---
 
-(1) [Document](http://console-dev.de/post/heap-explorer-source-code-released/)<br/>
-(2) [GitHub](https://github.com/pschraut/UnityHeapExplorer.git)
+For more details and updates, please refer to the [official repository](https://github.com/pschraut/UnityHeapExplorer).
