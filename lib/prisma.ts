@@ -20,8 +20,9 @@ export async function deletePost(slug: string) {
 }
 
 export async function getTotalViews(slug: string) {
+    let result;
     if (slug)
-        return await prisma.blogPost.aggregate({
+        result = await prisma.blogPost.aggregate({
             _sum: {
                 views: true,
             },
@@ -30,11 +31,13 @@ export async function getTotalViews(slug: string) {
             },
         });
     else
-        return await prisma.blogPost.aggregate({
+        result = await prisma.blogPost.aggregate({
             _sum: {
                 views: true,
             },
         });
+    const totalViews = result._sum?.views ?? 0;
+    return totalViews;
 }
 
 export async function getTotalUpvotes(slug: string): Promise<number> {
@@ -54,9 +57,13 @@ export async function getTotalUpvotes(slug: string): Promise<number> {
 }
 
 export async function viewPost(slug: string) {
-    return await prisma.blogPost.update({
+    return await prisma.blogPost.upsert({
         where: { slug },
-        data: {
+        create: {
+            slug: slug,
+            views: 1,
+        },
+        update: {
             views: {
                 increment: 1,
             },
@@ -69,39 +76,22 @@ export async function upvotePost(slug: string, ipAddress: string) {
         where: { slug_ipAddress: { slug: slug, ipAddress } },
     });
 
-    if (!existingUpvote) {
-
-        // await prisma.upvote.create({
-        //     data: {
-        //         slug: slug,
-        //         ipAddress,
-        //     },
-        // });
-
-        // return await prisma.blogPost.update({
-        //     where: { slug },
-        //     data: {
-        //         upvotes: {
-        //             increment: 1,
-        //         },
-        //     },
-        // });
-
-        const result = await prisma.blogPost.upsert({
-            where: { slug },
-            create: {
-                slug: slug,
-                ipAddress,
-                upvotes: 1,
-            },
-            update: {
-                upvotes: {
-                    increment: 1,
-                },
-            },
-        });
-        return result;
-    } else {
+    if (existingUpvote) {
         throw new Error("This IP address has already upvoted this post.");
     }
+
+    const result = await prisma.blogPost.upsert({
+        where: { slug },
+        create: {
+            slug: slug,
+            ipAddress,
+            upvotes: 1,
+        },
+        update: {
+            upvotes: {
+                increment: 1,
+            },
+        },
+    });
+    return result;
 }
