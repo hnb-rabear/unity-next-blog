@@ -43,32 +43,43 @@ class SessionManager {
     }
 
     private saveSessionData(): void {
-        localStorage.setItem(sessionDataKey, JSON.stringify(this.data));
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem(sessionDataKey, JSON.stringify(this.data));
+        }
     }
 
     private loadSessionData(): Record<string, any> {
-        const sessionData = localStorage.getItem(sessionDataKey);
-        return sessionData ? JSON.parse(sessionData) : {};
+        if (typeof localStorage !== 'undefined') {
+            const sessionData = localStorage.getItem(sessionDataKey);
+            return sessionData ? JSON.parse(sessionData) : {};
+        }
+        return {};
     }
 
     private saveExpirationTime(): void {
-        localStorage.setItem(expirationTimeKey, JSON.stringify(this.expirationTime));
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem(expirationTimeKey, JSON.stringify(this.expirationTime));
+        }
     }
 
     private loadExpirationTime(): number {
-        const expirationTime = localStorage.getItem(expirationTimeKey);
-        if (expirationTime) {
-            const time = JSON.parse(expirationTime);
-            if (time <= Date.now()) {
-                this.clearSessionData();
+        if (typeof localStorage !== 'undefined') {
+            const expirationTime = localStorage.getItem(expirationTimeKey);
+            if (expirationTime) {
+                const time = JSON.parse(expirationTime);
+                if (time <= Date.now()) {
+                    this.clearSessionData();
+                }
+                return time;
             }
-            return time;
         }
         return Date.now() + sessionLength * 1000;
     }
 
     private clearSessionData(): void {
-        localStorage.removeItem(sessionDataKey);
+        if (typeof localStorage !== 'undefined') {
+            localStorage.removeItem(sessionDataKey);
+        }
     }
 }
 
