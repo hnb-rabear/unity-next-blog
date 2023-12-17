@@ -19,7 +19,7 @@ export async function deletePost(slug: string) {
     return await prisma.blogPost.delete({ where: { slug } });
 }
 
-export async function getTotalViews(slug: string) {
+export async function getTotalViews(slug: string): Promise<number> {
     let result;
     if (slug)
         result = await prisma.blogPost.aggregate({

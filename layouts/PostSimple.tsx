@@ -8,6 +8,10 @@ import PageTitle from '@/components/PageTitle';
 import SectionContainer from '@/components/SectionContainer';
 import siteMetadata from '@/data/siteMetadata';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
+import { getTotalViewsAction } from 'app/blog/[...slug]/actions';
+import { FaEye } from 'react-icons/fa';
+import PostStats from '@/components/PostStats';
+import SessionManager from 'lib/sessionManager';
 
 interface LayoutProps {
     content: CoreContent<Blog>;
@@ -16,11 +20,12 @@ interface LayoutProps {
     prev?: { path: string; title: string; };
 }
 
-export default function PostLayout({ content, next, prev, children }: LayoutProps) {
+export default async function PostLayout({ content, next, prev, children }: LayoutProps) {
     const { path, slug, date, title } = content;
-
+    const viewCount = await getTotalViewsAction(slug);
     return (
         <SectionContainer>
+            <PostStats slug={slug} />
             <ScrollTopAndComment />
             <article>
                 <div>
@@ -30,7 +35,10 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                                 <div>
                                     <dt className="sr-only">Published on</dt>
                                     <dd className="text-base font-medium leading-6 text-gray-600 dark:text-gray-300">
-                                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                                        <span className='flex flex-row justify-center'>
+                                            <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                                            <FaEye className='ml-3 w-6 h-6 pb-[2px] mr-1' />{viewCount}
+                                        </span>
                                     </dd>
                                 </div>
                             </dl>

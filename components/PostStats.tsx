@@ -1,23 +1,39 @@
 'use client';
 
-import { getTotalViewsAction, viewPostAction } from "app/blog/[...slug]/actions";
+import { viewPostAction } from "app/blog/[...slug]/actions";
 import { useEffect, useState } from "react";
+import SessionManager from "../lib/sessionManager";
 
 function PostStats({ slug }) {
-    const [viewCount, setViewCount] = useState(0);
+    const sessionManager = SessionManager.getInstance();
+
+    const updateViewPostCache = () => {
+        const temp = sessionManager.get('viewPostCache');
+        let viewPostCache = temp ? JSON.parse(temp) : {};
+
+        if (!viewPostCache[slug]) {
+            viewPostAction(slug);
+
+            viewPostCache[slug] = true;
+            sessionManager.set('viewPostCache', JSON.stringify(viewPostCache));
+        }
+    };
 
     useEffect(() => {
-        getTotalViewsAction(slug).then(setViewCount);
-    });
-
-    useEffect(() => {
-        viewPostAction(slug);
+        updateViewPostCache();
     }, [slug]);
 
+    useEffect(() => {
+        if (sessionManager.hasExpired()) {
+            sessionManager.clear();
+            return;
+        }
+    }, []);
+    const expirationTime = new Date(SessionManager.getInstance().expirationTime).toLocaleString();
+    console.log("session expiration time: ", expirationTime);
+
     return (
-        <div>
-            <p>View Count: {viewCount}</p>
-        </div>
+        <></>
     );
 }
 export default PostStats;
