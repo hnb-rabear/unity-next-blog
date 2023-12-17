@@ -1,3 +1,5 @@
+'use client';
+
 const sessionLength: number = 12 * 60 * 60; // 12 hours
 const expirationTimeKey = 'expirationTime';
 const sessionDataKey = 'sessionData';
