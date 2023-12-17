@@ -2,24 +2,26 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
-model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  slug      String   @unique
-  likes     Int      @default(0)
-  views     Int      @default(0)
+model BlogPost {
+    id      Int      @id @default(autoincrement())
+    slug    String   @unique
+    views   Int      @default(0)
+    upvotes Int      @default(0)
+    Upvote  Upvote[]
 }
 
-model Session {
-  id        String   @id
-  createdAt DateTime @default(now())
-  likes     Int      @default(0)
+model Upvote {
+    slug      String
+    ipAddress String
+    post      BlogPost @relation(fields: [slug], references: [slug])
+
+    @@id([slug, ipAddress])
 }
