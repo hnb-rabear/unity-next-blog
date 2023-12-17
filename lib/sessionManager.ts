@@ -68,9 +68,12 @@ class SessionManager {
             if (expirationTime) {
                 const time = JSON.parse(expirationTime);
                 if (time <= Date.now()) {
-                    this.clearSessionData();
+                    this.clear();
                 }
                 return time;
+            }
+            else {
+                this.clear();
             }
         }
         return Date.now() + sessionLength * 1000;
