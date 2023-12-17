@@ -11,7 +11,6 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import { getTotalViewsAction } from 'app/blog/[...slug]/actions';
 import { FaEye } from 'react-icons/fa';
 import PostStats from '@/components/PostStats';
-import SessionManager from 'lib/sessionManager';
 
 interface LayoutProps {
     content: CoreContent<Blog>;
