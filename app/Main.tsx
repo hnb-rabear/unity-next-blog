@@ -1,15 +1,17 @@
-import Link from '@/components/Link'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import { formatDate } from 'pliny/utils/formatDate'
-import NewsletterForm from 'pliny/ui/NewsletterForm'
-import Image from 'next/image'
+import Link from '@/components/Link';
+import Tag from '@/components/Tag';
+import siteMetadata from '@/data/siteMetadata';
+import { formatDate } from 'pliny/utils/formatDate';
+import NewsletterForm from 'pliny/ui/NewsletterForm';
+import Image from 'next/image';
+import PostStats from '@/components/PostStats';
 
-const MAX_DISPLAY = 5
+const MAX_DISPLAY = 5;
 
 export default function Home({ posts }) {
   return (
     <>
+      <PostStats slug='home' />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
@@ -22,7 +24,7 @@ export default function Home({ posts }) {
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags } = post
+            const { slug, date, title, summary, tags } = post;
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -77,7 +79,7 @@ export default function Home({ posts }) {
                   </div>
                 </article>
               </li>
-            )
+            );
           })}
         </ul>
       </div>
@@ -98,5 +100,5 @@ export default function Home({ posts }) {
         </div>
       )}
     </>
-  )
+  );
 }
