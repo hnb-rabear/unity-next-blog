@@ -1,7 +1,7 @@
 'use server';
 
 
-import { getTotalViews, viewPost } from "lib/prisma";
+import { getTotalViews, viewPost } from "lib/post";
 
 export async function viewPostAction(slug: string) {
     return await viewPost(slug);

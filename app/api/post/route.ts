@@ -1,4 +1,4 @@
-import { createPost, deletePost, getPost, getPosts, getTotalUpvotes, getTotalViews, upvotePost, viewPost } from "lib/prisma";
+import { createPost, deletePost, getPost, getPosts, getTotalUpvotes, getTotalViews, upvotePost, viewPost } from "lib/post";
 import { NextRequest, NextResponse } from "next/server";
 
 

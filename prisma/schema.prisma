@@ -11,17 +11,13 @@ datasource db {
 }
 
 model BlogPost {
-    id      Int      @id @default(autoincrement())
-    slug    String   @unique
-    views   Int      @default(0)
-    upvotes Int      @default(0)
-    Upvote  Upvote[]
+    id      Int    @id @default(autoincrement())
+    slug    String @unique
+    views   Int    @default(0)
+    upvotes Int    @default(0)
 }
 
-model Upvote {
-    slug      String
-    ipAddress String
-    post      BlogPost @relation(fields: [slug], references: [slug])
-
-    @@id([slug, ipAddress])
+model Visitor {
+    ip        String @unique
+    userAgent String
 }
