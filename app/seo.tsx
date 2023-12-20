@@ -10,21 +10,27 @@ interface PageSEOProps {
 }
 
 export function genPageMetadata({ title, description, image, ...rest }: PageSEOProps): Metadata {
+  const openGraphTitle = `${title} | ${siteMetadata.title}`
+  const openGraphDescription = description || siteMetadata.description
+  const openGraphImages = image ? [image] : [siteMetadata.socialBanner]
+  const twitterTitle = `${title} | ${siteMetadata.title}`
+  const twitterImages = image ? [image] : [siteMetadata.socialBanner]
+
   return {
     title,
     openGraph: {
-      title: `${title} | ${siteMetadata.title}`,
-      description: description || siteMetadata.description,
+      title: openGraphTitle,
+      description: openGraphDescription,
       url: './',
       siteName: siteMetadata.title,
-      images: image ? [image] : [siteMetadata.socialBanner],
+      images: openGraphImages,
       locale: 'en_US',
       type: 'website',
     },
     twitter: {
-      title: `${title} | ${siteMetadata.title}`,
+      title: twitterTitle,
       card: 'summary_large_image',
-      images: image ? [image] : [siteMetadata.socialBanner],
+      images: twitterImages,
     },
     ...rest,
   }
