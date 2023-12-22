@@ -8,6 +8,26 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Image from 'next/image'
 
+const ArrowIcon = () => {
+  return (
+    <svg
+      className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 10"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M1 5h12m0 0L9 1m4 4L9 9"
+      />
+    </svg>
+  )
+}
+
 export default function Card({
   slug,
   title,
@@ -26,9 +46,10 @@ export default function Card({
   images: string[]
 }) {
   const image = (images && images[0]) || siteMetadata.image
+  summary = summary.slice(0, 160)
   return (
     <>
-      <div className="h-[600px] rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
+      <div className="rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800 md:min-h-[600px] ">
         <Link href={`/${path}`}>
           <Image
             className="w-full rounded-t-lg"
@@ -59,26 +80,13 @@ export default function Card({
               </span>
             ))}
           </div>
+
           <a
             href={`/${path}`}
             className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Read more
-            <svg
-              className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
+            <ArrowIcon />
           </a>
         </div>
       </div>
