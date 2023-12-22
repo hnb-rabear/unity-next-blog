@@ -25,12 +25,19 @@ export default function Card({
   path: string
   images: string[]
 }) {
-  const image = (images && images[0]) || `https://flowbite.com/docs/images/blog/image-1.jpg`
+  const image = (images && images[0]) || siteMetadata.image
   return (
     <>
-      <div className="rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
+      <div className="h-[600px] rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
         <Link href={`/${path}`}>
-          <img className="rounded-t-lg" src={image} alt={slug} />
+          <Image
+            className="w-full rounded-t-lg"
+            src={image}
+            alt={slug}
+            width="200"
+            height="300"
+            loading="lazy"
+          />
         </Link>
         <div className="p-5">
           <time dateTime={date} className="text-sm font-semibold text-gray-700 dark:text-gray-400">
