@@ -1,4 +1,4 @@
-import ListLayout from '@/layouts/ListCardsLayout'
+import ListCardsLayout from '@/layouts/ListCardsLayout'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
@@ -21,7 +21,7 @@ export default function BlogPage() {
   }
 
   return (
-    <ListLayout
+    <ListCardsLayout
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}

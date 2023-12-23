@@ -79,7 +79,7 @@ export default function Home({ posts }) {
     return (
       <div className="grid justify-between gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {posts.slice(0, MAX_DISPLAY).map((post) => (
-          <div key={post.path} className="py-4">
+          <div key={post.path}>
             <PostCard
               slug={post.slug}
               title={post.title}
@@ -107,8 +107,10 @@ export default function Home({ posts }) {
             {siteMetadata.description}
           </p>
         </div>
-        {/* Recent post cards */}
-        {renderPostCards()}
+        <div className="pb-4 pt-8">
+          {/* Recent post cards */}
+          {renderPostCards()}
+        </div>
       </div>
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">

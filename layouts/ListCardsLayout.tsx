@@ -99,7 +99,7 @@ export default function ListCardsLayout({
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
-  const renderPosts = () => {
+  const renderPostCards = () => {
     if (!filteredBlogPosts.length) {
       return <li>No posts found.</li>
     }
@@ -107,7 +107,7 @@ export default function ListCardsLayout({
     return (
       <div className="grid justify-between gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {displayPosts.map((post) => (
-          <div key={post.path} className="py-4">
+          <div key={post.path}>
             <PostCard
               slug={post.slug}
               title={post.title}
@@ -144,7 +144,7 @@ export default function ListCardsLayout({
             <IconSearch />
           </div>
         </div>
-        <ul>{renderPosts()}</ul>
+        <div className="pb-4 pt-8">{renderPostCards()}</div>
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
         <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />

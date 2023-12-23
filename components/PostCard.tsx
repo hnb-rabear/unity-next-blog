@@ -46,13 +46,13 @@ export default function Card({
   images: string[]
 }) {
   const image = (images && images[0]) || siteMetadata.image
-  summary = summary.slice(0, 160)
+  if (summary.length > 160) summary = summary.slice(0, 160) + '...'
   return (
     <>
-      <div className="h-full overflow-hidden rounded-md border-2 border-gray-300 border-opacity-60 dark:border-gray-700">
+      <div className="h-full overflow-hidden rounded-lg border-2 border-gray-300 border-opacity-60 dark:border-gray-700">
         <Link href={`/${path}`}>
           <Image
-            className="w-full rounded-t-lg duration-300 hover:scale-[105%]"
+            className="w-full duration-300 hover:scale-[105%]"
             src={image}
             alt={slug}
             width="200"
