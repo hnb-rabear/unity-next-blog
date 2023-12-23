@@ -2699,6 +2699,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.9.3":
+  version: 2.11.8
+  resolution: "@popperjs/core@npm:2.11.8"
+  checksum: e5c69fdebf52a4012f6a1f14817ca8e9599cb1be73dd1387e1785e2ed5e5f0862ff817f420a87c7fc532add1f88a12e25aeb010ffcbdc98eace3d55ce2139cf0
+  languageName: node
+  linkType: hard
+
 "@prisma/client@npm:^5.7.0":
   version: 5.7.0
   resolution: "@prisma/client@npm:5.7.0"
@@ -5019,7 +5026,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:latest":
+"eslint-config-next@npm:^14.0.4":
   version: 14.0.4
   resolution: "eslint-config-next@npm:14.0.4"
   dependencies:
@@ -5584,6 +5591,16 @@ __metadata:
   version: 3.2.9
   resolution: "flatted@npm:3.2.9"
   checksum: f14167fbe26a9d20f6fca8d998e8f1f41df72c8e81f9f2c9d61ed2bea058248f5e1cbd05e7f88c0e5087a6a0b822a1e5e2b446e879f3cfbe0b07ba2d7f80b026
+  languageName: node
+  linkType: hard
+
+"flowbite@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "flowbite@npm:2.2.1"
+  dependencies:
+    "@popperjs/core": ^2.9.3
+    mini-svg-data-uri: ^1.4.3
+  checksum: 2d707eafa52ab04f26272b9536d0ec4e557cb730ba42f183758257f00f5e6a9613d95b405a863148bdf77b97f266b45d6c8069ce18fdbf1c2f8fc524222cb368
   languageName: node
   linkType: hard
 
@@ -8198,7 +8215,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-svg-data-uri@npm:^1.2.3":
+"mini-svg-data-uri@npm:^1.2.3, mini-svg-data-uri@npm:^1.4.3":
   version: 1.4.4
   resolution: "mini-svg-data-uri@npm:1.4.4"
   bin:
@@ -8413,7 +8430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:latest":
+"next@npm:^14.0.4":
   version: 14.0.4
   resolution: "next@npm:14.0.4"
   dependencies:
@@ -9283,7 +9300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:latest":
+"react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -9322,7 +9339,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:latest":
+"react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -10745,15 +10762,16 @@ __metadata:
     cross-env: ^7.0.3
     esbuild: 0.18.11
     eslint: ^8.45.0
-    eslint-config-next: latest
+    eslint-config-next: ^14.0.4
     eslint-config-prettier: ^8.8.0
     eslint-plugin-prettier: ^5.0.0
+    flowbite: ^2.2.1
     github-slugger: ^1.4.0
     gray-matter: ^4.0.2
     husky: ^8.0.0
     image-size: 1.0.0
     lint-staged: ^13.0.0
-    next: latest
+    next: ^14.0.4
     next-contentlayer: 0.3.4
     next-themes: ^0.2.1
     pliny: 0.1.4
@@ -10761,8 +10779,8 @@ __metadata:
     prettier: ^3.0.0
     prettier-plugin-tailwindcss: ^0.4.1
     prisma: ^5.7.0
-    react: latest
-    react-dom: latest
+    react: ^18.2.0
+    react-dom: ^18.2.0
     react-icons: ^4.12.0
     reading-time: 1.5.0
     rehype-autolink-headings: ^6.1.0
