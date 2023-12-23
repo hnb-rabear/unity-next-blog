@@ -1,9 +1,10 @@
-import ListLayout from '@/layouts/ListLayoutWithTags'
+import ListCardsLayout from '@/layouts/ListCardsLayout'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
 
-const POSTS_PER_PAGE = 5
+const POSTS_PER_PAGE = 6
+const TITLE = 'All posts'
 
 export const metadata = genPageMetadata({ title: 'Blog' })
 
@@ -20,11 +21,11 @@ export default function BlogPage() {
   }
 
   return (
-    <ListLayout
+    <ListCardsLayout
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="All Posts"
+      title={TITLE}
     />
   )
 }
