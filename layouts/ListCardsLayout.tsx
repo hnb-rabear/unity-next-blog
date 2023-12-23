@@ -9,6 +9,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import PostCard from '@/components/PostCard'
+import PostCards from '@/components/PostCards'
 
 interface PaginationProps {
   totalPages: number
@@ -99,30 +100,6 @@ export default function ListCardsLayout({
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
-  const renderPostCards = () => {
-    if (!filteredBlogPosts.length) {
-      return <li>No posts found.</li>
-    }
-
-    return (
-      <div className="grid justify-between gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {displayPosts.map((post) => (
-          <div key={post.path}>
-            <PostCard
-              slug={post.slug}
-              title={post.title}
-              summary={post.summary}
-              tags={post.tags}
-              date={post.date}
-              path={post.path}
-              images={post.images}
-            />
-          </div>
-        ))}
-      </div>
-    )
-  }
-
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -144,7 +121,9 @@ export default function ListCardsLayout({
             <IconSearch />
           </div>
         </div>
-        <div className="pb-4 pt-8">{renderPostCards()}</div>
+        <div className="pb-4 pt-8">
+          <PostCards posts={displayPosts} />
+        </div>
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
         <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />

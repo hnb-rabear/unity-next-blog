@@ -6,6 +6,7 @@ import NewsletterForm from 'pliny/ui/NewsletterForm'
 import Image from 'next/image'
 import PostStats from '@/components/PostStats'
 import PostCard from '@/components/PostCard'
+import PostCards from '@/components/PostCards'
 
 const MAX_DISPLAY = 6
 
@@ -71,29 +72,7 @@ export default function Home({ posts }) {
     })
   }
 
-  function renderPostCards() {
-    if (posts.length === 0) {
-      return <p>No posts found.</p>
-    }
-
-    return (
-      <div className="grid justify-between gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {posts.slice(0, MAX_DISPLAY).map((post) => (
-          <div key={post.path}>
-            <PostCard
-              slug={post.slug}
-              title={post.title}
-              summary={post.summary}
-              tags={post.tags}
-              date={post.date}
-              path={post.path}
-              images={post.images}
-            />
-          </div>
-        ))}
-      </div>
-    )
-  }
+  const displayPosts = posts.slice(0, MAX_DISPLAY)
 
   return (
     <>
@@ -109,7 +88,7 @@ export default function Home({ posts }) {
         </div>
         <div className="pb-4 pt-8">
           {/* Recent post cards */}
-          {renderPostCards()}
+          <PostCards posts={displayPosts} />
         </div>
       </div>
       {posts.length > MAX_DISPLAY && (

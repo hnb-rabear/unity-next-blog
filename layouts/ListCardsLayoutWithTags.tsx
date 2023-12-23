@@ -10,6 +10,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
 import PostCard from '@/components/PostCard'
+import PostCards from '@/components/PostCards'
 
 interface PaginationProps {
   totalPages: number
@@ -103,30 +104,6 @@ export default function ListCardsLayoutWithTags({
     )
   }
 
-  const renderPostCards = () => {
-    if (!displayPosts.length) {
-      return <h4>No posts found.</h4>
-    }
-
-    return (
-      <div className="grid justify-between gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {displayPosts.map((post) => (
-          <div key={post.path}>
-            <PostCard
-              slug={post.slug}
-              title={post.title}
-              summary={post.summary}
-              tags={post.tags}
-              date={post.date}
-              path={post.path}
-              images={post.images}
-            />
-          </div>
-        ))}
-      </div>
-    )
-  }
-
   return (
     <>
       <div>
@@ -137,7 +114,9 @@ export default function ListCardsLayoutWithTags({
         </div>
         {renderTags()}
         <div>
-          <div className="pb-4 pt-8">{renderPostCards()}</div>
+          <div className="pb-4 pt-8">
+            <PostCards posts={displayPosts} />
+          </div>
           {pagination && pagination.totalPages > 1 && (
             <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
           )}
