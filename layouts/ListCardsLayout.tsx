@@ -8,7 +8,7 @@ import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import Card from '@/components/PostCard'
+import PostCard from '@/components/PostCard'
 
 interface PaginationProps {
   totalPages: number
@@ -108,7 +108,7 @@ export default function ListCardsLayout({
       <div className="grid justify-between gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {displayPosts.map((post) => (
           <div key={post.path} className="py-4">
-            <Card
+            <PostCard
               slug={post.slug}
               title={post.title}
               summary={post.summary}

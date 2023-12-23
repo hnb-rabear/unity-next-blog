@@ -49,10 +49,10 @@ export default function Card({
   summary = summary.slice(0, 160)
   return (
     <>
-      <div className="rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800 md:min-h-[600px] ">
+      <div className="h-full overflow-hidden rounded-md border-2 border-gray-300 border-opacity-60 dark:border-gray-700">
         <Link href={`/${path}`}>
           <Image
-            className="w-full rounded-t-lg"
+            className="w-full rounded-t-lg duration-300 hover:scale-[105%]"
             src={image}
             alt={slug}
             width="200"
@@ -65,25 +65,26 @@ export default function Card({
             {formatDate(date, siteMetadata.locale)}
           </time>
           <a href={`/${path}`}>
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 hover:underline dark:text-white">
               {title}
             </h5>
           </a>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{summary}</p>
           <div>
             {tags.map((tag) => (
-              <span
+              <Link
+                href={`/tags/${tag}`}
                 key={tag}
-                className="light:bg-blue-100 light:text-blue-700 mb-3 mr-2 inline-block rounded-lg px-2 py-1 text-sm dark:bg-gray-700"
+                className="mb-3 mr-2 inline-block rounded-lg bg-gray-200 px-2 py-1 text-sm text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
               >
                 #{tag}
-              </span>
+              </Link>
             ))}
           </div>
 
           <a
             href={`/${path}`}
-            className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="inline-flex items-center rounded-lg bg-primary-600 px-3 py-2 text-center text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
             Read more
             <ArrowIcon />
