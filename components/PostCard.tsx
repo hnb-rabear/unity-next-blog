@@ -56,7 +56,6 @@ export default function Card({
   if (summary.length > 160) summary = summary.slice(0, 160) + '...'
   return (
     <>
-      <p>{JSON.stringify(tags)}</p>
       <div className="h-full overflow-hidden rounded-lg border-2 border-gray-300 border-opacity-60 dark:border-gray-700">
         <Link href={`/${path}`}>
           <Image
