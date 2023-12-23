@@ -28,6 +28,13 @@ const ArrowIcon = () => {
   )
 }
 
+const stringToSlug = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '')
+}
+
 export default function Card({
   slug,
   title,
@@ -49,6 +56,7 @@ export default function Card({
   if (summary.length > 160) summary = summary.slice(0, 160) + '...'
   return (
     <>
+      <p>{JSON.stringify(tags)}</p>
       <div className="h-full overflow-hidden rounded-lg border-2 border-gray-300 border-opacity-60 dark:border-gray-700">
         <Link href={`/${path}`}>
           <Image
@@ -73,7 +81,7 @@ export default function Card({
           <div>
             {tags.map((tag) => (
               <Link
-                href={`/tags/${tag}`}
+                href={`/tags/${stringToSlug(tag)}`}
                 key={tag}
                 className="mb-3 mr-2 inline-block rounded-lg bg-gray-200 px-2 py-1 text-sm text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
               >
